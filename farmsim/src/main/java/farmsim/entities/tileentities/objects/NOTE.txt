@@ -1,0 +1,1 @@
+Objects are static entities, such as rocks and tree stumps, that exist in the world.

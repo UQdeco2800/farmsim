@@ -1,0 +1,1 @@
+		animal.isAlive = false;

@@ -1,0 +1,11 @@
+[bear]
+speed=0.1
+health=100
+
+[wolf]
+speed=0.2
+health=90
+
+[rabbit]
+speed=0.3
+health=60

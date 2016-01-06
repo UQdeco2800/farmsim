@@ -1,0 +1,53 @@
+/* Divs
+    - Console
+*/
+#console {
+
+}
+#consoleOutput {
+    -fx-font: 12px "monospaced";
+    -fx-background-color: darkslategray;
+    -fx-text-fill: #ffffff;
+}
+#consoleInput {
+
+}
+#logger {
+
+}
+#loggerMenu {
+    -fx-pref-width: 200px;
+    -fx-min-width: 200px;
+    -fx-max-width: 200px;
+}
+#loggerOutput {
+    -fx-background-color: darkslategray;
+}
+
+/* Classes
+    - Logger
+*/
+.loggerCheckBox {
+    -fx-wrap-text: true;
+    -fx-border-color: cadetblue;
+    -fx-font-size: 12;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+    -fx-pref-width: 200px;
+    -fx-padding: 2px 0;
+}
+.loggerLabel {
+    -fx-padding: 0 0 5px 50px;
+    -fx-background-color: #3d3d3d;
+    -fx-pref-width: 200px;
+    -fx-text-fill: #ffffff;
+}
+
+/*  - Console */
+.text-area .scroll-pane .content{
+    -fx-background-color: darkslategray;
+}
+
+.loggerINFO {
+    -fx-text-fill: #ffffff;
+}

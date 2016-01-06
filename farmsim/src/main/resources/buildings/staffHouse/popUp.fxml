@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="mainPane" prefHeight="500.0" prefWidth="850.0" styleClass="window" stylesheets="@popUp.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="farmsim.buildings.StaffHousePopUp">
+   <top>
+      <BorderPane fx:id="headerPane" prefHeight="50.0" BorderPane.alignment="CENTER">
+         <center>
+            <Label styleClass="title-text" text="STAFF HOUSE" BorderPane.alignment="CENTER" />
+         </center>
+         <right>
+            <ImageView fitHeight="36.0" fitWidth="33.0" onMouseClicked="#clickClose" pickOnBounds="true" preserveRatio="true" styleClass="close-icon" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@../../icons/exit_red.png" />
+               </image>
+               <BorderPane.margin>
+                  <Insets right="15.0" />
+               </BorderPane.margin>
+            </ImageView>
+         </right>
+      </BorderPane>
+   </top>
+   <bottom>
+      <BorderPane prefHeight="50.0" BorderPane.alignment="CENTER">
+         <center>
+             <BorderPane>
+                 <left>
+                     <Button fx:id="hireButton" styleClass="custom-button" text="Hire" BorderPane.alignment="CENTER" />
+                 </left>
+               <center>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <left>
+                           <Button fx:id="editWage" styleClass="custom-button" text="Edit Wage" BorderPane.alignment="CENTER" />
+                     </left>
+                     <center>
+                        <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <left>
+                              <Button fx:id="refreshButton" styleClass="custom-button" text="Refresh" BorderPane.alignment="CENTER" />
+                           </left>
+                        </BorderPane>
+                     </center>
+                  </BorderPane>
+               </center>
+             </BorderPane>
+         </center>
+         <left>
+             <Button fx:id="fireButton" styleClass="custom-button" text="Fire" BorderPane.alignment="CENTER" />
+         </left></BorderPane>
+   </bottom>
+   <left>
+      <TabPane prefWidth="650.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab fx:id="currentTab" styleClass="header-text" text="CURRENT AGENTS">
+               <content>
+                  <ScrollPane opacity="0.8" vbarPolicy="ALWAYS">
+                     <content>
+                        <VBox fx:id="agents" opacity="0.8" styleClass="custom-size">
+
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+
+
+
+               </content>
+          </Tab>
+          <Tab fx:id="hireTab" text="HIRE AGENTS">
+               <content>
+                  <ScrollPane opacity="0.8" vbarPolicy="ALWAYS">
+                     <content>
+                         <VBox fx:id="hireAgents" opacity="0.8" styleClass="custom-size">
+
+                         </VBox>
+                     </content>
+                  </ScrollPane>
+               </content>
+          </Tab>
+            <Tab fx:id="helpTab" text="Help">
+              <content>
+                  <ScrollPane opacity="0.8" vbarPolicy="ALWAYS">
+                      <content>
+                          <VBox fx:id="helpBox" opacity="0.8" styleClass="custom-size">
+
+                          </VBox>
+                      </content>
+                  </ScrollPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </left>
+</BorderPane>

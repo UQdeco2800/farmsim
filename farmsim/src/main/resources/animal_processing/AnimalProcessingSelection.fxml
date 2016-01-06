@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="mainPane" maxHeight="620.0" maxWidth="620.0" prefHeight="620.0" prefWidth="620.0"
+            xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="farmsim.ui.AnimalProcessingSelectionController">
+    <center>
+        <BorderPane fx:id="contentBorderPane" maxHeight="600.0" maxWidth="600.0" prefHeight="600.0" prefWidth="600.0"
+                     BorderPane.alignment="CENTER">
+            <bottom>
+                <VBox id="Content" fx:id="MainContent" maxHeight="540.0" maxWidth="540.0" prefHeight="540.0"
+                      prefWidth="540.0"  BorderPane.alignment="TOP_CENTER">
+                    <children>
+                        <VBox id="Agent Selection Section" fx:id="agentSelectionArea" prefHeight="200.0"
+                              >
+                            <children>
+                                <Label id="Section Title" styleClass="section-heading" text="Select an agent">
+                                    <font>
+                                        <Font name="System Bold" size="20.0"/>
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets bottom="5.0"/>
+                                    </VBox.margin>
+                                </Label>
+                                <HBox id="Selection Content">
+                                    <children>
+                                        <VBox fx:id="agentSelectionVBox" minWidth="200.0" prefHeight="200.0"
+                                              prefWidth="200.0">
+                                            <children>
+                                                <VBox id="Combo Selection" spacing="5.0">
+                                                    <children>
+                                                        <Label text="All Agents in Game:" underline="true"/>
+                                                        <ComboBox fx:id="agentEntitySelection" onAction="#loadAgentCombo" onMouseClicked="#resetAgentCombo"
+                                                                  prefWidth="150.0" promptText="Select an Agent"/>
+                                                    </children>
+                                                    <padding>
+                                                        <Insets bottom="10.0"/>
+                                                    </padding>
+                                                </VBox>
+                                                <VBox id="Option Selection" spacing="5.0">
+                                                    <children>
+                                                        <Label text="Random Agents:" underline="true"/>
+                                                        <RadioButton fx:id="randomAgentRadio" mnemonicParsing="false"
+                                                                     onAction="#randomAgent"
+                                                                     text="Random Agent in World"><!--loadAgentInfoAndButtons"-->
+                                                            <toggleGroup>
+                                                                <ToggleGroup fx:id="agentSelectionRadioGroup"/>
+                                                            </toggleGroup>
+                                                        </RadioButton>
+                                                        <RadioButton fx:id="closestAgentRadio" mnemonicParsing="false"
+                                                                     onAction="#closestAgentToStaffHouse"
+                                                                     text="Closest To Staff House"
+                                                                     toggleGroup="$agentSelectionRadioGroup"/>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets/>
+                                                    </VBox.margin>
+                                                    <padding>
+                                                        <Insets bottom="10.0"/>
+                                                    </padding>
+                                                </VBox>
+                                                <VBox id="Mouse Selection" prefHeight="200.0" prefWidth="100.0">
+                                                    <children>
+                                                        <Label text="Or Select One With Right Click!" underline="true"/>
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </VBox>
+                                        <Separator orientation="VERTICAL" prefHeight="200.0"/>
+                                        <VBox id="Info" fx:id="agentSelectionInfo" spacing="5.0"
+                                           >
+                                            <children>
+                                                <HBox id="Name" >
+                                                    <children>
+                                                        <Label minWidth="17.0" prefHeight="30.0" prefWidth="95.0"
+                                                               text="Agent Name: ">
+                                                            <font>
+                                                                <Font name="System Bold" size="12.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <Label fx:id="agentSelectedName" alignment="CENTER_RIGHT"
+                                                               minWidth="150.0" prefHeight="30.0" prefWidth="252.0"
+                                                               style="-fx-background-color: lightblue">
+                                                            <padding>
+                                                                <Insets right="5.0"/>
+                                                            </padding>
+                                                        </Label>
+                                                    </children>
+                                                </HBox>
+                                                <VBox id="Lavels" fx:id="agentSelectionLevels" spacing="2.0">
+                                                    <children>
+                                                        <Label text="Processing Levels - (LVL/ # to Next LVL)">
+                                                            <font>
+                                                                <Font name="System Bold" size="12.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <HBox id="egg + milk">
+                                                            <children>
+                                                                <HBox id="But">
+                                                                    <children>
+                                                                        <Label minWidth="100.0" prefHeight="30.0"
+                                                                               prefWidth="100.0" text="Butchering:">
+                                                                            <font>
+                                                                                <Font name="System Bold" size="12.0"/>
+                                                                            </font>
+                                                                        </Label>
+                                                                        <Label fx:id="agentSelectedButcherLvl"
+                                                                               alignment="CENTER_RIGHT" minWidth="65.0"
+                                                                               prefHeight="30.0" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets/>
+                                                                            </HBox.margin>
+                                                                            <padding>
+                                                                                <Insets right="5.0"/>
+                                                                            </padding>
+                                                                        </Label>
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox id="Milker">
+                                                                    <children>
+                                                                        <Label minWidth="100.0" prefHeight="30.0"
+                                                                               prefWidth="100.0" text="Milking:">
+                                                                            <font>
+                                                                                <Font name="System Bold" size="12.0"/>
+                                                                            </font>
+                                                                        </Label>
+                                                                        <Label fx:id="agentSelectedMilkingLvl"
+                                                                               alignment="CENTER_RIGHT" minHeight="30.0"
+                                                                               minWidth="65.0" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets/>
+                                                                            </HBox.margin>
+                                                                            <padding>
+                                                                                <Insets right="5.0"/>
+                                                                            </padding>
+                                                                        </Label>
+                                                                    </children>
+                                                                </HBox>
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox id="Butch+she" minHeight="30.0" prefHeight="30.0">
+                                                            <children>
+                                                                <HBox id="Shearer" >
+                                                                    <children>
+                                                                        <Label minWidth="100.0" prefHeight="30.0"
+                                                                               prefWidth="100.0"
+                                                                               text="Egg Cultivating: ">
+                                                                            <font>
+                                                                                <Font name="System Bold" size="12.0"/>
+                                                                            </font>
+                                                                        </Label>
+                                                                        <Label fx:id="agentSelectedEggHandlingLvl"
+                                                                               alignment="CENTER_RIGHT" minHeight="30.0"
+                                                                               minWidth="65.0" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets/>
+                                                                            </HBox.margin>
+                                                                            <padding>
+                                                                                <Insets right="5.0"/>
+                                                                            </padding>
+                                                                        </Label>
+                                                                    </children>
+                                                                </HBox>
+                                                                <HBox id="Egg">
+                                                                    <children>
+                                                                        <Label minWidth="100.0" prefHeight="30.0"
+                                                                               prefWidth="100.0" text="Shearing:">
+                                                                            <font>
+                                                                                <Font name="System Bold" size="12.0"/>
+                                                                            </font>
+                                                                        </Label>
+                                                                        <Label fx:id="agentSelectedShearingLvl"
+                                                                               alignment="CENTER_RIGHT" minHeight="30.0"
+                                                                               minWidth="65.0" prefWidth="65.0">
+                                                                            <HBox.margin>
+                                                                                <Insets/>
+                                                                            </HBox.margin>
+                                                                            <padding>
+                                                                                <Insets right="5.0"/>
+                                                                            </padding>
+                                                                        </Label>
+                                                                    </children>
+                                                                </HBox>
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </VBox>
+                                                <HBox id="Other agent info" style="-fx-border-color: orange">
+                                                    <children>
+                                                        <Label prefHeight="17.0" prefWidth="126.0"
+                                                               text="More agent info...:">
+                                                            <font>
+                                                                <Font name="System Bold" size="12.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <Label fx:id="agentSelectedOtherInfo" alignment="TOP_RIGHT"
+                                                               nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0"
+                                                               prefWidth="227.0">
+                                                            <padding>
+                                                                <Insets right="5.0"/>
+                                                            </padding>
+                                                        </Label>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        <Separator/>
+                        <HBox id="Process Selection" fx:id="processSelection" style="-fx-border-color: yellow">
+                            <children>
+                                <VBox minWidth="540.0" style="-fx-border-color: blue;">
+                                    <children>
+                                        <Label fx:id="selectProcessLabel" text="Select A Process">
+                                            <font>
+                                                <Font name="System Bold" size="20.0"/>
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets bottom="5.0"/>
+                                            </VBox.margin>
+                                        </Label>
+                                        <HBox id="For the btns" alignment="CENTER" spacing="15.0">
+                                            <children>
+                                                <ToggleButton fx:id="processAbattoir" maxHeight="60.0" maxWidth="60.0"
+                                                              minHeight="60.0" minWidth="80.0"
+                                                              onAction="#loadProcessAbattoir"
+                                                              styleClass="process-button" text="Butcher" visible="true"
+                                                              toggleGroup="$processButtonsGroup">
+
+                                                    <toggleGroup>
+                                                        <ToggleGroup fx:id="processButtonsGroup"></ToggleGroup>
+                                                    </toggleGroup>
+                                                </ToggleButton>
+                                                <ToggleButton fx:id="processEggCoop" maxHeight="60.0" maxWidth="60.0"
+                                                              minHeight="60.0" minWidth="80.0"
+                                                              onAction="#loadEggProcessCoop" styleClass="process-button"
+                                                              text="Egg Handling" visible="true"
+                                                              toggleGroup="$processButtonsGroup"/>
+                                                <ToggleButton fx:id="processMilkingBarn" maxHeight="60.0"
+                                                              maxWidth="60.0" minHeight="60.0" minWidth="80.0"
+                                                              onAction="#loadProcessMilkingBarn"
+                                                              styleClass="process-button" text="Milking" visible="true"
+                                                              toggleGroup="$processButtonsGroup"/>
+                                                <ToggleButton fx:id="processShearingShed" maxHeight="60.0"
+                                                              maxWidth="60.0" minHeight="60.0" minWidth="80.0"
+                                                              onAction="#loadProcessShearingShead"
+                                                              styleClass="process-button" text="Shearing" visible="true"
+                                                              toggleGroup="$processButtonsGroup"/>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="10.0"/>
+                                    </padding>
+                                </VBox>
+                            </children>
+                        </HBox>
+                        <Separator prefWidth="200.0"/>
+                        <HBox id="Animal Selection" fx:id="animalSelections">
+                            <children>
+                                <VBox id="content">
+                                    <children>
+                                        <Label id="Title section" text="Select An Animal">
+                                            <font>
+                                                <Font name="System Bold" size="20.0"/>
+                                            </font>
+                                        </Label>
+                                        <HBox prefHeight="166.0" prefWidth="600.0">
+                                            <children>
+                                                <VBox id="UI" fx:id="animalSelectionVBox" prefHeight="166.0"
+                                                      prefWidth="329.0" style="-fx-border-color: pink">
+                                                    <children>
+                                                        <HBox fx:id="animalSelectionVBoxTop"
+                                                              style="-fx-border-color: blue">
+                                                            <children>
+                                                                <Label minWidth="75.0" prefHeight="20.0"
+                                                                       prefWidth="83.0" text="Animal Type:"
+                                                                       underline="true"/>
+                                                                <VBox prefHeight="64.0" prefWidth="164.0" spacing="2.0">
+                                                                    <children>
+                                                                        <ComboBox fx:id="animalTypeSelection"
+                                                                                  minWidth="141.0"
+                                                                                  onAction="#loadSelectedAnimalTypeEntities"
+                                                                                  prefHeight="27.0" prefWidth="141.0"
+                                                                                  promptText="Select a Type"/>
+                                                                        <Label alignment="CENTER"
+                                                                               contentDisplay="CENTER" prefHeight="17.0"
+                                                                               prefWidth="163.0" text="OR"
+                                                                               textAlignment="CENTER">
+                                                                            <font>
+                                                                                <Font name="System Bold" size="12.0"/>
+                                                                            </font>
+                                                                        </Label>
+                                                                        <RadioButton fx:id="animalTypeSelectionRandom"
+                                                                                     contentDisplay="CENTER"
+                                                                                     mnemonicParsing="false"
+                                                                                     onAction="#loadRandomEntity"
+                                                                                     prefHeight="17.0" prefWidth="161.0"
+                                                                                     text="Random Type"
+                                                                                     textAlignment="CENTER"/>
+                                                                    </children>
+                                                                </VBox>
+                                                            </children>
+                                                            <VBox.margin>
+                                                                <Insets/>
+                                                            </VBox.margin>
+                                                            <padding>
+                                                                <Insets bottom="5.0"/>
+                                                            </padding>
+                                                        </HBox>
+                                                        <HBox fx:id="animalSelectionVBoxBottom"
+                                                              style="-fx-border-color: brown">
+                                                            <children>
+                                                                <VBox maxWidth="83.0" prefHeight="92.0"
+                                                                      prefWidth="83.0">
+                                                                    <children>
+                                                                        <Label minWidth="80.0" prefHeight="37.0"
+                                                                               prefWidth="81.0" text="Animal Entities:"
+                                                                               underline="true" wrapText="true">
+                                                                            <VBox.margin>
+                                                                                <Insets/>
+                                                                            </VBox.margin>
+                                                                        </Label>
+                                                                        <Button fx:id="animalEntitySelectionRandom"
+                                                                                alignment="CENTER"
+                                                                                contentDisplay="CENTER"
+                                                                                mnemonicParsing="false"
+                                                                                onAction="#setRandomSelectedEntity"
+                                                                                text="Random">
+                                                                            <VBox.margin>
+                                                                                <Insets left="5.0" top="10.0"/>
+                                                                            </VBox.margin>
+                                                                        </Button>
+                                                                    </children>
+                                                                    <HBox.margin>
+                                                                        <Insets right="5.0"/>
+                                                                    </HBox.margin>
+                                                                </VBox>
+                                                                <HBox prefHeight="92.0" prefWidth="241.0">
+                                                                    <children>
+                                                                        <ListView fx:id="animalEntitySelection"
+                                                                                  maxHeight="95.0" prefHeight="92.0"
+                                                                                  prefWidth="83.0"
+                                                                                  style="-fx-font-size: 10"/>
+                                                                        <Label alignment="CENTER" prefHeight="92.0"
+                                                                               prefWidth="34.0" text="OR">
+                                                                            <font>
+                                                                                <Font name="System Bold" size="12.0"/>
+                                                                            </font>
+                                                                        </Label>
+                                                                        <VBox prefHeight="92.0" prefWidth="129.0"
+                                                                              spacing="2.0">
+                                                                            <children>
+                                                                                <Label text="Closest to...">
+                                                                                    <VBox.margin>
+                                                                                        <Insets bottom="5.0"/>
+                                                                                    </VBox.margin>
+                                                                                </Label>
+                                                                                <RadioButton
+                                                                                        fx:id="entityClosestToAgent"
+                                                                                        mnemonicParsing="false"
+                                                                                        onAction="#overideUserClosestAgent"
+                                                                                        text="Agent">
+                                                                                    <toggleGroup>
+                                                                                        <ToggleGroup
+                                                                                                fx:id="animalLocationRadioGroup"/>
+                                                                                    </toggleGroup>
+                                                                                </RadioButton>
+                                                                                <RadioButton
+                                                                                        fx:id="entityClosestToProcessBuilding"
+                                                                                        mnemonicParsing="false"
+                                                                                        onAction="#overideUserProcessingBuilding"
+                                                                                        toggleGroup="$animalLocationRadioGroup"
+                                                                                        text="(Processing Building)"/>
+                                                                                <RadioButton
+                                                                                        fx:id="entityClosestToStaffHouse"
+                                                                                        mnemonicParsing="false"
+                                                                                        onAction="#overideUserStaffHouse"
+                                                                                        toggleGroup="$animalLocationRadioGroup"
+                                                                                        text="Staff House"/>
+                                                                            </children>
+                                                                        </VBox>
+                                                                    </children>
+                                                                </HBox>
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </VBox>
+                                                <Separator orientation="VERTICAL"/>
+                                                <VBox id="Info" fx:id="animalSelectionInfo" prefHeight="166.0"
+                                                      prefWidth="210.0" style="-fx-border-color: teal">
+                                                    <children>
+                                                        <HBox style="-fx-border-color: mistyrose">
+                                                            <children>
+                                                                <Label prefWidth="100.0" text="Name:">
+                                                                    <font>
+                                                                        <Font name="System Bold" size="12.0"/>
+                                                                    </font>
+                                                                </Label>
+                                                                <Label fx:id="animalSelectedName"
+                                                                       alignment="CENTER_RIGHT" prefHeight="17.0"
+                                                                       prefWidth="108.0"
+                                                                       style="-fx-background-color: lightblue">
+                                                                    <padding>
+                                                                        <Insets right="5.0"/>
+                                                                    </padding>
+                                                                </Label>
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox style="-fx-border-color: red">
+                                                            <children>
+                                                                <Label prefWidth="100.0" text="Age:">
+                                                                    <font>
+                                                                        <Font name="System Bold" size="12.0"/>
+                                                                    </font>
+                                                                </Label>
+                                                                <Label fx:id="animalSelectedAge"
+                                                                       alignment="CENTER_RIGHT" prefHeight="17.0"
+                                                                       prefWidth="112.0">
+                                                                    <padding>
+                                                                        <Insets right="5.0"/>
+                                                                    </padding>
+                                                                </Label>
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox style="-fx-border-color: red">
+                                                            <children>
+                                                                <Label prefHeight="42.0" prefWidth="100.0"
+                                                                       text="Distance From Agent:" wrapText="true">
+                                                                    <font>
+                                                                        <Font name="System Bold" size="12.0"/>
+                                                                    </font>
+                                                                </Label>
+                                                                <Label fx:id="animalSelectedDistance"
+                                                                       alignment="CENTER_RIGHT" prefHeight="34.0"
+                                                                       prefWidth="107.0">
+                                                                    <padding>
+                                                                        <Insets right="5.0"/>
+                                                                    </padding>
+                                                                </Label>
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                                            <children>
+                                                                <Button fx:id="goButton" alignment="CENTER"
+                                                                        contentDisplay="CENTER"
+                                                                        onAction="#executeProcessing" prefHeight="87.0"
+                                                                        prefWidth="129.0" text="Process!"
+                                                                        textAlignment="CENTER"/>
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                        <Separator prefWidth="200.0"/>
+                        <HBox fx:id="processExecution">
+                            <children>
+                                <Label fx:id="responseText" prefHeight="17.0" prefWidth="544.0"
+                                       text="" textFill="RED" wrapText="true"/>
+                            </children>
+                            <Button onAction="#resetButton">
+
+                            </Button>
+                        </HBox>
+                    </children>
+                </VBox>
+            </bottom>
+            <top>
+                <Label id="Title Label" fx:id="titleContent" style="-fx-border-color: teal" text="Animal Processing"
+                       BorderPane.alignment="TOP_CENTER">
+                    <font>
+                        <Font size="32.0"/>
+                    </font>
+                    <BorderPane.margin>
+                        <Insets bottom="10.0"/>
+                    </BorderPane.margin>
+                </Label>
+            </top>
+            <opaqueInsets>
+                <Insets/>
+            </opaqueInsets>
+        </BorderPane>
+    </center>
+</BorderPane>

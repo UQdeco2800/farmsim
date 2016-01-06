@@ -1,0 +1,26 @@
+.title-bar {
+    -fx-background-color: deepskyblue;
+    -fx-background-radius: 5 5 0 0;
+}
+.title {
+    -fx-font-family: sens-serif;
+    -fx-font-size: 20;
+    -fx-font-weight: bolder;
+}
+.window {
+    -fx-background-color: aliceblue;
+    -fx-border-width: 1;
+    -fx-border-color: black;
+    -fx-border-radius: 5 5 0 0;
+    -fx-background-radius: 5 5 0 0;
+}
+.exit-symbol {
+    -fx-image: url("../icons/exit_black.png");
+    -fx-cursor: hand;
+}
+.exit-symbol:hover {
+
+}
+.exit-container {
+    -fx-padding: 5;
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.*?>
+
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="737.0" prefWidth="1295.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="farmsim.ui.FarmSimController">
+  <children>
+    <SplitPane fx:id="splitPane" dividerPositions="0.1666" focusTraversable="true" prefHeight="737.0" prefWidth="1295.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <children>
+            <Button mnemonicParsing="false" onAction="#startGame" prefHeight="39.0" prefWidth="210.0" text="Launch Game" />
+            <Button layoutY="39.0" mnemonicParsing="false" onAction="#makeDirt" prefHeight="39.0" prefWidth="210.0" text="Make Dirt!" />
+            <Button layoutY="78.0" mnemonicParsing="false" onAction="#plough" prefHeight="39.0" prefWidth="210.0" text="Plough!" />
+            <Button layoutY="274.0" mnemonicParsing="false" onAction="#harvest" prefHeight="39.0" prefWidth="210.0" text="Harvest!" />
+            <Button layoutY="313.0" mnemonicParsing="false" onAction="#buyLand" prefHeight="39.0" prefWidth="210.0" text="Clear Rocks/Get Land" />
+            <Button layoutY="351.0" mnemonicParsing="false" onAction="#moarPeons" prefHeight="39.0" prefWidth="210.0" text="MOAR PEONS!" />
+<<<<<<< HEAD
+            <Button layoutY="610.0" mnemonicParsing="false" onAction="#newWindow" prefHeight="39.0" prefWidth="210.0" text="new pop up window" />
+            <Button layoutY="700.0" mnemonicParsing="false" onAction="#newStorageWindow" prefHeight="39.0" prefWidth="210.0" text="Temp Storage" />
+=======
+            <Button layoutX="1.0" layoutY="690.0" mnemonicParsing="false" onAction="#newWindow" prefHeight="39.0" prefWidth="210.0" text="new pop up window" />
+>>>>>>> 70127209d71768de548dbe4bc440b0d5f94d7348
+            <Label layoutY="117.0" prefHeight="66.0" prefWidth="210.0" text="Selecting a crop will plant it:" textAlignment="CENTER" wrapText="true" />
+            <ComboBox fx:id="plantChoice" layoutY="183.0" prefHeight="31.0" prefWidth="210.0" />
+            <TextArea fx:id="output" layoutX="13.0" layoutY="474.0" prefHeight="210.0" prefWidth="185.0" />
+                  <Button layoutX="1.0" layoutY="430.0" mnemonicParsing="false" onAction="#waterCrop" prefHeight="39.0" prefWidth="210.0" text="Water!" />
+                  <Button layoutX="1.0" layoutY="235.0" mnemonicParsing="false" onAction="#plant" prefHeight="39.0" prefWidth="210.0" text="Plant!" />
+          </children>
+        </AnchorPane>
+        <StackPane fx:id="gamePane">
+               <children>
+                  <Label fx:id="waterLabel" text="Water Remaining" translateX="550.0" translateY="70.0" />
+                  <ProgressIndicator fx:id="waterIndicator" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" progress="0.0" translateX="550.0" />
+               </children></StackPane>
+      </items>
+    </SplitPane>
+  </children>
+</AnchorPane>

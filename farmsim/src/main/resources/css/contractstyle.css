@@ -1,0 +1,20 @@
+.tabanchor {
+    -fx-background-image: url("../contractBackground.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: 1000 586;
+    -fx-background-position: center center;
+}
+.tabactive {
+    -fx-background-image: url("../activeBackground.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: 1000 586;
+    -fx-background-position: center center;
+}
+.declineButton {
+    -fx-background-color: rgb(208, 66, 57);
+    -fx-color:white;
+}
+.acceptButton {
+    -fx-background-color: rgb(67, 194, 106);
+    -fx-color:white;
+}

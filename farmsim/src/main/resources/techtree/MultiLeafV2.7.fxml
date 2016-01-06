@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="techPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="775.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="topLevelTech" fitHeight="500.0" fitWidth="775.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@MultiLeafLayout.V2.7.png" />
+         </image>
+      </ImageView>
+      <ImageView id="leftLeafOne" fx:id="growthTwoImage" fitHeight="80.0" fitWidth="80.0" layoutX="22.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons/growth2.png" />
+         </image>
+      </ImageView>
+      <ImageView id="leftLeafTwo" fx:id="growthThreeImage" fitHeight="80.0" fitWidth="80.0" layoutX="188.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons/growth3.png" />
+         </image>
+      </ImageView>
+      <ImageView id="middleLeafOne" fx:id="resistTwoImage" fitHeight="80.0" fitWidth="80.0" layoutX="348.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons/resist2.png" />
+         </image>
+      </ImageView>
+      <ImageView id="middleLeafTwo" fx:id="resistThreeImage" fitHeight="80.0" fitWidth="80.0" layoutX="348.0" layoutY="455.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons/resist3.png" />
+         </image>
+      </ImageView>
+      <ImageView id="rightLeafOne" fx:id="outputTwoImage" fitHeight="80.0" fitWidth="80.0" layoutX="675.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons/output2.png" />
+         </image>
+      </ImageView>
+      <ImageView id="rightLeafTwo" fx:id="outputThreeImage" fitHeight="80.0" fitWidth="80.0" layoutX="509.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons/output3.png" />
+         </image>
+      </ImageView>
+      <ImageView id="left" fx:id="growthOneImage" fitHeight="80.0" fitWidth="80.0" layoutX="141.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons/growth1.png" />
+         </image>
+      </ImageView>
+      <ImageView id="middle" fx:id="resistOneImage" fitHeight="80.0" fitWidth="80.0" layoutX="349.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons/resist1.png" />
+         </image>
+      </ImageView>
+      <ImageView id="right" fx:id="outputOneImage" fitHeight="80.0" fitWidth="80.0" layoutX="561.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons/output1.png" />
+         </image>
+      </ImageView>
+      <Pane prefHeight="50.0" prefWidth="775.0" style="-fx-background-color: A19C98;">
+         <children>
+            <ImageView fx:id="closeTech" fitHeight="30.0" fitWidth="30.0" layoutX="730.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/exit_black.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</Pane>

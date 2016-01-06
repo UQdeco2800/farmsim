@@ -1,0 +1,13 @@
+.window{
+        -fx-background-color: rgba(255, 255, 204, 0.8);
+        -fx-border-color: #7a5219;
+        -fx-background-size: contain;
+        -fx-background-position: center center;
+}
+
+.custom-button{
+    -fx-border-color: #7a5219;
+    -fx-border-radius: 5 5 5 5;
+    -fx-background-color: rgba(255, 255, 204, 0.8);
+    -fx-text-fill: #7a5219;
+}

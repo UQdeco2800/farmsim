@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Font?>
+<?scenebuilder-stylesheet css/agentRolePopUp.css?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0000999999975" prefWidth="457.99997275389615" styleClass="window" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="farmsim.ui.AgentRoleManagePopUpController">
+  <children>
+    <Rectangle arcHeight="5.0" arcWidth="5.0" height="196.0001220703125" layoutX="0.0" layoutY="332.0" stroke="$x4" strokeType="INSIDE" width="458.0">
+      <fill>
+        <Color blue="0.875" green="0.875" red="0.875" fx:id="x4" />
+      </fill>
+    </Rectangle>
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bdb7b3" height="297.000244140625" layoutX="0.0" layoutY="59.0" stroke="#a19c98" strokeType="INSIDE" width="458.0" />
+    <Rectangle arcHeight="5.0" arcWidth="5.0" height="50.99999237060547" layoutX="0.0" layoutY="8.0" stroke="$x2" strokeType="INSIDE" width="457.9999694824219">
+      <fill>
+        <Color blue="0.537" green="0.835" red="0.600" fx:id="x2" />
+      </fill>
+    </Rectangle>
+    <Button id="showAll" layoutX="8.0" layoutY="18.0" mnemonicParsing="false" onAction="#showAll" prefHeight="33.0" prefWidth="215.0" style="&#10;.whiteButton:pressed{&#10;}" styleClass="whiteButton" text="Show all workers">
+      <font>
+        <Font size="16.0" fx:id="x1" />
+      </font>
+    </Button>
+    <Button id="showSelection" font="$x1" layoutX="229.0" layoutY="18.0" minHeight="19.0" mnemonicParsing="false" onAction="#showSelection" prefHeight="33.0" prefWidth="215.0" style="&#10;.whiteButton:pressed{&#10;}" styleClass="whiteButton" text="Show workers in selection" />
+    <ChoiceBox id="" fx:id="role" layoutX="8.0" layoutY="378.0" prefWidth="188.0" style="-fx-text-fill: #000000;&#10;-fx-background-color: #ffffff;">
+      <items>
+        <FXCollections fx:factory="observableArrayList" />
+      </items>
+    </ChoiceBox>
+    <Label font="$x1" labelFor="$role" layoutX="8.0" layoutY="356.0" prefHeight="20.9998779296875" style="-fx-font-weight: bold;" text="Set worker's role">
+      <textFill>
+        <Color blue="0.500" green="0.500" red="0.500" fx:id="x5" />
+      </textFill>
+    </Label>
+    <Label layoutX="11.0" layoutY="332.0" style="-fx-font-weight: bold;&#10;-fx-text-fill: #ffffff;" text="Edit selected workers:">
+      <font>
+        <Font size="18.0" fx:id="x3" />
+      </font>
+    </Label>
+    <ChoiceBox id="" fx:id="trainRole" layoutX="223.0" layoutY="378.0" prefWidth="220.0" style="-fx-text-fill: #000000;&#10;-fx-background-color: #ffffff;">
+      <items>
+        <FXCollections fx:factory="observableArrayList" />
+      </items>
+    </ChoiceBox>
+    <Label font="$x1" labelFor="$trainRole" layoutX="223.0" layoutY="356.0" prefHeight="20.9998779296875" style="-fx-font-weight: bold;" text="Train worker" textFill="$x5" />
+    <Button fx:id="setArea" layoutX="9.0" layoutY="426.0" mnemonicParsing="false" onAction="#setWorkersWorkingArea" prefHeight="32.0" prefWidth="185.00009999999747" style="&#10;.whiteButton:pressed{&#10;}" styleClass="whiteButton" text="Set worker/s area" />
+    <Button id="setArea" layoutX="6.0" layoutY="470.0" mnemonicParsing="false" onAction="#applyButton" prefHeight="50.0" prefWidth="188.0" style=".greenButton:pressed{&#10;}" styleClass="greenButton" text="Apply Changes" textFill="WHITE" />
+    <ListView fx:id="agentTable" layoutX="0.0" layoutY="90.0" prefHeight="242.0" prefWidth="458.0" />
+    <Label font="$x3" layoutX="11.0" layoutY="66.0" style="-fx-font-weight:bold;" text="Agents : " textFill="WHITE" />
+    <Label fx:id="showing" font="$x3" layoutX="86.0" layoutY="66.0" text="(showing all workers)" textFill="WHITE" />
+    <Button id="setArea" layoutX="223.0" layoutY="426.0" mnemonicParsing="false" onAction="#clearWorkingArea" prefHeight="32.0" prefWidth="220.0" style="&#10;.whiteButton:pressed{&#10;}" styleClass="whiteButton" text="Unlock worker area" />
+    <Button id="" layoutX="223.0" layoutY="470.0" mnemonicParsing="false" onAction="#clearButton" prefHeight="50.0" prefWidth="220.0" style=".greenButton:pressed{&#10;}" styleClass="greenButton" text="Clear Changes" textFill="WHITE" />
+  </children>
+  <stylesheets>
+    <URL value="@css/agentRolePopUp.css" />
+  </stylesheets>
+</AnchorPane>

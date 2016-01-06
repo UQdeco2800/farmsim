@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="146.0" prefWidth="140.0" style="-fx-background-color: #F2E8FF;" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="farmsim.ui.LevelerWindowController">
+   <children>
+      <Pane layoutX="8.0" layoutY="29.0" prefHeight="36.0" prefWidth="36.0" style="-fx-background-color: #90C3D4;">
+         <children>
+            <ImageView fx:id="tileImage" fitHeight="32.0" fitWidth="32.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../transparent.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Circle fill="#90c3d4" layoutX="117.0" layoutY="47.0" radius="16.5" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#90c3d4" height="11.0" layoutX="51.0" layoutY="53.0" stroke="TRANSPARENT" strokeMiterLimit="0.0" strokeType="INSIDE" width="68.0" />
+      <Label layoutX="52.0" layoutY="27.0" text="Level">
+         <font>
+            <Font name="Neou-Bold" size="15.0" />
+         </font>
+      </Label>
+      <!--<Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="23.0" layoutX="192.0" layoutY="-52.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />-->
+      <Rectangle fill="DODGERBLUE" height="20.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="140.0" />
+      <Label fx:id="nameLabel" layoutX="42.0" text="Crop Name" textAlignment="CENTER" />
+      <Label fx:id="levelLabel" layoutX="109.0" layoutY="29.0" text="1" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="1.0" layoutY="72.0" stroke="BLACK" strokeType="INSIDE" width="140.0" />
+      <Rectangle fill="#ffc01f" height="13.0" layoutY="73.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="140.0" />
+      <Label layoutX="57.0" layoutY="71.0" text="Stats">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffce1f" height="26.0" layoutX="8.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" width="38.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffce1f" height="26.0" layoutX="8.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" width="38.0" />
+      <Label fx:id="xpLabel" layoutX="15.0" layoutY="112.0" prefHeight="17.0" prefWidth="28.0" text="95%" textAlignment="CENTER" />
+      <Text layoutX="21.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="XP">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffce1f" height="26.0" layoutX="94.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" width="38.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffce1f" height="26.0" layoutX="94.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" width="38.0" />
+      <Label fx:id="growthLabel" layoutX="101.0" layoutY="112.0" prefHeight="17.0" prefWidth="28.0" text="95%" textAlignment="CENTER" />
+      <Text layoutX="96.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Growth">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffce1f" height="26.0" layoutX="51.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" width="38.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffce1f" height="26.0" layoutX="51.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" width="38.0" />
+      <Label fx:id="outputLabel" layoutX="58.0" layoutY="112.0" prefHeight="17.0" prefWidth="28.0" text="95%" textAlignment="CENTER" />
+      <Text layoutX="54.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Output">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Text>
+   </children>
+</Pane>

@@ -1,0 +1,76 @@
+configurations.all {
+    // check for updates every build
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
+
+dependencies {
+    compile (
+        [group: 'deco2800-2015-marketplace', name: 'common', version: '0.7', changing: true],
+        [group: 'org.slf4j', name:'slf4j-api', version: '1.7.12'],
+        [group: 'org.slf4j', name:'slf4j-log4j12', version: '1.7.12'],
+        [group: 'org.apache.derby', name: 'derby', version: '10.11.1.1'],
+        [group: 'org.testfx', name: 'openjfx-monocle', version: '1.8.0_20'],
+        [group: 'de.jensd', name: 'fontawesomefx', version: '8.6']
+    )
+    compile group:'org.glassfish.jersey.core', name:'jersey-client', version: '2.19'
+    compile group:'org.glassfish.jersey.media', name:'jersey-media-json-jackson', version: '2.19'
+    compile fileTree(dir: 'src/main/libs', include: "**/*.jar")
+
+    testCompile (
+        [group: 'org.mockito', name: 'mockito-all', version: '1.10.19'],
+        [group: 'org.dbunit', name: 'dbunit', version: '2.5.1'],
+        [group: 'junit', name: 'junit', version: '4.11'],
+        [group: 'org.powermock', name: 'powermock-api-mockito', version: '1.6.2'],
+        [group: 'org.powermock', name: 'powermock-module-junit4', version: '1.6.2'],
+        [group: 'org.testfx', name: 'openjfx-monocle', version: '1.8.0_20'],
+        [group: 'org.testfx', name: 'testfx-core', version: '4.0.+'],
+        [group: 'org.testfx', name: 'testfx-junit', version: '4.0.+']
+    )
+    testCompile fileTree(dir: 'src/main/libs', include: "**/*.jar")
+
+    //Requires exclusion, let's not add this to the block build
+    testCompile "org.testfx:testfx-legacy:4.0.+", {
+        exclude group: "junit", module: "junit"
+    }
+
+    uiTestCompile sourceSets.test.output
+    uiTestCompile sourceSets.main.output
+    uiTestCompile configurations.testCompile
+    uiTestRuntime configurations.testRuntime
+}
+
+apply plugin: 'org.flywaydb.flyway'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'org.flywaydb', name: 'flyway-gradle-plugin', version: '3.2.1'
+    }
+}
+
+task(run2, dependsOn: "classes", type: JavaExec) {
+   main = "farmsim.FarmSimLauncher"
+   classpath = sourceSets.main.runtimeClasspath
+}
+
+flyway {
+    url = 'jdbc:derby:' + project.projectDir + '/decoFarmDB;user=decofarm;password=decofarm;create=true'
+}
+
+apply plugin: "sonar-runner";
+if (rootProject.hasProperty('sonarHostURL')) {
+    sonarRunner {
+        sonarProperties {
+            property "sonar.projectName", project.group
+            property "sonar.host.url", sonarHostURL
+            property "sonar.jdbc.url", sonarDatabaseURL
+            property "sonar.jdbc.driverClassName", sonarDriverClassName
+            property "sonar.jdbc.username", sonarUsername
+            property "sonar.jdbc.password", sonarPassword
+            property "sonar.jacoco.reportPath", "$buildDir/jacoco/test.exec"
+            property "sonar.jacoco.itReportPath", "$buildDir/jacoco/uiTest.exec"
+        }
+    }
+}

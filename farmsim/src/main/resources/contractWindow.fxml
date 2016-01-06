@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="farmsim.ui.ContractController">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <TabPane prefHeight="615.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="New Contracts">
+            <content>
+              <AnchorPane styleClass="tabanchor">
+                     <children>
+                        <Pane fx:id="contract1" layoutX="40.0" layoutY="27.0" prefHeight="525.0" prefWidth="275.0" style="-fx-background-color: #ffffff;" styleClass="contract" stylesheets="@css/contractStyle.css">
+                           <children>
+                              <Button fx:id="decline1" layoutX="22.0" layoutY="461.0" mnemonicParsing="false" onAction="#decContract1" prefHeight="50.0" prefWidth="100.0" styleClass="declineButton" text="Decline" />
+                              <Button fx:id="accept1" layoutX="161.0" layoutY="461.0" mnemonicParsing="false" onAction="#contract1" prefHeight="50.0" prefWidth="100.0" styleClass="acceptButton" text="Accept" />
+                              <Label fx:id="contractGiver1" layoutX="21.0" layoutY="8.0" prefHeight="55.0" prefWidth="206.0" text="contractGiver">
+                                 <font>
+                                    <Font size="34.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="22.0" layoutY="80.0" text="Crop Type:">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="cropType1" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="80.0" prefHeight="21.0" prefWidth="95.0" text="cropType" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="22.0" layoutY="140.0" text="No. Shipments:">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="repeatCount1" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="140.0" prefHeight="21.0" prefWidth="95.0" text="repeatCount" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="21.0" layoutY="170.0" text="Shipment Interval:">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="interval1" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="170.0" prefHeight="21.0" prefWidth="95.0" text="interval">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="21.0" layoutY="200.0" text="Reward:">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="reward1" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="200.0" prefWidth="95.0" text="reward" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="21.0" layoutY="230.0" text="Failure Penalty:">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="fine1" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="230.0" prefWidth="95.0" text="fine" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="description1" layoutX="21.0" layoutY="260.0" prefHeight="156.0" prefWidth="235.0" text="Description" wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="22.0" layoutY="429.0" text="This contract expires on ">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="expiryDate1" layoutX="183.0" layoutY="429.0" text="expiryDate" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="22.0" layoutY="110.0" text="Crop Amount:">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="amount1" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="110.0" prefHeight="21.0" prefWidth="95.0" text="amount" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Pane>
+                        <Pane fx:id="contract2" layoutX="363.0" layoutY="27.0" prefHeight="525.0" prefWidth="275.0" style="-fx-background-color: #ffffff;" styleClass="contract" stylesheets="@css/contractStyle.css">
+                           <children>
+                              <Button fx:id="decline2" layoutX="22.0" layoutY="461.0" mnemonicParsing="false" onAction="#decContract2" prefHeight="50.0" prefWidth="100.0" styleClass="declineButton" text="Decline" />
+                              <Button fx:id="accept2" layoutX="161.0" layoutY="461.0" mnemonicParsing="false" onAction="#contract2" prefHeight="50.0" prefWidth="100.0" styleClass="acceptButton" text="Accept" />
+                              <Label fx:id="contractGiver2" layoutX="21.0" layoutY="8.0" prefHeight="55.0" prefWidth="206.0" text="contractGiver">
+                                 <font>
+                                    <Font size="34.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="22.0" layoutY="80.0" text="Crop Type:">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="cropType2" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="80.0" prefWidth="95.0" text="cropType">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="22.0" layoutY="140.0" text="No. Shipments:">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="repeatCount2" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="140.0" prefWidth="95.0" text="repeatCount" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="21.0" layoutY="170.0" text="Shipment Interval:">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="interval2" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="170.0" prefWidth="95.0" text="interval">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="21.0" layoutY="200.0" text="Reward:">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="reward2" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="200.0" prefWidth="95.0" text="reward" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="21.0" layoutY="230.0" text="Failure Penalty:">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="fine2" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="230.0" prefWidth="95.0" text="fine" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="description2" layoutX="21.0" layoutY="260.0" prefHeight="156.0" prefWidth="235.0" text="Description" wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="22.0" layoutY="429.0" text="This contract expires on ">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="expiryDate2" layoutX="183.0" layoutY="429.0" text="expiryDate" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="22.0" layoutY="110.0" text="Crop Amount:">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="amount2" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="110.0" prefHeight="21.0" prefWidth="95.0" text="amount" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Pane>
+                        <Pane fx:id="contract3" layoutX="685.0" layoutY="27.0" prefHeight="525.0" prefWidth="275.0" style="-fx-background-color: #ffffff;" styleClass="contract" stylesheets="@css/contractStyle.css">
+                           <children>
+                              <Button fx:id="decline3" layoutX="22.0" layoutY="461.0" mnemonicParsing="false" onAction="#decContract3" prefHeight="50.0" prefWidth="100.0" styleClass="declineButton" text="Decline" />
+                              <Button fx:id="accept3" layoutX="161.0" layoutY="461.0" mnemonicParsing="false" onAction="#contract3" prefHeight="50.0" prefWidth="100.0" styleClass="acceptButton" text="Accept" />
+                              <Label fx:id="contractGiver3" layoutX="21.0" layoutY="8.0" prefHeight="55.0" prefWidth="206.0" text="contractGiver">
+                                 <font>
+                                    <Font size="34.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="22.0" layoutY="80.0" text="Crop Type:">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="cropType3" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="80.0" prefWidth="95.0" text="cropType">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="22.0" layoutY="140.0" text="No. Shipments:">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="repeatCount3" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="140.0" prefWidth="95.0" text="repeatCount" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="21.0" layoutY="170.0" text="Shipment Interval:">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="interval3" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="170.0" prefWidth="95.0" text="interval">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="21.0" layoutY="200.0" text="Reward:">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="reward3" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="200.0" prefWidth="95.0" text="reward" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="21.0" layoutY="230.0" text="Failure Penalty:">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="fine3" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="230.0" prefWidth="95.0" text="fine" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="description3" layoutX="21.0" layoutY="260.0" prefHeight="156.0" prefWidth="235.0" text="Description" wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="22.0" layoutY="429.0" text="This contract expires on ">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="expiryDate3" layoutX="183.0" layoutY="429.0" text="expiryDate" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="22.0" layoutY="110.0" text="Crop Amount:">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="amount3" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="110.0" prefHeight="21.0" prefWidth="95.0" text="amount" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Pane>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab onSelectionChanged="#initializeActive" text="Current Contracts">
+            <content>
+              <AnchorPane styleClass="tabactive">
+                     <children>
+                        <Pane fx:id="currContractInfo" layoutX="269.0" layoutY="63.0" prefHeight="461.0" prefWidth="695.0">
+                           <children>
+                              <Pane fx:id="currContract" layoutX="25.0" layoutY="15.0" prefHeight="432.0" prefWidth="275.0" style="-fx-background-color: #ffffff;">
+                                 <children>
+                                    <Label fx:id="currContractGiver" layoutX="21.0" layoutY="8.0" prefHeight="55.0" prefWidth="206.0" text="contractGiver">
+                                       <font>
+                                          <Font size="34.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="22.0" layoutY="80.0" text="Crop Type:">
+                                       <font>
+                                          <Font name="System Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="currCropType" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="80.0" prefHeight="21.0" prefWidth="95.0" text="cropType" textAlignment="RIGHT">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="22.0" layoutY="140.0" text="No. Shipments:">
+                                       <font>
+                                          <Font name="System Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="currRepeatCount" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="140.0" prefHeight="21.0" prefWidth="95.0" text="repeatCount" textAlignment="RIGHT">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="21.0" layoutY="170.0" text="Shipment Interval:">
+                                       <font>
+                                          <Font name="System Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="currInterval" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="170.0" prefHeight="21.0" prefWidth="95.0" text="interval">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="21.0" layoutY="200.0" text="Reward:">
+                                       <font>
+                                          <Font name="System Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="currReward" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="200.0" prefWidth="95.0" text="reward" textAlignment="RIGHT">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="21.0" layoutY="230.0" text="Failure Penalty:">
+                                       <font>
+                                          <Font name="System Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="currFine" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="230.0" prefWidth="95.0" text="fine" textAlignment="RIGHT">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="currDescription" layoutX="21.0" layoutY="260.0" prefHeight="156.0" prefWidth="222.0" text="Description" wrapText="true">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="22.0" layoutY="110.0" text="Crop Amount:">
+                                       <font>
+                                          <Font name="System Italic" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="currAmount" alignment="CENTER_RIGHT" layoutX="155.0" layoutY="110.0" prefHeight="21.0" prefWidth="95.0" text="amount" textAlignment="RIGHT">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Pane>
+                              <Label alignment="CENTER_RIGHT" layoutX="380.0" layoutY="50.0" prefHeight="21.0" prefWidth="150.0" text="Current Crop Status:">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="currCropCount" alignment="CENTER_RIGHT" layoutX="348.0" layoutY="80.0" prefHeight="21.0" prefWidth="125.0" text="currentCropCount" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="380.0" layoutY="120.0" prefHeight="21.0" prefWidth="150.0" text="Next Shipment In:">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="shipmentCropCount" layoutX="495.0" layoutY="80.0" prefHeight="21.0" prefWidth="138.0" text="shipmentCropCount" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="479.0" layoutY="80.0" prefHeight="21.0" prefWidth="9.0" text="/" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="timeFromCurrentDate" alignment="CENTER_RIGHT" layoutX="348.0" layoutY="150.0" prefHeight="21.0" prefWidth="125.0" text="timeFromCurrentDate" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="noShipmentsLeft" alignment="CENTER_RIGHT" layoutX="348.0" layoutY="220.0" prefHeight="21.0" prefWidth="125.0" text="noShipmentsLeft" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="380.0" layoutY="190.0" prefHeight="21.0" prefWidth="150.0" text="No. Shipments Left:">
+                                 <font>
+                                    <Font name="System Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="currCropCount1" layoutX="479.0" layoutY="150.0" prefHeight="21.0" prefWidth="125.0" text="Days" textAlignment="RIGHT">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Button fx:id="currContract1" layoutX="62.0" layoutY="76.0" mnemonicParsing="false" onAction="#setCurrContract1" prefHeight="113.0" prefWidth="129.0" styleClass="currButton" text="Contract 1" />
+                        <Button fx:id="currContract2" layoutX="62.0" layoutY="235.0" mnemonicParsing="false" onAction="#setCurrContract2" prefHeight="113.0" prefWidth="129.0" styleClass="currButton" text="Contract 2" />
+                        <Button fx:id="currContract3" layoutX="62.0" layoutY="397.0" mnemonicParsing="false" onAction="#setCurrContract3" prefHeight="113.0" prefWidth="129.0" styleClass="currButton" text="Contract 3" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</GridPane>

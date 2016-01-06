@@ -1,0 +1,752 @@
+#mainPane {
+    -fx-pref-width: 1280px;
+    -fx-pref-height: 720px;
+    -fx-fill-height: true;
+    -fx-fill-width: true;
+}
+
+#menuBar {
+    -fx-alignment: center;
+    -fx-background-color: #1f1f1f;
+    -fx-background-image: url("../menubar.png");
+    -fx-pref-height: 107px;
+    -fx-pref-width: 100%;
+    -fx-max-height: 107px;
+    -fx-min-height: 107px;
+}
+
+.menuTab {
+    -fx-alignment: center;
+    -fx-background-color: #1f1f1f;
+    -fx-background-image: url("../menubar.png");
+    -fx-pref-height: 107px;
+    -fx-pref-width: 100%;
+    -fx-max-height: 107px;
+    -fx-min-height: 107px;
+    -fx-spacing: 10px;
+
+}
+
+#menuBar2 {
+    -fx-background-color: #1f1f1f;
+    -fx-background-image: url("../menubar.png");
+    -fx-pref-height: 107px;
+    -fx-padding: 13px 0 0 76px;
+    -fx-pref-width: 100%;
+    -fx-max-height: 107px;
+    -fx-min-height: 107px;
+}
+
+.split-pane > .split-pane-divider {
+    -fx-padding: 0 0 0 0;
+}
+
+#menuGrass {
+    -fx-background-image: url("../ui/homeScreen/menugrass.png");
+    -fx-background-repeat: repeat;
+}
+
+#menuPane {
+    -fx-background-image: url("../ui/homeScreen/menuButtonContainer.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+#menuToggle {
+    -fx-alignment: top-center;
+    -fx-pref-height: 20px;
+    -fx-max-height: 20px;
+    -fx-min-height: 20px;
+    -fx-pref-width: 200px;
+    -fx-font-size: 10pt;
+}
+
+#gamePane {
+    -fx-pref-height: 100%;
+    -fx-pref-width: 100%;
+    -fx-min-width: 100%;
+    -fx-background-color: blue;
+    -fx-opacity: 1;
+}
+
+#topBar {
+    -fx-pref-height: 20px;
+    -fx-min-height: 20px;
+    -fx-max-height: 20px;
+    -fx-pref-width: 100%;
+    -fx-background-color: white;
+}
+
+#splitPane {
+    -fx-orientation: vertical;
+    -fx-pref-height: 100%;
+    -fx-pref-width: 100%;
+    -fx-background-color: black;
+}
+
+#easyTool {
+    -fx-background-color: #408AD2;
+    -fx-pref-height: 69px;
+    -fx-pref-width: 107px;
+}
+
+#dayIndicator {
+    -fx-background-image: url("../DecoSunSmall.png");
+    -fx-pref-height: 16px;
+    -fx-min-height: 16px;
+    -fx-max-height: 16px;
+}
+
+#nightIndicator {
+    -fx-background-image: url("../DecoMoonSmall.png");
+    -fx-pref-height: 16px;
+    -fx-min-height: 16px;
+    -fx-max-height: 16px;
+}
+
+#dayNum {
+    -fx-pref-height: 16px;
+    -fx-min-height: 16px;
+    -fx-max-height: 16px;
+}
+
+#coin{
+	-fx-background-image: url("../DecoCoinSmall.png");
+	-fx-pref-height: 16px;
+    -fx-min-height: 16px;
+    -fx-max-height: 16px;
+}
+
+#wallet{
+	-fx-pref-height: 16px;
+    -fx-min-height: 16px;
+    -fx-max-height: 16px;
+}
+
+#tps {
+    -fx-pref-height: 16px;
+    -fx-min-height: 16px;
+    -fx-max-height: 16px;
+}
+
+#minimapToggle {
+    -fx-background-image: url("../Map1.png");
+    -fx-padding: 3 11 3 11;
+    -fx-pref-width: 128px;
+    -fx-pref-height: 64px;
+    -fx-background-size: stretch;
+}
+
+.menuButtonApple {
+    -fx-background-image: url("../plantbuttons/apple.png");
+    /*-fx-text-fill: #2d2d2d;*/
+    -fx-padding: 3 11 3 11;
+    -fx-text-alignment: center;
+    -fx-text-fill: #f2f2f2;
+    -fx-wrap-text: true;
+}
+.menuButtonCorn {
+    -fx-background-image: url("../plantbuttons/corn.png");
+    /*-fx-text-fill: #2d2d2d;*/
+    -fx-padding: 3 11 3 11;
+    -fx-text-alignment: center;
+    -fx-text-fill: #f2f2f2;
+    -fx-wrap-text: true;
+}
+.menuButtonPear {
+    -fx-background-image: url("../plantbuttons/pear.png");
+    /*-fx-text-fill: #2d2d2d;*/
+    -fx-padding: 3 11 3 11;
+    -fx-text-alignment: center;
+    -fx-text-fill: #f2f2f2;
+    -fx-wrap-text: true;
+}
+.menuButtonLettuce {
+    -fx-background-image: url("../plantbuttons/lettuce.png");
+    /*-fx-text-fill: #2d2d2d;*/
+    -fx-padding: 3 11 3 11;
+    -fx-text-alignment: center;
+    -fx-text-fill: #f2f2f2;
+    -fx-wrap-text: true;
+}
+.menuButtonStrawberry {
+    -fx-background-image: url("../plantbuttons/strawberry.png");
+    /*-fx-text-fill: #2d2d2d;*/
+    -fx-padding: 3 11 3 11;
+    -fx-text-alignment: center;
+    -fx-text-fill: #f2f2f2;
+    -fx-wrap-text: true;
+}
+.menuButtonCotton {
+    -fx-background-image: url("../plantbuttons/cotton.png");
+    /*-fx-text-fill: #2d2d2d;*/
+    -fx-padding: 3 11 3 11;
+    -fx-text-alignment: center;
+    -fx-text-fill: #f2f2f2;
+    -fx-wrap-text: true;
+}
+.menuButtonSugarcane {
+    -fx-background-image: url("../plantbuttons/sugarcane.png");
+    /*-fx-text-fill: #2d2d2d;*/
+    -fx-padding: 3 11 3 11;
+    -fx-text-alignment: center;
+    -fx-text-fill: #f2f2f2;
+    -fx-wrap-text: true;
+}
+.menuButtonMango {
+    -fx-background-image: url("../plantbuttons/mango.png");
+    /*-fx-text-fill: #2d2d2d;*/
+    -fx-padding: 3 11 3 11;
+    -fx-text-alignment: center;
+    -fx-text-fill: #f2f2f2;
+    -fx-wrap-text: true;
+}
+.menuButtonBanana {
+    -fx-background-image: url("../plantbuttons/banana.png");
+    /*-fx-text-fill: #2d2d2d;*/
+    -fx-padding: 3 11 3 11;
+    -fx-text-alignment: center;
+    -fx-text-fill: #f2f2f2;
+    -fx-wrap-text: true;
+}
+.menuButtonLemon {
+    -fx-background-image: url("../plantbuttons/lemon.png");
+    /*-fx-text-fill: #2d2d2d;*/
+    -fx-padding: 3 11 3 11;
+    -fx-text-alignment: center;
+    -fx-text-fill: #f2f2f2;
+    -fx-wrap-text: true;
+}
+
+.menuButtonMilker {
+		-fx-background-image: url("../inventory/rucksack/milker_icon.png");
+    -fx-padding: 3 11 3 11;
+    -fx-text-alignment: center;
+    -fx-text-fill: #f2f2f2;
+    -fx-wrap-text: true;
+}
+
+.menuButtonBuilder {
+		-fx-background-image: url("../inventory/rucksack/builder_icon.png");
+    -fx-padding: 3 11 3 11;
+    -fx-text-alignment: center;
+    -fx-text-fill: #f2f2f2;
+    -fx-wrap-text: true;
+}
+
+.menuButtonFarmer {
+		-fx-background-image: url("../inventory/rucksack/farmer_icon.png");
+    -fx-padding: 3 11 3 11;
+    -fx-text-alignment: center;
+    -fx-text-fill: #f2f2f2;
+    -fx-wrap-text: true;
+}
+
+.menuButtonHunter {
+		-fx-background-image: url("../inventory/rucksack/hunter_icon.png");
+    -fx-padding: 3 11 3 11;
+    -fx-text-alignment: center;
+    -fx-text-fill: #f2f2f2;
+    -fx-wrap-text: true;
+}
+
+.menuButtonButcher {
+		-fx-background-image: url("../inventory/rucksack/butcher_icon.png");
+    -fx-padding: 3 11 3 11;
+    -fx-text-alignment: center;
+    -fx-text-fill: #f2f2f2;
+    -fx-wrap-text: true;
+}
+
+.menuButtonShearer {
+		-fx-background-image: url("../inventory/rucksack/shearer_icon.png");
+    -fx-padding: 3 11 3 11;
+    -fx-text-alignment: center;
+    -fx-text-fill: #f2f2f2;
+    -fx-wrap-text: true;
+}
+
+.menuButtonEggHandler {
+		-fx-background-image: url("../inventory/rucksack/egghandler_icon.png");
+    -fx-padding: 3 11 3 11;
+    -fx-text-alignment: center;
+    -fx-text-fill: #f2f2f2;
+    -fx-wrap-text: true;
+}
+
+.menuButton {
+    -fx-background-image: url("../button.png");
+    /*-fx-text-fill: #2d2d2d;*/
+    -fx-padding: 3 11 3 11;
+    -fx-text-alignment: center;
+    -fx-text-fill: #f2f2f2;
+    -fx-wrap-text: true;
+}
+
+.menuButtonLittle {
+    -fx-font-size: 12px;
+    -fx-pref-width: 80px;
+    -fx-pref-height: 80px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: stretch;
+}
+
+.menuButtonSound {
+    -fx-font-size: 12px;
+    -fx-pref-width: 80px;
+    -fx-pref-height: 80px;
+    -fx-padding: 3 11 100 11;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: stretch;
+}
+
+.menuButtonLarge {
+    -fx-pref-height: 38px;
+    -fx-pref-width: 358px;
+    -fx-font: 20px "SimHei";
+}
+
+.menuButton:hover {
+    -fx-background-image: url("../buttonSel.png");
+    -fx-text-fill: #ffffff;
+    -fx-padding: 3 11 3 11;
+}
+
+.menuButton:pressed {
+    -fx-background-image: url("../buttonAct.png");
+    -fx-text-fill: #2d2d2d;
+    -fx-padding: 3 11 3 11;
+}
+
+.split-pane:vertical > .split-pane-divider {
+    -fx-background-color: transparent;
+}
+
+.TextArea {
+    -fx-background-color: #1f1f1f;
+}
+
+.split-pane > .split-pane-divider {
+    -fx-padding: 0 0 0 0;
+}
+
+.button {
+    -fx-background-color: #1f1f1f;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 3 11 3 11;
+    -fx-cursor: hand;
+}
+
+.plantChoice {
+    -fx-pref-width: 140px;
+    -fx-pref-height: 25px;
+}
+
+
+.process-button {
+    -fx-pref-width: 90px;
+    -fx-pref-height: 40px;
+}
+
+.carrot{
+    -fx-fill: orange;
+    -fx-cursor: hand;
+}
+.carrot:hover{
+    -fx-fill: purple;
+}
+
+#slider {
+
+    fx-margin: -100px;
+}
+
+#forecast {
+    -fx-background-color: #1f1f1f;
+    -fx-background-image: url("../menubar.png");
+    -fx-pref-height: 107px;
+    -fx-pref-width: 100%;
+    -fx-max-height: 107px;
+    -fx-min-height: 107px;
+}
+
+.forecastIcon {
+	-fx-min-height: 64px;
+	-fx-max-height: 64px;
+	-fx-pref-height: 64px;
+	-fx-min-width: 64px;
+	-fx-max-width: 64px;
+	-fx-max-height: 64px;
+	-fx-background-color: grey;
+}
+
+.forecastFine {
+	-fx-background-image: 
+			url("../weather/icons/sunnycloudy64.png");
+}
+.forecastRaining {
+	-fx-background-image: 
+			url("../weather/icons/cloud_rain64.png");
+}
+.forecastSnowing {
+	-fx-background-image: 
+			url("../weather/icons/snow64.png");
+}
+.forecastStorm {
+	-fx-background-image: 
+			url("../weather/icons/lightning_rain64.png");
+}
+.forecastWindy {
+	-fx-background-image: 
+			url("../weather/icons/wind64.png");
+}
+.forecastSunny {
+	-fx-background-image: 
+			url("../weather/icons/sun64.png");
+}
+.forecastHeatwave {
+	-fx-background-image: 
+			url("../weather/icons/heatwave64.png");
+}
+.forecastDrought {
+	-fx-background-image: 
+			url("../weather/icons/drought64.png");
+}
+.forecastThunderstorm {
+	-fx-background-image: 
+			url("../weather/icons/lightning64.png");
+}
+.forecastCloudy {
+	-fx-background-image: 
+			url("../weather/icons/cloud64.png");
+}
+.forecastSandstorm {
+	-fx-background-image: 
+			url("../weather/icons/sandstorm64.png");
+}
+.forecastFlood {
+	-fx-background-image: 
+			url("../weather/icons/flooding64.png");
+}
+.forecastHailing {
+	-fx-background-image: 
+			url("../weather/icons/hail64.png");
+}
+
+.weatherRaining {
+	-fx-background-image: 
+			url("../weather/icons/cloud_rain16.png");
+}
+.weatherSnowing {
+	-fx-background-image: 
+			url("../weather/icons/snow16.png");
+}
+.weatherStorm {
+	-fx-background-image: 
+			url("../weather/icons/lightning_rain16.png");
+}
+.weatherWindy {
+	-fx-background-image: 
+			url("../weather/icons/wind16.png");
+}
+.weatherSunny {
+	-fx-background-image: 
+			url("../weather/icons/sun16.png");
+}
+.weatherHeatwave {
+	-fx-background-image: 
+			url("../weather/icons/heatwave16.png");
+}
+.weatherDrought {
+	-fx-background-image: 
+			url("../weather/icons/drought16.png");
+}
+.weatherThunderstorm {
+	-fx-background-image: 
+			url("../weather/icons/lightning16.png");
+}
+.weatherCloudy {
+	-fx-background-image: 
+			url("../weather/icons/cloud16.png");
+}
+.weatherSandstorm {
+	-fx-background-image: 
+			url("../weather/icons/sandstorm16.png");
+}
+.weatherFlood {
+	-fx-background-image: 
+			url("../weather/icons/flooding16.png");
+}
+.weatherHailing {
+	-fx-background-image: 
+			url("../weather/icons/hail16.png");
+}
+
+.smallIcon {
+	-fx-pref-height: 16px;
+	-fx-pref-width: 16px;
+	-fx-min-height: 16px;
+	-fx-min-width: 16px;
+	-fx-max-height: 16px;
+	-fx-min-width: 16px;
+}
+.seasonSummer {
+	-fx-background-image: url("../weather/icons/summer16.png");
+}
+.seasonAutumn {
+	-fx-background-image: url("../weather/icons/autumn16.png");
+}
+.seasonWinter {
+	-fx-background-image: url("../weather/icons/winter16.png");
+}
+.seasonSpring {
+	-fx-background-image: url("../weather/icons/spring16.png");
+}
+
+.forecastSummer {
+	-fx-background-image: url("../weather/icons/summer64.png");
+}
+.forecastAutumn {
+	-fx-background-image: url("../weather/icons/autumn64.png");
+}
+.forecastWinter {
+	-fx-background-image: url("../weather/icons/winter64.png");
+}
+.forecastSpring {
+	-fx-background-image: url("../weather/icons/spring64.png");
+}
+
+#worker1{
+    -fx-background-image: url("../helpImages/m.farmer.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#worker2{
+    -fx-background-image: url("../helpImages/f.farmer.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+
+#worker3{
+    -fx-background-image: url("../helpImages/m.builder.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+
+#worker4{
+    -fx-background-image: url("../helpImages/f.builder.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+
+#worker5{
+    -fx-background-image: url("../helpImages/m.hunter.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+
+#worker6{
+    -fx-background-image: url("../helpImages/f.hunter.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+
+#worker7{
+    -fx-background-image: url("../helpImages/m.animal.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+
+#worker8{
+    -fx-background-image: url("../helpImages/fanimal.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#animal1{
+    -fx-background-image: url("../helpImages/cow.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#animal2{
+    -fx-background-image: url("../helpImages/chicken.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#animal3{
+    -fx-background-image: url("../helpImages/duck.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#animal4{
+    -fx-background-image: url("../helpImages/pig.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#animal5{
+    -fx-background-image: url("../helpImages/sheep.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#predator1{
+    -fx-background-image: url("../helpImages/alligator.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#predator2{
+    -fx-background-image: url("../helpImages/bear.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#predator3{
+    -fx-background-image: url("../helpImages/rabbit.jpg");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#predator4{
+    -fx-background-image: url("../helpImages/mole.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#predator5{
+    -fx-background-image: url("../helpImages/wolf.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#crops1{
+    -fx-background-image: url("../helpImages/apple.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#crops2{
+    -fx-background-image: url("../helpImages/banana.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#crops3{
+    -fx-background-image: url("../helpImages/corn.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#crops4{
+    -fx-background-image: url("../helpImages/lemon.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#crops5{
+    -fx-background-image: url("../helpImages/lettuce.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#crops6{
+    -fx-background-image: url("../helpImages/mango.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#crops7{
+    -fx-background-image: url("../helpImages/pear.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#crops8{
+    -fx-background-image: url("../helpImages/strawberry.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#crops9{
+    -fx-background-image: url("../helpImages/sugarcane.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#weather1{
+    -fx-background-image: url("../helpImages/cloud.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#weather2{
+    -fx-background-image: url("../helpImages/hail.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#weather3{
+    -fx-background-image: url("../helpImages/heatwave.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#weather4{
+    -fx-background-image: url("../helpImages/lightning.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#weather5{
+    -fx-background-image: url("../helpImages/rain.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#weather6{
+    -fx-background-image: url("../helpImages/sandstorm.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#weather7{
+    -fx-background-image: url("../helpImages/snow.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#weather8{
+    -fx-background-image: url("../helpImages/sun.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#weather9{
+    -fx-background-image: url("../helpImages/wind.png");
+    -fx-background-size: 60,60;
+    -fx-background-repeat: no-repeat;
+}
+#textFieldSpace{
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+#tool1{
+    -fx-background-image: url("../helpImages/axe.png");
+    -fx-background-size: cover, auto;
+}
+#tool2{
+    -fx-background-image: url("../helpImages/bucket.png");
+    -fx-background-size: cover, auto;
+}
+#tool3{
+    -fx-background-image: url("../helpImages/hammer.png");
+    -fx-background-size: cover, auto;
+}
+#tool4{
+    -fx-background-image: url("../helpImages/hoe.png");
+    -fx-background-size: cover, auto;
+}
+#tool5{
+    -fx-background-image: url("../helpImages/pickaxe.png");
+    -fx-background-size: cover, auto;
+}
+#tool6{
+    -fx-background-image: url("../helpImages/plough.png");
+    -fx-background-size: cover, auto;
+}
+#tool7{
+    -fx-background-image: url("../helpImages/shears.png");
+    -fx-background-size: cover, auto;
+}
+#tool8{
+    -fx-background-image: url("../helpImages/shovel.png");
+    -fx-background-size: cover, auto;
+}

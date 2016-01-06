@@ -1,0 +1,138 @@
+.task-viewer{
+    -fx-background-color: #895427;
+}
+
+.task-viewer-inner{
+	-fx-padding: 6;
+}
+.button-section {
+	-fx-background-color: #42403F;
+}
+
+.scroll {
+	-fx-focus-color: transparent;
+	-fx-faint-focus-color: transparent;
+}
+
+.delete-button {
+	-fx-image: url("../icons/delete.png");
+	-fx-cursor: hand;
+}
+
+.move-to-top-button {
+	-fx-image: url("../icons/move_to_top.png");
+	-fx-cursor: hand;
+}
+
+.move-to-bottom-button {
+	-fx-image: url("../icons/move_to_bottom.png");
+	-fx-cursor: hand;
+}
+
+.record-button {
+	-fx-image: url("../icons/save.png");
+	-fx-cursor: hand;
+}
+
+.stop-button {
+	-fx-image: url("../icons/stop.png");
+	-fx-cursor: hand;
+}
+
+.task-pane{
+	-fx-border-insets: -3;
+    -fx-padding: 4;
+    -fx-background-color: #373737;
+}
+
+.task-pane.task-make-dirt{
+    -fx-background-color: #A67143;
+    -fx-text-fill: #000000;
+    -fx-font-family : 'Arial';
+    -fx-font-size : 12px;
+}
+
+.task-pane.task-plough{
+    -fx-background-color: #A67143;
+    -fx-text-fill: #000000;
+    -fx-font-family : 'Arial';
+    -fx-font-size : 12px;
+}
+
+.task-pane.task-harvest{
+    -fx-background-color: #F7B943;
+    -fx-text-fill: #000000;
+    -fx-font-family : 'Arial';
+    -fx-font-size : 12px;
+}
+
+.task-pane.task-water{
+    -fx-background-color: #6CCCE1;
+    -fx-text-fill: #000000;
+    -fx-font-family : 'Arial';
+    -fx-font-size : 12px;
+}
+
+.task-pane.task-fish{
+    -fx-background-color: #5299FF;
+    -fx-text-fill: #000000;
+    -fx-font-family : 'Arial';
+    -fx-font-size : 12px;
+}
+
+.task-pane.task-clear{
+    -fx-background-color: #999999;
+    -fx-text-fill: #000000;
+    -fx-font-family : 'Arial';
+    -fx-font-size : 12px;
+}
+
+.task-pane.task-land{
+    -fx-background-color: #995B4B;
+    -fx-text-fill: #000000;
+    -fx-font-family : 'Arial';
+    -fx-font-size : 12px;
+}
+
+.task-pane.task-scrub{
+    -fx-background-color: #995B4B;
+    -fx-text-fill: #000000;
+    -fx-font-family : 'Arial';
+    -fx-font-size : 12px;
+}
+
+.task-pane.task-build{
+    -fx-background-color: #D898C2;
+    -fx-text-fill: #000000;
+    -fx-font-family : 'Arial';
+    -fx-font-size : 12px;
+}
+
+.task-pane.task-plant{
+    -fx-background-color: #7ABC41;
+    -fx-text-fill: #000000;
+    -fx-font-family : 'Arial';
+    -fx-font-size : 12px;
+}
+
+.task-pane .task-name{
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+    -fx-font-family : 'Arial';
+    -fx-font-size : 14px;
+}
+
+.task-pane .body-text{
+    -fx-text-fill: #000000;
+    -fx-font-family : 'Arial';
+    -fx-font-size : 10px;
+}
+
+.task-pane .worker-image{
+    -fx-padding: 7;
+}
+
+.selected {
+    -fx-border-width: 3px;
+    -fx-border-color: #000000;
+}

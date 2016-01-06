@@ -1,0 +1,103 @@
+allprojects {
+  group = 'deco2800-2015-farm'
+  version = '0.3142'
+
+}
+
+repositories {
+  mavenLocal()
+  maven { url 'http://deco2800-artifactory.uqcloud.net/artifactory/libs-release/' }
+  //mavenCentral()
+}
+
+// Sonar configuration for our CI server
+// We use sonarHostURL as a switch -- if you specify this in gradle.properties
+// then Sonar is "on" and you need to set the other properties too.
+
+subprojects {
+  apply plugin: 'java';
+  apply plugin: 'eclipse';
+  apply plugin: 'idea';
+  apply plugin: 'jacoco';
+  apply plugin: 'application';
+
+
+  checkstyle {
+      toolVersion = "6.5"
+      sourceSets = []
+  }
+
+  mainClassName = "farmsim.FarmSimLauncher"
+
+  repositories {
+    mavenLocal()
+    maven { url 'http://deco2800-artifactory.uqcloud.net/artifactory/libs-release/' }
+    //mavenCentral()
+  }
+
+  tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+  }
+  javadoc {
+    options.tags = ['require', 'ensure']
+  }
+
+  sourceSets {
+      uiTest {
+          java {
+              compileClasspath += main.output
+              runtimeClasspath += main.output
+              srcDir 'src/uiTest/java'
+          }
+      }
+  }
+
+  configurations {
+      uiTestCompile.extendsFrom testCompile
+  }
+
+  task uiTest(type: Test) {
+      testClassesDir = sourceSets.uiTest.output.classesDir
+      classpath = sourceSets.uiTest.runtimeClasspath
+
+      jacoco {
+          destinationFile = file("$buildDir/jacoco/uiTest.exec")
+      }
+  }
+
+  test.dependsOn uiTest
+
+  //options to force software rendering headlessly
+  test {
+      jvmArgs = [
+              // Headless Monocle implementation
+              "-Dglass.platform=Monocle",
+              "-Dmonocle.platform=Headless",
+              "-Dprism.order=sw",
+              "-Dprism.verbose=true",
+              "-Dprism.debugFonts=true",
+              // TestFX specific options
+              "-Dtestfx.robot=glass",
+              "-Dtestfx.headless=true"
+      ]
+      jacoco {
+          destinationFile = file("$buildDir/jacoco/test.exec")
+      }
+
+  }
+
+  uiTest {
+      jvmArgs = [
+              // Headless Monocle implementation
+              "-Dglass.platform=Monocle",
+              "-Dmonocle.platform=Headless",
+              "-Dprism.order=sw",
+              "-Dprism.verbose=true",
+              "-Dprism.debugFonts=true",
+              // TestFX specific options
+              "-Dtestfx.robot=glass",
+              "-Dtestfx.headless=true"
+      ]
+  }
+
+}

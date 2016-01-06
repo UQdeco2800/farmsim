@@ -1,0 +1,20 @@
+.title-bar {
+    -fx-background-color: #42403F;
+}
+.title {
+    -fx-text-fill: #ffffff;
+    -fx-text-alignment: center;
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Arial';
+}
+.window {
+    -fx-background-color: #FFFFFF;
+}
+.exit-symbol {
+    -fx-image: url("../icons/exit.png");
+    -fx-cursor: hand;
+}
+.exit-container {
+    -fx-padding: 5;
+}

@@ -1,0 +1,110 @@
+.window{
+    -fx-background-color: white;
+    -fx-background-size: contain;
+    -fx-background-position: center center;
+}
+
+.title-text {
+    -fx-background-color: rgba(255, 255, 204, 0.5);
+    -fx-text-fill: #7a5219;
+    -fx-font-size: 30px;
+    -fx-padding: 0 275px;
+    -fx-border-color: #7a5219;
+    -fx-border-style: solid;
+    -fx-border-width: 3px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.close-icon {
+    -fx-cursor: hand;
+}
+
+/*.tab-pane {
+    -fx-background-color: rgba(255, 255, 204, 0.5);
+}
+
+.tab-pane:top .tab-header-area {
+    -fx-padding: 0 5px 0 5px;
+}
+
+.scroll-pane, .tab-pane .tab-header-background {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0, 0;
+}
+
+.tab-pane .tab {
+    -fx-padding: 10px;
+    -fx-background-color: rgba(255, 255, 204, 0.5);
+    -fx-border-color: #7a5219;
+    -fx-border-style: solid;
+    -fx-border-width: 3px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: rgba(255, 255, 204, 1);
+    -fx-border-width: 3px 3px 0 3px;
+    -fx-border-radius: 10px 10px 0 0;
+    -fx-background-radius: 10px 10px 0 0;
+}
+
+.tab-pane .tab .tab-label {
+    -fx-text-fill: #7a5219;
+    -fx-font-size: 22px;
+    -fx-background-insets: 0, 0;
+    -fx-background-radius: 0, 0;
+}*/
+
+/*.title-bar {
+    -fx-background-color: limegreen;
+    -fx-font-weight: bold;
+}
+
+.main-columns{
+	-fx-padding: 20px;
+	-fx-background-color: rgba(255, 0, 0, 0.2);
+}
+
+.header{
+    -fx-background-color: rgba(255, 255, 204, 0.2);
+        -fx-padding: 10px;
+}
+
+
+.footer{
+    -fx-padding: 10px;
+
+    -fx-background-color: rgba(255, 255, 204, 0.5);
+    -fx-border-color: #754c24;
+    -fx-border-style: solid;
+    -fx-border-width: 3pt;
+    -fx-border-radius: 20pt;
+}
+
+.middle{
+    -fx-background-color: rgba(255, 255, 204, 0.2);
+        -fx-padding: 10px;
+}
+
+/ * may merge left and right * /
+.left-column{
+    -fx-background-color: rgba(255, 255, 204, 0.5);
+    -fx-border-color: #754c24;
+    -fx-border-style: solid;
+    -fx-border-width: 3pt;
+    -fx-border-radius: 20pt;
+}
+
+.right-column{
+    -fx-background-color: rgba(255, 255, 204, 0.5);
+    -fx-border-color: #754c24;
+    -fx-border-style: solid;
+    -fx-border-width: 3pt;
+    -fx-border-radius: 20pt;
+}
+
+.empty{
+    -fx-background-color: rgba(0, 0, 0, 0);
+}*/

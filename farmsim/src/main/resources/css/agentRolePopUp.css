@@ -1,0 +1,45 @@
+.window{
+	-fx-background-color: white;
+}
+
+.whiteButton{
+	-fx-background-color: white;
+	-fx-text-fill: black;
+	-fx-effect:dropshadow(gaussian, rgba(0,0,0,0.75), 4,0,0,1);
+	
+}
+
+.whiteButton:pressed{
+	-fx-background-color: e6e6e6;
+	-fx-text-fill: black;
+}
+
+
+.greenButton{
+-fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #4A784C
+ 0%, #7EBD81 100%),
+        #7EBD81,
+        #4A784C,
+        radial-gradient(center 50% 50%, radius 100%, #99D589, #89C684);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+}
+
+.greenButton:pressed{
+-fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: 
+
+        radial-gradient(center 50% 50%, radius 100%, #8ac07b, #99d589);
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+}
+
+
+

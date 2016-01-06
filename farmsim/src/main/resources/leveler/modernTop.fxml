@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<!--Sah is awesome, Also fxml is actually so bad, suggestions pls-->
+<Pane fx:id="levelPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#invertMinification" prefHeight="51.0" prefWidth="215.0" style="-fx-background-color: rgba(0,0,0,0);" xmlns="http://javafx.com/javafx/8.0.51" xmlns:fx="http://javafx.com/fxml/1" fx:controller="farmsim.ui.LevelerWindowController">
+   <children>
+      <ImageView fitHeight="50.0" fitWidth="215.0">
+         <image>
+            <Image url="@modernTop4.png" />
+         </image>
+      </ImageView>
+      <ImageView id="thumb" fx:id="tileImage" fitHeight="32.0" fitWidth="32.0" layoutX="4.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+      <Label id="level" fx:id="levelLabel" layoutX="198.0" layoutY="4.0" prefHeight="22.0" prefWidth="12.0" text="8">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="40.0" layoutY="28.0" text="EXP">
+         <font>
+            <Font size="11.0" />
+         </font></Label>
+      <Pane fx:id="levelBar" layoutX="62.0" layoutY="31.0" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: #45bf55;">
+         <children>
+            <Pane layoutX="100.0" layoutY="-3.0" />
+         </children>
+      </Pane>
+      <Label id="plantName" fx:id="nameLabel" layoutX="40.0" layoutY="3.0" text="-" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

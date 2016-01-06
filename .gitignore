@@ -1,0 +1,50 @@
+.DS_Store
+
+*.swp
+*~
+
+bin/
+lib/
+
+
+# Gradle
+build
+.gradle
+
+# Eclipse
+.project
+.classpath
+.settings
+.metadata
+
+# IntelliJ IDEA
+*.iml
+.idea
+
+# Crash reports
+*.log
+
+# Database
+farmsim/decoFarmDB
+decoworld.vanilla/resources/Thumbs.db
+/bin
+
+#UML Diagram
+farmsim/*.ucls
+
+Thumbs.db
+
+
+# Merge conflicts
+*.orig
+
+
+# Local sonar installations
+sonar-project.properties
+.sonar/
+
+
+#Database files
+decoFarmDB
+classes/
+farmsim/src/main/resources/auth/token.txt

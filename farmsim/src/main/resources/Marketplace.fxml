@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="farmsim.ui.MarketplaceController">
+   <children>
+      <BorderPane layoutX="173.0" layoutY="91.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <center>
+            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                  <Tab text="Categories">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ListView fx:id="typeList" layoutX="98.0" layoutY="71.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                <Tab text="Buy Orders">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <BorderPane layoutX="-46.0" layoutY="-30.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <bottom>
+                                    <HBox alignment="BOTTOM_RIGHT" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#acceptBuyOrder" text="Sell">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                 </bottom>
+                                 <center>
+                                    <ListView fx:id="buyList" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                                 </center>
+                                 <top>
+                                    <HBox alignment="TOP_CENTER" spacing="20.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <ToggleButton mnemonicParsing="false" onAction="#updateBuySort" text="ID">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="buySort" />
+                                             </toggleGroup></ToggleButton>
+                                          <ToggleButton mnemonicParsing="false" onAction="#updateBuySort" text="Type" toggleGroup="$buySort" />
+                                          <ToggleButton mnemonicParsing="false" onAction="#updateBuySort" text="Price" toggleGroup="$buySort" />
+                                       </children>
+                                    </HBox>
+                                 </top>
+                              </BorderPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Sell Orders">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <bottom>
+                                    <HBox alignment="BOTTOM_RIGHT" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#acceptSellOrder" text="Buy">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                 </bottom>
+                                 <center>
+                                    <ListView fx:id="sellList" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                                 </center>
+                                 <top>
+                                    <HBox alignment="TOP_CENTER" spacing="20.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <ToggleButton mnemonicParsing="false" onAction="#updateSellSort" text="ID">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="sellSort" />
+                                             </toggleGroup>
+                                          </ToggleButton>
+                                          <ToggleButton mnemonicParsing="false" onAction="#updateSellSort" text="Type" toggleGroup="$sellSort" />
+                                          <ToggleButton mnemonicParsing="false" onAction="#updateSellSort" text="Price" toggleGroup="$sellSort" />
+                                       </children>
+                                    </HBox>
+                                 </top>
+                              </BorderPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab fx:id="placeTab" text="Place Order">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <center>
+                                    <GridPane BorderPane.alignment="CENTER">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label text="Type" />
+                                          <Label text="Price" GridPane.rowIndex="2" />
+                                          <Label text="Quantity" GridPane.rowIndex="3" />
+                                          <Label text="Order Type" GridPane.rowIndex="4" />
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                             <children>
+                                                <RadioButton fx:id="buyRadio" mnemonicParsing="false" selected="true" text="Buy">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="orderType" />
+                                                   </toggleGroup>
+                                                </RadioButton>
+                                                <RadioButton fx:id="sellRadio" mnemonicParsing="false" text="Sell" toggleGroup="$orderType" />
+                                             </children>
+                                          </HBox>
+                                          <TextField fx:id="quantityField" promptText="Enter Quantity Here" text="1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <TextField fx:id="priceField" promptText="Enter price here" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <ComboBox fx:id="typeCombo" prefWidth="200.0" GridPane.columnIndex="1" />
+                                          <Label text="Attributes" GridPane.rowIndex="1" />
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <children>
+                                                <ComboBox fx:id="keyCombo" prefWidth="150.0" />
+                                                <TextField fx:id="valueField" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </GridPane>
+                                 </center>
+                                 <bottom>
+                                    <HBox alignment="BOTTOM_RIGHT">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#addAttribute" text="Add Attribute" />
+                                          <Button mnemonicParsing="false" onAction="#placeOrder" text="Place Order" BorderPane.alignment="BOTTOM_RIGHT" />
+                                       </children>
+                                    </HBox>
+                                 </bottom>
+                              </BorderPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Receiving">
+                      <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <children>
+                                  <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <center>
+                                          <ListView fx:id="outgoingList" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                                      </center>
+                                      <top>
+                                          <HBox alignment="TOP_CENTER" spacing="20.0" BorderPane.alignment="CENTER">
+                                              <children>
+                                                  <Button onAction="#checkOutgoing" text="Receive Resources" />
+                                              </children>
+                                          </HBox>
+                                      </top>
+                                  </BorderPane>
+                              </children>
+                          </AnchorPane>
+                      </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

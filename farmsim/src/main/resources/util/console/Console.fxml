@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.TextFlow?>
+
+<BorderPane fx:id="mainConsolePane" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="farmsim.util.console.Console">
+    <center>
+        <TabPane fx:id="consolePane">
+            <tabs>
+                <Tab text="Console">
+                    <BorderPane>
+                        <center>
+                            <TextArea fx:id="consoleOutput" editable="false">
+                            </TextArea>
+                        </center>
+                        <bottom>
+                            <TextField fx:id="consoleInput" onAction="#sendInput" promptText="type help to see commands">
+                            </TextField>
+                        </bottom>
+                    </BorderPane>
+                </Tab>
+                <Tab fx:id="logger" text="Logger">
+                    <BorderPane>
+                        <center>
+                            <ScrollPane>
+                                <TextFlow fx:id="loggerOutput" />
+                            </ScrollPane>
+                        </center>
+                        <bottom>
+                            <HBox>
+                                <Button fx:id="clearLog" onAction="#clearLog" text="Clear" />
+                                <Button fx:id="closeConsole" onAction="#close" text="Close" />
+                            </HBox>
+                        </bottom>
+                    </BorderPane>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>

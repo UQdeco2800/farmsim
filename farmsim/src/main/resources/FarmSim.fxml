@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.*?> 
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane fx:id="mainPane"
+            maxHeight="-Infinity"
+            maxWidth="-Infinity"
+            minHeight="-Infinity"
+            minWidth="-Infinity"
+            prefHeight="400.0"
+            prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="farmsim.ui.FarmSimController">
+    <children>
+        <BorderPane fx:id="splitPane"
+                    AnchorPane.bottomAnchor="0.0"
+                    AnchorPane.leftAnchor="0.0"
+                    AnchorPane.rightAnchor="0.0"
+                    AnchorPane.topAnchor="0.0">
+            <top>
+                <StackPane fx:id="topPane">
+                    <children>
+                        <HBox fx:id="topBar" maxHeight="-Infinity"
+                              minHeight="-Infinity" alignment="CENTER_LEFT"
+                              spacing="8.0">
+                            <children>
+                                <Pane fx:id="Indicator"
+                                      prefHeight="16.0"
+                                      prefWidth="18.0">
+                                    <children>
+                                        <Pane fx:id="dayIndicator"
+                                              prefHeight="16.0"
+                                              prefWidth="18.0"/>
+                                        <Pane fx:id="nightIndicator"
+                                              prefHeight="16.0"
+                                              prefWidth="13.0"/>
+                                    </children>
+                                </Pane>
+                                <Label fx:id="dayNum">
+                                </Label>
+                                <Pane fx:id="coin" prefHeight="16.0"
+                                      prefWidth="16.0"/>
+                                <Label fx:id="wallet">
+                                </Label>
+                                <Label fx:id="tps" minWidth="80.0" 
+                                		prefWidth="80.0">
+                                </Label>
+      							<Pane fx:id="seasonIcon" 
+      									styleClass="smallIcon">
+       							</Pane>
+       	                		<Label fx:id="season">
+	                   			</Label>
+	                   			<Pane fx:id="weatherIcon" 
+	                   					styleClass="smallIcon">
+      							</Pane>
+      							<Label fx:id="weather">
+      							</Label>
+                            </children>
+                        </HBox>
+                    </children>
+                </StackPane>
+            </top>
+            <center>
+                <StackPane fx:id="gamePane">
+                    <!-- Game contents loaded dynamically -->
+                </StackPane>
+            </center>
+
+            <bottom>
+                <TabPane fx:id="gameMenu">
+                    <tabs>
+                        <Tab closable="false" text="Main" fx:id="tabMain">
+                            <content>
+                                <HBox styleClass="menuTab">
+                                    <children>
+                                        <Button onAction="#openMarketplace"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Marketplace"/>
+                                        <Button onAction="#makeDirt"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Make Dirt!"/>
+                                        <Button onAction="#plough"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Plough!"/>
+                                        <Button onAction="#harvest"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Harvest!"/>
+                                        <Button onAction="#moarPeons"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="MOAR PEONS!"/>
+                                        <Button onAction="#fish"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Fish!"/>
+                                        <Button fx:id="storage" onAction="#openStorage"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Storage"/>
+                                        <Button onAction="#waterCrop"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Water!"/>
+                                        <Button onAction="#openAnimalProcessingSelection"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Animal Processing"/>
+                                    </children>
+                                </HBox>
+                            </content>
+                        </Tab>
+                        <Tab fx:id="tabVisual" closable="false" text="Visual">
+                            <content>
+                                <HBox styleClass="menuTab">
+                                    <children>
+                                        <Button fx:id="newTaskViewer"
+                                                onAction="#newTaskViewer"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Task Manager"/>
+                                        <Button fx:id="openWorkerManagement"
+                                                onAction="#openWorkerManagement"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Show worker manager" />
+                                        <TextArea fx:id="output"
+                                                  minWidth="-Infinity"
+                                                  prefWidth="200.0"
+                                                  translateX="50.0"/>
+                                        <ProgressIndicator fx:id="waterIndicator"
+                                                           layoutX="799.0" layoutY="14.0"
+                                                           maxHeight="-Infinity"
+                                                           maxWidth="-Infinity"
+                                                           minHeight="-Infinity"
+                                                           minWidth="-Infinity"
+                                                           prefHeight="57.0"
+                                                           prefWidth="73.0" progress="0.0"
+                                                           translateX="70.0"
+                                                           translateY="-20.0"/>
+                                        <CheckBox fx:id="showWater"
+                                                  layoutX="850.0" layoutY="90.0"
+                                                  mnemonicParsing="false"
+                                                  onAction="#changedWaterStatus"
+                                                  text="Show Water"
+                                                  translateX="20.0"
+                                                  translateY="25.0"/>
+                                    </children>
+                                </HBox>
+                            </content>
+                        </Tab>
+                        <Tab fx:id="tabAudio" closable="false" text="Audio">
+                            <content>
+                                <HBox styleClass="menuTab">
+                                    <children>
+                                        <Slider fx:id="slider"
+                                                min="0.0" max="100.0"
+                                                layoutX="30.0"
+                                                layoutY="50.0"
+                                                prefWidth="100"
+                                                prefHeight="30"
+                                                />
+                                        <Label fx:id="sliderOutput"
+                                               prefWidth="160"
+                                               styleClass="volume"/>
+                                        <Button fx:id="toggleGameSounds"
+                                                onAction="#toggleGameSounds"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Toggle Animal Sounds"/>
+                                    </children>
+                                </HBox>
+                            </content>
+                        </Tab>
+                        <Tab fx:id="tabWorld" closable="false" text="World Settings">
+                            <content>
+                                <!-- Layout your content here in anyway you want -->
+                                <HBox styleClass="menuTab">
+                                    <children>
+                                        <Button fx:id="showBuildingsPopup"
+                                                onAction="#showBuildingsPopUp"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Buildings"/>
+                                        <Button fx:id="setDimensions"
+                                                onAction="#setDimensions"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Set Dimensions!"/>
+                                        <Button fx:id="minimapToggle"
+                                                onAction="#toggleMinimap"
+                                                styleClass="menuButton, menuButtonLittle"/>
+                                        <Button fx:id="toggleMinimapAgents"
+                                                onAction="#toggleMinimapAgents"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Toggle Agents"/>
+                                    </children>
+                                </HBox>
+                            </content>
+                        </Tab>
+                        <Tab closable="false" text="Disasters">
+                            <content>
+                                <HBox styleClass="menuTab">
+                                    <children>
+                                        <Button onAction="#setOnFire"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="BURN!"/>
+                                    </children>
+                                </HBox>
+                            </content>
+                        </Tab>
+                        <Tab closable="false" text="Machines">
+                            <content>
+                                <HBox styleClass="menuTab">
+                                    <children>
+                                        <Button onAction="#equipTractor"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Equip Tractor"/>
+                                        <Button onAction="#removeTractor"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Equip Tractor"/>
+                                    </children>
+                                </HBox>
+                            </content>
+                        </Tab>
+                        <Tab closable="false" text="Plant">
+                            <content>
+                                <HBox spacing="10.0" styleClass="menuTab">
+                                    <children>
+                                        <Button fx:id="appleBtn" onAction="#plantApple"
+                                                styleClass="menuButtonApple, menuButtonLittle"
+                                                text=""/>
+                                        <Button fx:id="cornBtn" onAction="#plantCorn"
+                                                styleClass="menuButtonCorn, menuButtonLittle"
+                                                text=""/>
+                                        <Button fx:id="lettuceBtn" onAction="#plantLettuce"
+                                                styleClass="menuButtonLettuce, menuButtonLittle"
+                                                text=""/>
+                                        <Button fx:id="strawberryBtn" onAction="#plantStrawberry"
+                                                styleClass="menuButtonStrawberry, menuButtonLittle"
+                                                text=""/>
+                                        <Button fx:id="pearBtn" onAction="#plantPear"
+                                                styleClass="menuButtonPear, menuButtonLittle"
+                                                text=""/>
+                                        <Button fx:id="mangoBtn" onAction="#plantMango"
+                                                styleClass="menuButtonMango, menuButtonLittle"
+                                                text=""/>
+                                        <Button fx:id="cottonBtn" onAction="#plantCotton"
+                                                styleClass="menuButtonCotton, menuButtonLittle"
+                                                text=""/>
+                                        <Button fx:id="bananaBtn" onAction="#plantBanana"
+                                                styleClass="menuButtonBanana, menuButtonLittle"
+                                                text=""/>
+                                        <Button fx:id="sugarcaneBtn" onAction="#plantSugarcane"
+                                                styleClass="menuButtonSugarcane, menuButtonLittle"
+                                                text=""/>
+                                        <Button fx:id="lemonBtn" onAction="#plantLemon"
+                                                styleClass="menuButtonLemon, menuButtonLittle"
+                                                text=""/>
+                                    </children>
+                                    <padding>
+                                        <Insets left="10.0" right="10.0"/>
+                                    </padding>
+                                </HBox>
+                            </content>
+                        </Tab>
+                        <Tab closable="false" text="Terraforming">
+                            <content>
+                                <!-- Layout your content here in anyway you want -->
+                                <HBox styleClass="menuTab">
+                                    <children>
+                                        <Button onAction="#clearTreeOrRocks"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Clear Rocks"/>
+                                        <Button onAction="#clearSnow"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Clear Snow"/>
+                                        <Button onAction="#raiseLand"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Raise Land"/>
+                                        <Button onAction="#lowerLand"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Lower Land"/>
+                                    </children>
+                                </HBox>
+                            </content>
+                        </Tab>
+                        <Tab closable="false" text="Rucksack">
+                     		<content>
+                        		<HBox fx:id="menuBar" spacing="10.0">
+                           			<children>
+                              			<Button fx:id="rucksackFarmer" onAction="#handleRucksackButtonClick" styleClass="menuButtonFarmer, menuButtonLittle" text="" />
+                              			<Button fx:id="rucksackHunter" onAction="#handleRucksackButtonClick" styleClass="menuButtonHunter, menuButtonLittle" text="" /> 
+                              			<Button fx:id="rucksackBuilder" onAction="#handleRucksackButtonClick" styleClass="menuButtonBuilder, menuButtonLittle" text="" />                             			
+                              			<Button fx:id="rucksackMilker" onAction="#handleRucksackButtonClick" styleClass="menuButtonMilker, menuButtonLittle" text="" />                              			
+                              			<Button fx:id="rucksackButcher" onAction="#handleRucksackButtonClick" styleClass="menuButtonButcher, menuButtonLittle" text="" />
+                              			<Button fx:id="rucksackShearer" onAction="#handleRucksackButtonClick" styleClass="menuButtonShearer, menuButtonLittle" text="" />                              			
+                              			<Button fx:id="rucksackEggHandler" onAction="#handleRucksackButtonClick" styleClass="menuButtonEggHandler, menuButtonLittle" text="" />
+                              			<Button fx:id="rucksackBack" onAction="#handleRucksackButtonClick" styleClass="menuButton, menuButtonLittle" text="Back" />
+                              			<ListView fx:id="inventoryAgentSelect" styleClass="rucksackView2" prefHeight="20.0" prefWidth="200.0" />
+                              			<ListView fx:id="rucksackList" styleClass="rucksackView2" prefHeight="20.0" prefWidth="200.0" />
+                              			<Button fx:id="rucksackEquip" onAction="#rucksackEquipTool" styleClass="menuButton, menuButtonLittle" text="Equip" />
+                              			<Button fx:id="rucksackAddStorage" onAction="#rucksackAddToStorage" styleClass="menuButton, menuButtonLittle" text="Add to Storage" />
+                           			</children>
+                           			<padding>
+                              			<Insets left="10.0" right="10.0" />
+                           			</padding>
+                        		</HBox>
+                     		</content>
+                  		</Tab>
+                  		<Tab closable="false" text="Diseases">
+                  			<content>
+                  				<HBox styleClass="menuTab">
+                  					<children>
+                  						<GridPane alignment="center" hgap="10" vgap="10">
+                  							<Label text="Total Infections:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                  							<Label text="0" fx:id="totalInfectionLabel" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                  							<Label text="Peon Infections:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                  							<Label text="0" fx:id="peonInfectionLabel" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                  							<Label text="Crop Infections:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                  							<Label text="0" fx:id="cropInfectionLabel" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                  						</GridPane>
+                  						<GridPane alignment="center" hgap="10" vgap="10">
+                  							<Label text="Treatment Points Earned:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                  							<Label text="0" fx:id="numTreatmentsLabel" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                  							<Button fx:id="useTreatSmall" text="Use 5" GridPane.columnIndex="0" GridPane.rowIndex="1"
+                  									styleClass="menuButton, menuButtonLittle" onAction="#treatmentSmallPressed"/>
+                  							<Button fx:id="useTreatMedium" text="Use 10" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                  									styleClass="menuButton, menuButtonLittle" onAction="#treatmentMediumPressed"/>
+                  							<Button fx:id="useTreatLarge" text="Use 20" GridPane.columnIndex="2" GridPane.rowIndex="1"
+                  									styleClass="menuButton, menuButtonLittle" onAction="#treatmentLargePressed"/>
+                  						</GridPane>
+                  					</children>
+                  				</HBox>
+                  			</content>
+                  		</Tab>
+                  		<Tab closable="false" text="Weather Forecast">
+                        	<content>
+                        		<HBox fx:id="forecast" spacing="32.0" alignment="CENTER">
+                        			<children>
+                        				<VBox maxHeight="96.0" alignment="CENTER">
+                        					<children>
+                        						<Label text="" alignment="center">
+                        						</Label>
+                        						<Pane styleClass="forecastIcon">
+                        						</Pane>
+                        						<Label text="Weather" alignment="center">
+                        						</Label>
+                        					</children>
+                        				</VBox>
+                        				<VBox maxHeight="96.0" alignment="CENTER">
+                        					<children>
+                        						<Label text="" alignment="center">
+                        						</Label>
+                        						<Pane styleClass="forecastIcon">
+                        						</Pane>
+                        						<Label text="Weather" alignment="center">
+                        						</Label>
+                        					</children>
+                        				</VBox>
+                        				<VBox maxHeight="96.0" alignment="CENTER">
+                        					<children>
+                        						<Label text="" alignment="center">
+                        						</Label>
+                        						<Pane styleClass="forecastIcon">
+                        						</Pane>
+                        						<Label text="Weather" alignment="center">
+                        						</Label>
+                        					</children>
+                        				</VBox>
+                        				<VBox maxHeight="96.0" alignment="CENTER">
+                        					<children>
+                        						<Label text="" alignment="center">
+                        						</Label>
+                        						<Pane styleClass="forecastIcon">
+                        						</Pane>
+                        						<Label text="Weather" alignment="center">
+                        						</Label>
+                        					</children>
+                        				</VBox>
+                        				<VBox maxHeight="96.0" alignment="CENTER">
+                        					<children>
+                        						<Label text="" alignment="center">
+                        						</Label>
+                        						<Pane styleClass="forecastIcon">
+                        						</Pane>
+                        						<Label text="Weather" alignment="center">
+                        						</Label>
+                        					</children>
+                        				</VBox>
+                        				<VBox maxHeight="96.0" alignment="CENTER">
+                        					<children>
+                        						<Label text="" alignment="center">
+                        						</Label>
+                        						<Pane styleClass="forecastIcon">
+                        						</Pane>
+                        						<Label text="Weather" alignment="center">
+                        						</Label>
+                        					</children>
+                        				</VBox>
+                        				<VBox maxHeight="96.0" alignment="CENTER">
+                        					<children>
+                        						<Label text="" alignment="center">
+                        						</Label>
+                        						<Pane styleClass="forecastIcon">
+                        						</Pane>
+                        						<Label text="Weather" alignment="center">
+                        						</Label>
+                        					</children>
+                        				</VBox>
+                        				<VBox maxHeight="96.0" alignment="CENTER">
+                        					<padding>
+                        						<Insets top="0" right="0" bottom="0" left="128" />
+                        					</padding>
+                        					<children>
+                        						<Label text="Season" alignment="center">
+                        						</Label>
+                        						<Pane styleClass="forecastIcon">
+                        						</Pane>
+                        						<Label text="30 days remaining">
+                        						</Label>
+                        					</children>
+                        				</VBox>
+                        			</children>
+                        		</HBox>
+                        	</content>
+						</Tab>
+                        <Tab fx:id="tabFencing" closable="false" text="Fencing">
+                            <content>
+                                <HBox styleClass="menuTab">
+                                    <children>
+                                        <Button fx:id="createFence"
+                                                onAction="#createFence"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Build Fence"/>
+                                        <Button fx:id="clearFence"
+                                                onAction="#clearFence"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Clear Fence/Gate"/>
+                                        <Button fx:id="createGate"
+                                                onAction="#createGate"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Build Gate"/>
+                                        <Button fx:id="toggleGate"
+                                                onAction="#toggleGate"
+                                                styleClass="menuButton, menuButtonLittle"
+                                                text="Toggle Gate"/>
+                                    </children>
+                                </HBox>
+                            </content>
+                        </Tab>
+                    </tabs>
+                </TabPane>
+                <!---->
+            </bottom>
+        </BorderPane>
+        <!-- Start Menu -->
+        <!-- Background of grass -->
+        <StackPane fx:id="menuGrass" AnchorPane.bottomAnchor="0.0"
+                   AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                   AnchorPane.topAnchor="0.0">
+            <children>
+                <!-- Centered Menu -->
+                <StackPane fx:id="menuPane" AnchorPane.bottomAnchor="0.0"
+                           AnchorPane.leftAnchor="0.0"
+                           AnchorPane.rightAnchor="0.0"
+                           AnchorPane.topAnchor="0.0">
+                    <children>
+                        <Group>
+                            <children>
+                                <Button fx:id="startBtn" layoutX="301.0"
+                                        layoutY="420" mnemonicParsing="false"
+                                        onAction="#startGame"
+                                        styleClass="menuButton, menuButtonLarge"
+                                        text="P L A Y">
+                                </Button>
+                                <Button fx:id="closeBtn" layoutX="301.0" layoutY="470"
+                                        mnemonicParsing="false" onAction="#quit"
+                                        styleClass="menuButton, menuButtonLarge"
+                                        text="Q U I T">
+                                </Button>
+                                <Button fx:id="helpBtn" layoutX="301.0" layoutY="520"
+                                        mnemonicParsing="false" onAction="#help"
+                                        styleClass="menuButton, menuButtonLarge"
+                                        text="H E L P">
+                                </Button>
+                                <Button fx:id="creditsBtn" layoutX="301.0" layoutY="570"
+                                        mnemonicParsing="false" onAction="#showCredits"
+                                        styleClass="menuButton, menuButtonLarge"
+                                        text="C R E D I T S">
+                                </Button>
+                                <Button fx:id="debugBtn" layoutX="301.0" layoutY="620"
+                                        mnemonicParsing="false"
+                                        onAction="#startGameWithDebug"
+                                        styleClass="menuButton, menuButtonLarge"
+                                        text="D E B U G - M O D E">
+                                </Button>
+                            </children>
+                        </Group>
+                    </children>
+                </StackPane>
+            </children>
+        </StackPane>
+    </children>
+</AnchorPane>

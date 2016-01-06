@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="farmsim.ui.DimensionsPopUpController">
+   <children>
+      <BorderPane id="mainPane" fx:id="mainPane" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="20.0">
+         <top>
+            <Label alignment="TOP_CENTER" contentDisplay="TOP" text="World Size" textAlignment="CENTER" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </top>
+         <center>
+            <GridPane fx:id="grid" alignment="CENTER" hgap="20.0" vgap="20.0" BorderPane.alignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label alignment="CENTER" text="Price:" GridPane.halignment="CENTER" />
+                  <!-- Unicode is D with stroke -->
+                  <Label text="1Đ per square" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                  <Label text="Selection Price" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Label fx:id="currentPrice" alignment="CENTER" contentDisplay="CENTER" text="0.0Đ" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <StackPane fx:id="mapPane" GridPane.columnSpan="2147483647" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.rowSpan="2147483647" GridPane.vgrow="NEVER">
+                     <children>
+                        <Canvas fx:id="canvas" height="200.0" width="300.0" StackPane.alignment="CENTER" />
+                     </children></StackPane>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <BorderPane.margin>
+                  <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
+               </BorderPane.margin>
+            </GridPane>
+         </center>
+         <bottom>
+            <GridPane alignment="BASELINE_CENTER" hgap="50.0" BorderPane.alignment="CENTER">
+            	<!-- Control buttons -->
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button fx:id="okButton" alignment="CENTER_RIGHT" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#acceptDimensions" text="Ok" GridPane.halignment="CENTER">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="closeButton" cancelButton="true" mnemonicParsing="false" onAction="#rejectDimensions" text="Cancel" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </GridPane>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>

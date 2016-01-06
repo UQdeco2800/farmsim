@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="433.0" prefWidth="853.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Pane prefHeight="426.0" prefWidth="853.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <TabPane layoutX="0.0" layoutY="0.0" prefHeight="433.0" prefWidth="853.0" tabClosingPolicy="UNAVAILABLE">
+          <tabs>
+            <Tab text="Welcome">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <Pane id="mainHelpPanes" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="558.0" prefWidth="907.0" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <children>
+                        <Label id="labelWlecome" layoutX="23.0" layoutY="14.0" prefHeight="47.94140625" prefWidth="618.0" text="Welcome to DECO" />
+                        <TextArea id="textFieldSpace" editable="false" focusTraversable="true" layoutX="71.0" layoutY="49.0" prefHeight="205.0" prefWidth="712.0" text="Welcome to the world of DecoFarm. DecoFarm is an interactive and realistic farming management simulation game that has been developed for users enjoyment. Users have the ability to hire and manage workers, clear land, plant and farm crops. We have gone to great lengths in order to keep this farm simulation game as realistic as possible. Examples include a day and night cycle to reflect real life, though the game isn’t a 1:1 ratio in terms of seconds and minutes in the real world, we believe we have constructed a suitable timing system that not only allows users to play at a much faster pace but by constructing it in this way we haven’t compromised one of main goals; realistic.  While working in conjunction with the marketplace, users have the ability to buy and sell items such as tools, machinery, animal products and crops. The financial element on selling and buying products has been simulated in the form of supply and demand. By this, if there is a high demand for apples, and a low supply, a high price will follow. This further emphasises the realistic vibe we are trying to achieve in this simulation. " visible="true" wrapText="true" />
+                      </children>
+                    </Pane>
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Workers">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <ScrollPane id="ScrollPane" prefHeight="385.0" prefViewportHeight="560.0" prefViewportWidth="907.0" prefWidth="853.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <content>
+                        <Pane id="mainHelpPanes" prefHeight="558.0" prefWidth="838.0" visible="true">
+                          <children>
+                            <VBox layoutX="112.0" layoutY="0.0" prefHeight="521.0" prefWidth="243.0">
+                              <children>
+                                <VBox prefHeight="521.0" prefWidth="243.0">
+                                  <children>
+                                    <TextArea id="textFieldSpace" editable="false" prefHeight="179.0" prefWidth="243.0" text="Farmer:&#10;Abilities:&#10;-&#9;Plough Tiles&#10;-&#9;Make Dirt Tiles&#10;-&#9;Plant Crops&#10;-&#9;Water Crops&#10;-&#9;Harvest Crops&#10;-&#9;Fishing &#10;-&#9;Raising/Lowering of Tiles" wrapText="true">
+                                      <VBox.margin>
+                                        <Insets top="20.0" fx:id="x2" />
+                                      </VBox.margin>
+                                    </TextArea>
+                                    <TextArea id="textFieldSpace" editable="false" prefHeight="171.0" prefWidth="309.0" text="&#10;Builder: &#10;Abilities:&#10;-&#9;Clear Rocks &amp; Trees Tiles&#10;-&#9;Repair Buildings&#10;-&#9;Build Buildings " wrapText="true">
+                                      <VBox.margin>
+                                        <Insets top="10.0" fx:id="x1" />
+                                      </VBox.margin>
+                                    </TextArea>
+                                    <TextArea id="textFieldSpace" editable="false" prefHeight="171.0" prefWidth="309.0" text="&#10;&#10;Hunter:&#10;Abilities:&#10;-&#9;Has the ability to kill predators " wrapText="true" VBox.margin="$x1" />
+                                  </children>
+                                </VBox>
+                              </children>
+                            </VBox>
+                            <VBox layoutX="0.0" layoutY="0.0" prefHeight="523.0" prefWidth="112.0">
+                              <children>
+                                <VBox prefHeight="200.0" prefWidth="212.0">
+                                  <children>
+                                    <Pane id="worker1" prefHeight="100.0" prefWidth="868.0">
+                                      <VBox.margin>
+                                        <Insets top="20.0" fx:id="x2" />
+                                      </VBox.margin>
+                                    </Pane>
+                                    <Pane id="worker2" prefHeight="100.0" prefWidth="868.0">
+                                      <VBox.margin>
+                                        <Insets bottom="20.0" fx:id="x3" />
+                                      </VBox.margin>
+                                    </Pane>
+                                  </children>
+                                </VBox>
+                                <VBox fillWidth="true" prefHeight="200.0" prefWidth="100.0">
+                                  <children>
+                                    <Pane id="worker3" prefHeight="100.0" prefWidth="868.0" VBox.margin="$x2" />
+                                    <Pane id="worker4" prefHeight="100.0" prefWidth="868.0" VBox.margin="$x3" />
+                                  </children>
+                                </VBox>
+                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                  <children>
+                                    <Pane id="worker5" prefHeight="100.0" prefWidth="868.0" VBox.margin="$x2" />
+                                    <Pane id="worker6" prefHeight="100.0" prefWidth="868.0" VBox.margin="$x3" />
+                                  </children>
+                                </VBox>
+                              </children>
+                              <padding>
+                                <Insets left="15.0" />
+                              </padding>
+                            </VBox>
+                            <VBox layoutX="408.0" layoutY="0.0" prefHeight="521.0" prefWidth="374.0">
+                              <children>
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="169.0" prefWidth="374.0" text="&#10;Animal Handler:&#10;Sub Roles:&#10;-&#9;Butcher: obtain meat while in the Abattoir.&#10;-&#9;Shearer: obtain wool and feathers while in the Shearing Shed.&#10;-&#9;Egg Handler: to obtain eggs while in the Coop.&#10;-&#9;Milker: obtain milk while in the Barn." wrapText="true" VBox.margin="$x2" />
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="230.0" prefWidth="374.0" text="There are five levels of experience:&#10;-&#9;Novice (Level 1, total experience required for Level 2: 100xp)&#10;-&#9;Apprentice (Level 2, total experience required for Level 3: 200xp)&#10;-&#9;Adept (Level 3, total experience required for Level 2: 400xp)&#10;-&#9;Expert (Level 4, total experience required for Level 2: 800xp)&#10;-&#9;Master (Level 5)  &#10;" wrapText="true">
+                                  <VBox.margin>
+                                    <Insets top="60.0" />
+                                  </VBox.margin>
+                                </TextArea>
+                              </children>
+                            </VBox>
+                            <VBox layoutX="310.0" layoutY="-2.0" prefHeight="455.0" prefWidth="112.0" snapToPixel="true">
+                              <children>
+                                <VBox prefHeight="173.0" prefWidth="112.0">
+                                  <children>
+                                    <Pane id="worker7" prefHeight="100.0" prefWidth="868.0" VBox.margin="$x2" />
+                                    <Pane id="worker8" prefHeight="100.0" prefWidth="868.0" VBox.margin="$x3" />
+                                  </children>
+                                </VBox>
+                              </children>
+                            </VBox>
+                          </children>
+                        </Pane>
+                      </content>
+                    </ScrollPane>
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Farm Animals">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <ScrollPane id="ScrollPane" layoutX="0.0" layoutY="-1.0" prefViewportHeight="524.0" prefViewportWidth="853.0">
+                      <content>
+                        <Pane id="mainHelpPanes" prefHeight="518.0" prefWidth="853.0" visible="true">
+                          <children>
+                            <VBox layoutX="14.0" layoutY="-1.0" prefHeight="523.0" prefWidth="112.0">
+                              <children>
+                                <Pane id="animal1" prefHeight="100.0" prefWidth="868.0">
+                                  <VBox.margin>
+                                    <Insets top="20.0" fx:id="x2" />
+                                  </VBox.margin>
+                                </Pane>
+                                <Pane id="animal2" prefHeight="100.0" prefWidth="868.0" />
+                                <Pane id="animal3" prefHeight="100.0" prefWidth="868.0" />
+                                <Pane id="animal4" prefHeight="100.0" prefWidth="868.0" />
+                                <Pane id="animal5" prefHeight="100.0" prefWidth="868.0">
+                                  <VBox.margin>
+                                    <Insets bottom="20.0" fx:id="x3" />
+                                  </VBox.margin>
+                                </Pane>
+                              </children>
+                            </VBox>
+                            <VBox layoutX="456.0" layoutY="0.0" prefHeight="523.0" prefWidth="112.0">
+                              <children>
+                                <Pane id="animal6" prefHeight="100.0" prefWidth="868.0">
+                                  <VBox.margin>
+                                    <Insets top="20.0" fx:id="x2" />
+                                  </VBox.margin>
+                                </Pane>
+                                <Pane id="animal7" prefHeight="100.0" prefWidth="868.0" />
+                                <Pane id="animal8" prefHeight="100.0" prefWidth="868.0" />
+                              </children>
+                            </VBox>
+                            <Label layoutX="159.0" layoutY="50.0" text="Cow" />
+                            <Label layoutX="159.0" layoutY="153.0" text="Chicken" />
+                            <Label layoutX="159.0" layoutY="242.0" text="Duck" />
+                            <Label layoutX="159.0" layoutY="343.0" text="Pig" />
+                            <Label layoutX="159.0" layoutY="432.0" text="Sheep" />
+                          </children>
+                        </Pane>
+                      </content>
+                    </ScrollPane>
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Predators">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <ScrollPane id="ScrollPane" prefHeight="385.0" prefViewportHeight="523.0" prefViewportWidth="868.0" prefWidth="853.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <content>
+                        <Pane id="mainHelpPanes" prefHeight="521.0" prefWidth="838.0" visible="true">
+                          <children>
+                            <VBox layoutX="10.0" layoutY="0.0" prefHeight="523.0" prefWidth="112.0">
+                              <children>
+                                <Pane id="predator1" prefHeight="100.0" prefWidth="868.0">
+                                  <VBox.margin>
+                                    <Insets top="20.0" fx:id="x2" />
+                                  </VBox.margin>
+                                </Pane>
+                                <Pane id="predator2" prefHeight="100.0" prefWidth="868.0" />
+                                <Pane id="predator3" prefHeight="100.0" prefWidth="868.0" />
+                                <Pane id="predator4" prefHeight="100.0" prefWidth="868.0" />
+                                <Pane id="predator5" prefHeight="100.0" prefWidth="868.0">
+                                  <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                  </VBox.margin>
+                                </Pane>
+                              </children>
+                            </VBox>
+                            <Label layoutX="153.0" layoutY="48.0" text="Alligator" />
+                            <Label layoutX="156.0" layoutY="146.0" text="Bear" />
+                            <Label layoutX="153.0" layoutY="247.0" text="Rabbit" />
+                            <Label layoutX="156.0" layoutY="348.0" text="Mole" />
+                            <Label layoutX="153.0" layoutY="431.0" text="Wolf" />
+                          </children>
+                        </Pane>
+                      </content>
+                    </ScrollPane>
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Crops/Plants">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <ScrollPane id="ScrollPane" prefHeight="385.0" prefViewportHeight="521.0001220703125" prefViewportWidth="868.0" prefWidth="853.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <content>
+                        <Pane id="mainHelpPanes" prefHeight="523.0" prefWidth="838.0" visible="true">
+                          <children>
+                            <VBox layoutX="112.0" layoutY="0.0" prefHeight="523.0" prefWidth="258.0">
+                              <children>
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="258.0" text="Apple Trees" wrapText="true">
+                                  <VBox.margin>
+                                    <Insets top="20.0" fx:id="x2" />
+                                  </VBox.margin>
+                                </TextArea>
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="258.0" text="Banana Trees" wrapText="true" />
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="258.0" text="Corn" wrapText="true" />
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="258.0" text="Lemon Trees" wrapText="true" />
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="258.0" text="Lettuce" wrapText="true" />
+                              </children>
+                            </VBox>
+                            <VBox layoutX="0.0" layoutY="0.0" prefHeight="523.0" prefWidth="112.0">
+                              <children>
+                                <Pane id="crops1" prefHeight="100.0" prefWidth="868.0">
+                                  <VBox.margin>
+                                    <Insets top="20.0" fx:id="x2" />
+                                  </VBox.margin>
+                                </Pane>
+                                <Pane id="crops2" prefHeight="100.0" prefWidth="868.0" />
+                                <Pane id="crops3" prefHeight="100.0" prefWidth="868.0" />
+                                <Pane id="crops4" prefHeight="100.0" prefWidth="868.0" />
+                                <Pane id="crops5" prefHeight="100.0" prefWidth="868.0" />
+                              </children>
+                              <padding>
+                                <Insets left="20.0" />
+                              </padding>
+                            </VBox>
+                            <VBox layoutX="400.0" layoutY="0.0" prefHeight="523.0" prefWidth="112.0">
+                              <children>
+                                <Pane id="crops6" prefHeight="100.0" prefWidth="868.0">
+                                  <VBox.margin>
+                                    <Insets top="20.0" fx:id="x2" />
+                                  </VBox.margin>
+                                </Pane>
+                                <Pane id="crops7" prefHeight="100.0" prefWidth="868.0" />
+                                <Pane id="crops8" prefHeight="100.0" prefWidth="868.0" />
+                                <Pane id="crops9" prefHeight="100.0" prefWidth="868.0" />
+                              </children>
+                            </VBox>
+                            <VBox layoutX="512.0" layoutY="0.0" prefHeight="523.0" prefWidth="258.0">
+                              <children>
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="258.0" text="Mango Trees" wrapText="true">
+                                  <VBox.margin>
+                                    <Insets top="20.0" fx:id="x2" />
+                                  </VBox.margin>
+                                </TextArea>
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="258.0" text="Pear Trees" wrapText="true" />
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="258.0" text="Strawberry" wrapText="true" />
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="258.0" text="Sugar Cane" wrapText="true" />
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="258.0" wrapText="true" />
+                              </children>
+                            </VBox>
+                          </children>
+                        </Pane>
+                      </content>
+                    </ScrollPane>
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Weathers/Seasons">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <ScrollPane id="ScrollPane" prefHeight="385.0" prefViewportHeight="523.0" prefViewportWidth="853.0" prefWidth="853.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <content>
+                        <Pane id="mainHelpPanes" prefHeight="523.0" prefWidth="838.0" visible="true">
+                          <children>
+                            <VBox layoutX="0.0" layoutY="0.0" prefHeight="521.0000999999975" prefWidth="112.0">
+                              <children>
+                                <Pane id="weather1" prefHeight="100.0" prefWidth="868.0">
+                                  <VBox.margin>
+                                    <Insets top="20.0" fx:id="x2" />
+                                  </VBox.margin>
+                                </Pane>
+                                <Pane id="weather2" prefHeight="100.0" prefWidth="868.0" />
+                                <Pane id="weather3" prefHeight="100.0" prefWidth="868.0" />
+                                <Pane id="weather4" prefHeight="100.0" prefWidth="868.0" />
+                                <Pane id="weather5" prefHeight="100.0" prefWidth="868.0" />
+                              </children>
+                            </VBox>
+                            <VBox layoutX="392.0" layoutY="0.0" prefHeight="521.0001220703125" prefWidth="112.0">
+                              <children>
+                                <Pane id="weather6" prefHeight="100.0" prefWidth="868.0">
+                                  <VBox.margin>
+                                    <Insets top="20.0" fx:id="x2" />
+                                  </VBox.margin>
+                                </Pane>
+                                <Pane id="weather7" prefHeight="100.0" prefWidth="868.0" />
+                                <Pane id="weather8" prefHeight="100.0" prefWidth="868.0" />
+                                <Pane id="weather9" prefHeight="100.0" prefWidth="868.0" />
+                              </children>
+                            </VBox>
+                            <VBox layoutX="112.0" layoutY="0.0" prefHeight="523.0" prefWidth="243.0">
+                              <children>
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="89.0" prefWidth="243.0" text="The Cloudy weather event offers a visual stimulus in the form of white clouds displayed on the screen interface. " wrapText="true">
+                                  <VBox.margin>
+                                    <Insets top="20.0" fx:id="x2" />
+                                  </VBox.margin>
+                                </TextArea>
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="243.0" text="Snow is similar to rain, it causes snowflakes to be scattered around the map, causing certain areas of the map to be white in colour. " wrapText="true" />
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="243.0" text="Heatwave" wrapText="true" />
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="243.0" text="Lightning" wrapText="true" />
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="243.0" text="Sandstorms reduce the water supply of the map." wrapText="true" />
+                              </children>
+                            </VBox>
+                            <VBox layoutX="504.0" layoutY="0.0" prefHeight="523.0" prefWidth="243.0">
+                              <children>
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="243.0" text="Rain causes raindrops to be displayed, whilst also covering certain areas of the map to be blue in colour to represent water." wrapText="true">
+                                  <VBox.margin>
+                                    <Insets top="20.0" fx:id="x2" />
+                                  </VBox.margin>
+                                </TextArea>
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="78.0" prefWidth="243.0" text="Snow causes a decrease in the rate at which a plant grows, animal life spans and eventually makes crops to die." wrapText="true" />
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="243.0" text="Sunny: &#10;This specific weather event causes no visual effects. Furthermore, by it being sunny the crop productivity and animal lifespans remain unchanged." wrapText="true" />
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="243.0" text="The visual effect portrayed when a windy weather event occurs is a white swirl that has a horizontal movement across the screen. The visual effect portrayed when a windy weather event occurs is a white swirl that has a horizontal movement across the screen. " wrapText="true">
+                                  <VBox.margin>
+                                    <Insets bottom="8.0" />
+                                  </VBox.margin>
+                                </TextArea>
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="243.0" wrapText="true" />
+                              </children>
+                            </VBox>
+                          </children>
+                        </Pane>
+                      </content>
+                    </ScrollPane>
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Tools/Equipments">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <ScrollPane id="ScrollPane" layoutX="0.0" layoutY="0.0" prefViewportHeight="385.0" prefViewportWidth="853.0">
+                      <content>
+                        <Pane prefHeight="525.0" prefWidth="853.0">
+                          <children>
+                            <VBox layoutX="0.0" layoutY="2.0" prefHeight="523.0" prefWidth="112.0">
+                              <children>
+                                <Pane id="tool1" prefHeight="78.0" prefWidth="112.0">
+                                  <VBox.margin>
+                                    <Insets bottom="30.0" top="20.0" />
+                                  </VBox.margin>
+                                </Pane>
+                                <Pane id="tool2" prefHeight="78.0" prefWidth="868.0">
+                                  <VBox.margin>
+                                    <Insets bottom="20.0" fx:id="x3" />
+                                  </VBox.margin>
+                                </Pane>
+                                <Pane id="tool3" prefHeight="78.0" prefWidth="868.0" />
+                                <Pane id="tool4" prefHeight="78.0" prefWidth="868.0">
+                                  <VBox.margin>
+                                    <Insets top="30.0" />
+                                  </VBox.margin>
+                                </Pane>
+                                <Pane id="tool5" prefHeight="78.0" prefWidth="868.0" />
+                              </children>
+                            </VBox>
+                            <VBox layoutX="396.0" layoutY="2.0" prefHeight="523.0" prefWidth="112.0">
+                              <children>
+                                <Pane id="tool6" prefHeight="100.0" prefWidth="868.0">
+                                  <VBox.margin>
+                                    <Insets top="20.0" fx:id="x2" />
+                                  </VBox.margin>
+                                </Pane>
+                                <Pane id="tool7" prefHeight="100.0" prefWidth="868.0" />
+                                <Pane id="tool8" prefHeight="100.0" prefWidth="868.0" />
+                                <Pane id="tool9" prefHeight="100.0" prefWidth="868.0" />
+                              </children>
+                            </VBox>
+                            <VBox layoutX="112.0" layoutY="0.0" prefHeight="523.0" prefWidth="243.0">
+                              <children>
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="243.0" text="Axe" wrapText="true">
+                                  <VBox.margin>
+                                    <Insets top="20.0" fx:id="x2" />
+                                  </VBox.margin>
+                                </TextArea>
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="243.0" text="Bucket" wrapText="true" />
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="243.0" text="Hammer" wrapText="true" />
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="243.0" text="Hoe" wrapText="true" />
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="243.0" text="Pickaxe" wrapText="true" />
+                              </children>
+                            </VBox>
+                            <VBox layoutX="508.0" layoutY="1.0" prefHeight="523.0" prefWidth="243.0">
+                              <children>
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="243.0" text="Plough" wrapText="true">
+                                  <VBox.margin>
+                                    <Insets top="20.0" fx:id="x2" />
+                                  </VBox.margin>
+                                </TextArea>
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="243.0" text="Shears" wrapText="true" />
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="243.0" text="Shovel" wrapText="true" />
+                                <TextArea id="textFieldSpace" editable="false" prefHeight="100.0" prefWidth="243.0" wrapText="true" />
+                              </children>
+                            </VBox>
+                          </children>
+                        </Pane>
+                      </content>
+                    </ScrollPane>
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+          </tabs>
+        </TabPane>
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>

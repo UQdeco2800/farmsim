@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="mainPane" prefHeight="150.0" prefWidth="250.0" styleClass="window" stylesheets="@wage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="farmsim.buildings.WagePopUp">
+   <center>
+      <TextField fx:id="input" editable="true" promptText="wage here" styleClass="window" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+   </center>
+   <top>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter New Wage:" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+   </top>
+   <bottom>
+      <BorderPane prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <left>
+            <Button fx:id="confirmButton" styleClass="custom-button" text="Edit Wage" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <Button fx:id="cancelButton" onMouseClicked="#clickClose" styleClass="custom-button" text="Close" BorderPane.alignment="CENTER" />
+         </right>
+      </BorderPane>
+   </bottom>
+</BorderPane>
