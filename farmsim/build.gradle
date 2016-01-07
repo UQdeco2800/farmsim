@@ -58,19 +58,3 @@ task(run2, dependsOn: "classes", type: JavaExec) {
 flyway {
     url = 'jdbc:derby:' + project.projectDir + '/decoFarmDB;user=decofarm;password=decofarm;create=true'
 }
-
-apply plugin: "sonar-runner";
-if (rootProject.hasProperty('sonarHostURL')) {
-    sonarRunner {
-        sonarProperties {
-            property "sonar.projectName", project.group
-            property "sonar.host.url", sonarHostURL
-            property "sonar.jdbc.url", sonarDatabaseURL
-            property "sonar.jdbc.driverClassName", sonarDriverClassName
-            property "sonar.jdbc.username", sonarUsername
-            property "sonar.jdbc.password", sonarPassword
-            property "sonar.jacoco.reportPath", "$buildDir/jacoco/test.exec"
-            property "sonar.jacoco.itReportPath", "$buildDir/jacoco/uiTest.exec"
-        }
-    }
-}

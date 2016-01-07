@@ -1,7 +1,6 @@
 allprojects {
   group = 'deco2800-2015-farm'
   version = '0.3142'
-
 }
 
 repositories {
@@ -10,22 +9,12 @@ repositories {
   //mavenCentral()
 }
 
-// Sonar configuration for our CI server
-// We use sonarHostURL as a switch -- if you specify this in gradle.properties
-// then Sonar is "on" and you need to set the other properties too.
-
 subprojects {
   apply plugin: 'java';
   apply plugin: 'eclipse';
   apply plugin: 'idea';
   apply plugin: 'jacoco';
   apply plugin: 'application';
-
-
-  checkstyle {
-      toolVersion = "6.5"
-      sourceSets = []
-  }
 
   mainClassName = "farmsim.FarmSimLauncher"
 
