@@ -1,4 +1,4 @@
-[![Build Status](http://deco2800.uqcloud.net/jenkins/job/Farm/badge/icon)](http://deco2800.uqcloud.net/jenkins/job/Farm/)
+[![Build Status](https://travis-ci.org/UQdeco2800/farmsim.svg)](https://travis-ci.org/UQdeco2800/farmsim)
 
 ### Đeco2800: Farm
 
