@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import farmsim.buildings.StaffHouse;
-import farmsim.buildings.process.AbattoirBuilding;
-
-import farmsim.buildings.process.AnimalCoop;
 import farmsim.entities.tileentities.TileEntity;
 import farmsim.entities.tileentities.objects.Rock;
 import farmsim.entities.tileentities.objects.Tree;

@@ -103,9 +103,6 @@
                                         <Button onAction="#waterCrop"
                                                 styleClass="menuButton, menuButtonLittle"
                                                 text="Water!"/>
-                                        <Button onAction="#openAnimalProcessingSelection"
-                                                styleClass="menuButton, menuButtonLittle"
-                                                text="Animal Processing"/>
                                     </children>
                                 </HBox>
                             </content>

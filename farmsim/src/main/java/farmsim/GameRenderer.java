@@ -1,14 +1,9 @@
 package farmsim;
 
-import java.util.*;
-
 import farmsim.buildings.BuildingPlacer;
 import farmsim.entities.WorldEntity;
-import farmsim.entities.agents.Agent;
 import farmsim.entities.agents.AgentManager;
-import farmsim.entities.animals.FarmAnimalManager;
 import farmsim.entities.predators.Predator;
-import farmsim.entities.predators.PredatorManager;
 import farmsim.render.Drawable;
 import farmsim.tiles.Tile;
 import farmsim.tiles.TileRegister;
@@ -20,6 +15,11 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * GameRenderer renders the {@link World} and all {@link WorldEntity} instances.
@@ -58,7 +58,6 @@ public class GameRenderer extends AnimationTimer implements Observer {
 
         renderList.add(AgentManager.getInstance().getAgents());
         renderList.add(WorldManager.getInstance().getWorld().getPredatorManager().getPredators());
-        renderList.add(FarmAnimalManager.getInstance().getFarmAnimals());
     }
 
     @Override

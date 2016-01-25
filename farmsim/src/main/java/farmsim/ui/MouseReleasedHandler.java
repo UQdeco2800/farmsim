@@ -5,7 +5,6 @@ import farmsim.Viewport;
 import farmsim.ViewportNotSetException;
 import farmsim.tiles.TileRegister;
 import farmsim.util.Point;
-import farmsim.world.WorldManager;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
@@ -33,8 +32,6 @@ public class MouseReleasedHandler implements EventHandler<MouseEvent> {
 
         try {
             gameManager.setReleased(tileLocation);
-            //LevelerWindowController.getInstance().updateSelection();
-            WorldManager.getInstance().getWorld().getLeveler().getController().updateSelection();
         } catch (ViewportNotSetException e) {
             gameManager.setViewport(viewport);
         }

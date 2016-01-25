@@ -1,11 +1,7 @@
 package farmsim.pollution;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 
-import farmsim.entities.animals.FarmAnimal;
-import farmsim.entities.animals.FarmAnimalManager;
 import farmsim.tiles.Tile;
 import farmsim.tiles.TileProperty;
 import farmsim.util.Point;
@@ -66,7 +62,7 @@ public class PollutionManager implements Tickable {
 	/**
 	 * Places a pollution source on the specified tile
 	 * 
-	 * @param t
+	 * @param tile
 	 *            The tile to create a pollution source on
 	 * @param rate
 	 *            The rate of pollution production from this source
@@ -140,10 +136,8 @@ public class PollutionManager implements Tickable {
 	/**
 	 * Places a pollution drain on the specified tile
 	 * 
-	 * @param t
+	 * @param tile
 	 *            The tile to create a pollution drain on
-	 * @param rate
-	 *            The rate of pollution production from this drain
 	 */
 	public void placePollutionDrain(Tile tile) {
 		tile.setProperty(TileProperty.IS_POLLUTION_DRAIN, null);
@@ -239,26 +233,5 @@ public class PollutionManager implements Tickable {
 	@Override
 	public void tick() {
 		pollutionUpdater.updateTiles();
-		polluteAnimals();
-	}
-
-	/**
-	 * Makes animals emit pollution to the ground below them
-	 */
-	private void polluteAnimals() {
-		List<FarmAnimal> animalList = FarmAnimalManager.getInstance().getFarmAnimals();
-        try {
-            Tile t = world.getTile(animalList.get(animalPollute).getLocation());
-            t.setPollution(world.getTile(animalList.get(animalPollute)
-                    .getLocation()).getPollution() + 0.05);
-
-            if ((t.getPollution() > 0.6)  && (!t.hasProperty(TileProperty.IS_POLLUTION_SOURCE))) {
-                placePollutionSource(t, t.getPollution());
-            }
-        } catch (Exception e) {}
-
-		if (animalList.size() > 0) {
-            animalPollute = (animalPollute + 1) % animalList.size();
-        }
 	}
 }

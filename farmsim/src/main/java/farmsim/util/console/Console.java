@@ -150,8 +150,6 @@ public class Console implements Initializable {
         this.handlers.add(new Peons());
         this.handlers.add(new Event());
         this.handlers.add(new Pollution());
-        this.handlers.add(new FarmAnimals());
-        this.handlers.add(new LevelerHandler());
         this.handlers.add(new PredatorHandler());
         this.handlers.add(new Particle());
         this.handlers.add(new Modifiers());

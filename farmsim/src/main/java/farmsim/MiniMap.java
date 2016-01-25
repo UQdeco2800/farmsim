@@ -3,8 +3,6 @@ package farmsim;
 import farmsim.entities.WorldEntity;
 import farmsim.entities.agents.Agent;
 import farmsim.entities.agents.AgentManager;
-import farmsim.entities.animals.Animal;
-import farmsim.entities.animals.FarmAnimalManager;
 import farmsim.entities.tileentities.TileEntity;
 import farmsim.tiles.Tile;
 import farmsim.tiles.TileRegister;
@@ -116,13 +114,9 @@ public class MiniMap extends Canvas implements Tickable {
      */
     private void renderMap() {
         renderTiles();
-
         if (agentsVisible) {
             renderAgents();
         }
-
-        renderAnimals();
-
         drawViewport();
     }
 
@@ -177,20 +171,7 @@ public class MiniMap extends Canvas implements Tickable {
                     currentMinimapTileSize, currentMinimapTileSize);
         }
     }
-    
-    private void renderAnimals() {
-        TileRegister tileRegister = TileRegister.getInstance();
-        for (Animal animal : FarmAnimalManager.getInstance().getFarmAnimals()) {
-            /* A little bit hacky, if the animals use a different naming scheme you'll notice */
-            Color pixelColor = tileRegister.getTileColour(animal.getType() + "DownRight0");
-            getGraphicsContext2D().setFill(pixelColor);
 
-            getGraphicsContext2D().fillRect(animal.getLocation().getX()
-                            * currentMinimapTileSize, animal.getLocation()
-                            .getY() * currentMinimapTileSize,
-                    currentMinimapTileSize, currentMinimapTileSize);
-        }
-    }
 
     /**
      * Draw a rectangle indicating where the user is currently looking on the

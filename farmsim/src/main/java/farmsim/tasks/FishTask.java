@@ -1,5 +1,6 @@
 package farmsim.tasks;
 
+import common.resource.SimpleResource;
 import farmsim.buildings.AbstractBuilding;
 import farmsim.buildings.Jetty;
 import farmsim.entities.agents.Agent;
@@ -7,22 +8,17 @@ import farmsim.entities.agents.AgentManager;
 import farmsim.entities.tileentities.TileEntity;
 import farmsim.entities.tileentities.objects.Water;
 import farmsim.entities.tools.ToolType;
-import farmsim.tiles.Tile;
+import farmsim.inventory.SimpleResourceHandler;
 import farmsim.util.Point;
 import farmsim.world.World;
 import farmsim.world.WorldManager;
-import farmsim.entities.animals.Fish;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import common.resource.SimpleResource;
-import farmsim.inventory.SimpleResourceHandler;
-
 /**
  * FishTask allows users to fish in a body of water. Fishing is possible on
- * Water tiles and will be successful if actioned on a Fish tile.
+ * Water tiles and will be successful randomly.
  * 
  * @author rachelcatchpoole for Team Adleman
  *
@@ -110,12 +106,9 @@ public class FishTask extends AgentRoleTask {
         jettyPoint = new Point(jetty.getWorldX() + 2, jetty.getWorldY());
         int radius = jetty.getRadius();
 
-        if (fishX >= jettyX - radius && fishX <= jettyX + radius
-                && fishY >= jettyY - radius && fishY <= jettyY + radius) {
-            return true;
-        }
+        return fishX >= jettyX - radius && fishX <= jettyX + radius
+                && fishY >= jettyY - radius && fishY <= jettyY + radius;
 
-        return false;
     }
 
     /**
@@ -137,7 +130,7 @@ public class FishTask extends AgentRoleTask {
 
         TileEntity entity = tile.getTileEntity();
         return nearJetty && entity instanceof Water
-                && entity.getTileType() == "water";
+                && entity.getTileType().equals("water");
     }
 
     @Override

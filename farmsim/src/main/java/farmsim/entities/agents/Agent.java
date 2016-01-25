@@ -1097,13 +1097,16 @@ public class Agent extends WorldEntity implements Drawable, Tradeable {
         currentRoleType = roleType;
     }
 
-
+    /**
      * Method to lock agent to a set area of a rectangle
      * @param workingArea rectangle area to lock worker in
      */
     public void setAreaLock(Rectangle workingArea) {
         this.isAreaLocked = true;
         this.lockedArea.setRect(workingArea);
+    }
+
+    /**
      * Finds the workers highest skill level.
      *
      * @return int value of the highest level.
@@ -1119,6 +1122,8 @@ public class Agent extends WorldEntity implements Drawable, Tradeable {
         return highestLevel;
     }
 
+    /**
+     * Gets the workers current Wage
      * @return workers wage.
      */
     public int getWage() {
@@ -1213,6 +1218,18 @@ public class Agent extends WorldEntity implements Drawable, Tradeable {
     public String getImageFileName() {
         return "/agents/individual/" + currentRoleType.spriteSheetName()
                 + getGender() + ".png";
+    }
+
+    public Rectangle getAreaLock() {
+        return lockedArea;
+    }
+
+    public boolean isAreaLocked() {
+        return isAreaLocked;
+    }
+
+    public void areaUnlock() {
+        isAreaLocked = false;
     }
 
     enum Orientation {

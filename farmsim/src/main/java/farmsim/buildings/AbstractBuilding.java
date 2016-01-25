@@ -2,8 +2,6 @@ package farmsim.buildings;
 
 import farmsim.GameManager;
 import farmsim.Viewport;
-import farmsim.entities.tileentities.TileEntity;
-import farmsim.entities.tileentities.objects.Water;
 import farmsim.pollution.PollutionManager;
 import farmsim.render.Drawable;
 import farmsim.tasks.BuildTask;
@@ -11,17 +9,15 @@ import farmsim.tasks.TaskManager;
 import farmsim.tiles.Tile;
 import farmsim.tiles.TileProperty;
 import farmsim.tiles.TileRegister;
-import farmsim.ui.AnimalProcessingPopUp2;
-import farmsim.ui.PopUpWindowManager;
 import farmsim.util.Clickable;
 import farmsim.util.Point;
 import farmsim.util.Tickable;
 import farmsim.world.World;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 import java.util.List;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 
 
 /**

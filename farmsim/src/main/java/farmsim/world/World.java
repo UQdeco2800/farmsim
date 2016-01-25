@@ -1,7 +1,6 @@
 package farmsim.world;
 
 import common.client.FarmClient;
-import farmsim.TechTree.TechTree;
 import farmsim.buildings.AbstractBuilding;
 import farmsim.buildings.StaffHouse;
 import farmsim.buildings.BuildingPlacer;
@@ -17,7 +16,6 @@ import farmsim.tiles.TileProperty;
 import farmsim.tiles.TileRegister;
 import farmsim.ui.MarketplaceController;
 import farmsim.util.Array2D;
-import farmsim.util.Leveler;
 import farmsim.util.Point;
 import farmsim.util.Tickable;
 import farmsim.world.generators.BasicWorldGenerator;
@@ -81,8 +79,6 @@ public class World implements Tickable {
     public static final double MAX_MOISTURE = 20.0;
     private FireManager fireManager;
     private StorageManager storageManager;
-    private Leveler leveler;
-    private TechTree techTree;
 
     private boolean initialised = false;
 
@@ -120,7 +116,6 @@ public class World implements Tickable {
         this.seasonManager = new SeasonManager();
         this.weatherManager = new WeatherManager();
         this.fireManager = new FireManager(this);
-        this.leveler = new Leveler();
         this.timeManager = new DayNight();
         this.contractGenerator = new ContractGenerator();
         this.activeContracts = new ContractHandler();
@@ -132,7 +127,6 @@ public class World implements Tickable {
                 MarketplaceController.HOST,
                 MarketplaceController.PORT);
         this.moneyHandler = new Money(this.farmClient);
-        this.techTree = new TechTree(leveler);
     }
 
     /**
@@ -623,14 +617,6 @@ public class World implements Tickable {
     }
 
     /**
-     * Gets the leveler.
-     * @return the current leveler.
-     */
-    public Leveler getLeveler(){
-        return leveler;
-    }
-
-    /**
      * Gets the current time manager.
      * @return the current time manager.
      */
@@ -762,9 +748,5 @@ public class World implements Tickable {
         }
         // staff house does not exist
         return null;
-    }
-
-    public TechTree getTechTree(){
-        return techTree;
     }
 }

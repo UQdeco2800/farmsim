@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Map;
 
-import farmsim.TechTree.PestSkill;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -230,24 +229,10 @@ public abstract class Crop extends TileEntity {
      * Infects the crop with a disease if the disease can infect the crop and
      * the crop is not already infected
      *
-     * @param disease to infect the crop with
+     * @param newPest to infect the crop with
      */
     public void infect(Pestilence newPest) {
-            try {
-                PestSkill skill = (PestSkill) WorldManager.getInstance()
-                        .getWorld().getTechTree().getPestSkill();
-                if (skill.isActive()) {
-                    if (skill.runSkill() == 0) {
-                        return;
-                    }
-                }
-            } catch (NullPointerException e){
 
-            }
-    		pest = newPest;
-    		++totalInfections;
-    		LOGGER.info("Crop infected: " + totalInfections + " total infections");
-    	}
     }
 
     /**
@@ -281,7 +266,7 @@ public abstract class Crop extends TileEntity {
 
     /**
      * Treats the agent if it has a disease
-     * @param med
+     * @param cure
      */
     public void applyTreatment(Pesticide cure) {
         if (isDiseased()) {

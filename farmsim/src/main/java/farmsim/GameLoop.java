@@ -6,7 +6,6 @@ import farmsim.util.TicksPerSecond;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import farmsim.entities.animals.FarmAnimalManager;
 import farmsim.entities.agents.Agent;
 import farmsim.entities.agents.AgentManager;
 import farmsim.entities.predators.PredatorManager;
@@ -30,7 +29,6 @@ public class GameLoop implements Runnable {
     private int tick;
     private AtomicBoolean quit;
     private AgentManager agentManager;
-    private FarmAnimalManager farmAnimalManager;
     private PredatorManager predatorManager;
     private DayNight dayNight;
     private RandomEventCreator rEC;
@@ -49,7 +47,6 @@ public class GameLoop implements Runnable {
         this.tick = tick;
         this.quit = quit;
         this.agentManager = AgentManager.getInstance();
-        this.farmAnimalManager = FarmAnimalManager.getInstance();
         this.predatorManager = WorldManager.getInstance().getWorld().getPredatorManager();
         this.dayNight = WorldManager.getInstance().getWorld().getTimeManager();
         this.rEC = RandomEventCreator.getInstance();
@@ -86,7 +83,6 @@ public class GameLoop implements Runnable {
 
             world.tick();
             agentManager.tick();
-            farmAnimalManager.tick();
             try {
                 predatorManager.tick();
             } catch (ViewportNotSetException e) {

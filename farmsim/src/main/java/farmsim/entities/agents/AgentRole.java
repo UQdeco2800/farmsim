@@ -132,11 +132,13 @@ public class AgentRole {
         return animation;
     }
 
+    /**
      * Add experience. If experience after is more than the maximum, set it to
      * the maximum;
      * @param exp Integer level of experience to add
      * @require that exp > 0
-     * @return 0 if the the experience is just added 1 if level up
+     * @return 0 if the the experience is just added, 1 if level up
+     */
     public int addExp(int exp) {
         int max = levelExperienceConstants[3];
         int beforeAdd = experience;
@@ -144,9 +146,9 @@ public class AgentRole {
             experience += exp;
             if (experience > max) {
                 experience = max;
-            return checkLevelUp(beforeAdd);
+                return checkLevelUp(beforeAdd);
+            }
         }
-
         return 0;
     }
 
@@ -168,20 +170,25 @@ public class AgentRole {
             }
         }
         return 0;
+    }
 
     /**
      * Get the experience
      *
      * @return the current experience
      */
+
     public int getExp() {
         return experience;
     }
 
+    /**
      * Calculates the level of the worker based on their current experience. The
      * experience is compared to the level experience constants until the
      * correct level is found
+     *
      * @return The current level of the roleType which is 1-5
+     */
     public int getLevel() {
         for (int i = 0; i < 4; i++) {
             if (experience < levelExperienceConstants[i]) {
@@ -198,3 +205,4 @@ public class AgentRole {
     public String toString() {
         return "Level " + Integer.toString(getLevel()) + " " + getName();
     }
+}

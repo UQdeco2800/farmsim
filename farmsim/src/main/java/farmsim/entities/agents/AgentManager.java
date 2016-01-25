@@ -44,8 +44,8 @@ public class AgentManager {
     }
 
     public void tick() {
-        for (int i = 0; i < agents.size(); i++) {
-            agents.get(i).tick();
+        for (Agent agent : agents) {
+            agent.tick();
         }
     }
 
@@ -207,8 +207,7 @@ public class AgentManager {
      */
     public boolean changeAgentWage(String name, int newWage) {
         name = name.replaceAll("_", " ");
-        for (int i = 0; i < agents.size(); i++) {
-            Agent agent = agents.get(i);
+        for (Agent agent : agents) {
             if (agent.getName().equals(name)) {
                 return agent.setWage(newWage);
             }

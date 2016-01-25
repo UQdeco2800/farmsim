@@ -1,27 +1,21 @@
 package farmsim.tasks;
 
 import common.resource.SimpleResource;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import farmsim.TechTree.RunSkillNotRequiredException;
 import farmsim.entities.agents.Agent;
 import farmsim.entities.disease.Pesticide;
-import farmsim.entities.tileentities.TileEntity;
 import farmsim.entities.tileentities.crops.Crop;
 import farmsim.entities.tools.ToolType;
-import farmsim.inventory.SimpleResourceHandler;
 import farmsim.tiles.Tile;
 import farmsim.tiles.TileRegister;
-import farmsim.ui.Notification;
-import farmsim.util.Leveler;
 import farmsim.util.Point;
 import farmsim.util.Sound;
 import farmsim.world.World;
 import farmsim.world.WorldManager;
 import javafx.application.Platform;
 import javafx.scene.control.TextArea;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * PlantTask requires an Agent to plant a seed on plowed dirt.
@@ -108,17 +102,7 @@ public class HarvestTask extends AgentRoleTask {
                             + "s" + System.getProperty("line.separator"));
                 });
             }
-            try {
-                WorldManager.getInstance().getWorld().getTechTree()
-                        .getMoneySkill().runSkill();
-            } catch (RunSkillNotRequiredException e) {
-                e.printStackTrace();
-            }
-        } else {
-            c = Leveler.MEMES;
         }
-        //Leveler.getInstance().addExperience(c, 50);
-        WorldManager.getInstance().getWorld().getLeveler().addExperience(c, 50);
         tile.setTileEntity(null);
         tile.setTileType(TileRegister.getInstance().getTileType("dirt"));
         harvest.stop();

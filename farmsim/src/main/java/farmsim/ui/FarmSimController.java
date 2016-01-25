@@ -9,7 +9,6 @@ import farmsim.entities.agents.Agent;
 import farmsim.entities.agents.AgentManager;
 import farmsim.entities.agents.AgentRole;
 
-import farmsim.entities.animals.*;
 import farmsim.entities.disease.Medicine;
 import farmsim.entities.disease.Pesticide;
 import farmsim.entities.fire.FireManager;
@@ -62,7 +61,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import org.apache.log4j.Level;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -201,8 +199,6 @@ public class FarmSimController extends Observable implements Initializable {
     private GraphicsContext graphicsContext;
     private AtomicBoolean quit;
     private FontAwesomeFXDemoPopUp fontAwesomePopUp;
-    private AnimalProcessingSelectionPopUp animalProcessingSelectionPopUp;
-    private AnimalProcessingSelectionController animalProcessingSelectionPopUpController;
     private CreditsPopUp creditsPopUp;
 
     private BuildingsPopUp buildingsPopUp;
@@ -440,7 +436,6 @@ public class FarmSimController extends Observable implements Initializable {
                     worldManager.getWorld().getMoneyHandler().getAmount());
             season.setText(worldManager.getWorld().getSeason() + "    ");
             slider.setValue(soundEffectsVolume);
-            openLevelerWindow();
             setSeedsQuantity();
             muteSoundEffects = false;
             
@@ -643,35 +638,6 @@ public class FarmSimController extends Observable implements Initializable {
             // Scene scene = new Scene(root);
             dimensionsInput.setContent(root);
             PopUpWindowManager.getInstance().addPopUpWindow(dimensionsInput);
-        }
-    }
-    
-    @FXML
-    public void openTechTree(ActionEvent event) throws IOException{
-    	//Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    	if (running) {
-            /*URL location;
-            FXMLLoader loader = new FXMLLoader();
-            Pane pane = null;
-            location = getClass().getResource("/techtree/MultiLeafV2.7.fxml");
-            loader.setLocation(location);
-            loader.setBuilderFactory(new JavaFXBuilderFactory());
-            try {
-                pane = loader.load();
-                TechTreeController controller = new TechTreeController(pane);
-                loader.setController(controller);
-                controller.initMouseClick();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            PopUpWindow popUp = new PopUpWindow(500, 500, 0, 0, "Tech Tree");
-            //Pane pane = FXMLLoader.load(getClass().getClassLoader().getResource("techtree/MultiLeafV2.7.fxml"));
-            popUp.setContent(pane);
-            PopUpWindowManager.getInstance().addPopUpWindow(popUp);*/
-            WorldManager.getInstance().getWorld().getTechTree()
-                    .createWindow(mainPane);
-            WorldManager.getInstance().getWorld().getTechTree()
-                    .getController().initMouseClick();
         }
     }
 
@@ -1505,76 +1471,6 @@ public class FarmSimController extends Observable implements Initializable {
         AgentManager.getInstance().addAgent(new Agent(x, y, .1, map));
     }
 
-    /**
-     * Adds initial farm animals to the world. Note: the numbers/types of
-     * starting farm animals may change in the future
-     */
-    private void createFarmAnimals() {
-        for (int i = 0; i < 4; i++) {
-            createFarmAnimal("cow");
-            createFarmAnimal("pig");
-            createFarmAnimal("sheep");
-            createFarmAnimal("duck");
-            createFarmAnimal("chicken");
-        }
-    }
-
-    private void createFarmAnimal(String type) {
-        World world = WorldManager.getInstance().getWorld();
-        char gender;
-        int x, y;
-
-        if (Math.random() > 0.5) {
-            gender = 'm';
-        } else {
-            gender = 'f';
-        }
-
-        Random random = new Random();
-        do {
-            x = random.nextInt(world.getWidth());
-            y = random.nextInt(world.getHeight());
-        } while (!Passable.passable(x, y));
-
-        switch (type) {
-            case "cow":
-                Cow cow = new Cow(world, x, y, 0.06, 2000, gender, 0);
-                FarmAnimalManager.getInstance().addFarmAnimal(cow);
-                break;
-            case "pig":
-                Pig pig = new Pig(world, x, y, 0.07, 2000, gender, 0);
-                FarmAnimalManager.getInstance().addFarmAnimal(pig);
-                break;
-            case "sheep":
-                Sheep sheep = new Sheep(world, x, y, 0.07, 2000, gender, 0);
-                FarmAnimalManager.getInstance().addFarmAnimal(sheep);
-                break;
-            case "duck":
-                Duck duck = new Duck(world, x, y, 0.07, 2000, gender, 0);
-                FarmAnimalManager.getInstance().addFarmAnimal(duck);
-                break;
-            case "chicken":
-                Chicken chicken = new Chicken(world, x, y, 0.07, 2000, gender, 0);
-                FarmAnimalManager.getInstance().addFarmAnimal(chicken);
-                break;
-            default:
-                break;
-        }
-    }
-
-    /**
-     * Opens a leveler window. Pretty much does what it says on the tin
-     *
-     * @throws Exception when things go wrong ;)
-     */
-        WorldManager.getInstance().getWorld().getLeveler()
-                .createWindow(mainPane);
-        WorldManager.getInstance().getWorld().getLeveler()
-                .getController().initMouseClick();
-
-    }
-
-
     /*
     public ComboBox animalTypeSelection;*/
 
@@ -1699,19 +1595,6 @@ public class FarmSimController extends Observable implements Initializable {
                 ((Label)(member.get(2))).setText(name);
             }
         }
-    }
-
-    //Call controller first? which wil call this??
-    //also put a check in to make sure that no buildings are currently being built
-    public void openAnimalProcessingSelection(ActionEvent actionEvent) throws IOException {
-        if (animalProcessingSelectionPopUp == null) {
-            //animalProcessingSelectionController.checkBuildingsOnMap();
-            animalProcessingSelectionPopUp = new AnimalProcessingSelectionPopUp();
-        } else if (PopUpWindowManager.getInstance().containsPopUpWindow(animalProcessingSelectionPopUp)) {
-            PopUpWindowManager.getInstance().removePopUpWindow(animalProcessingSelectionPopUp);
-            return;
-        }
-        PopUpWindowManager.getInstance().addPopUpWindow(animalProcessingSelectionPopUp);
     }
 
     /**

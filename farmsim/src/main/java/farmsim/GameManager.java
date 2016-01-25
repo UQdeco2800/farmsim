@@ -2,7 +2,6 @@ package farmsim;
 
 import farmsim.entities.WorldEntity;
 import farmsim.entities.agents.AgentManager;
-import farmsim.entities.animals.FarmAnimalManager;
 
 import farmsim.tiles.Tile;
 import farmsim.util.Clickable;
@@ -247,7 +246,6 @@ public class GameManager extends Observable {
         if (!isPrimaryButtonDown){
             List<WorldEntity> entities = new LinkedList<>();
             entities.addAll(AgentManager.getInstance().getAgents());
-            entities.addAll(FarmAnimalManager.getInstance().getFarmAnimals());
             for (int i=0; i<entities.size();i++){
                 WorldEntity entity = entities.get(i);
                 if (entity.getWorldX() >= minX && entity.getWorldY() <= maxX + 1

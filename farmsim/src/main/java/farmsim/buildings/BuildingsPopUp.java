@@ -1,9 +1,5 @@
 package farmsim.buildings;
 
-import farmsim.buildings.process.AbattoirBuilding;
-import farmsim.buildings.process.AnimalCoop;
-import farmsim.buildings.process.BarnBuilding;
-import farmsim.buildings.process.ShearingShed;
 import farmsim.ui.PopUpWindow;
 import farmsim.world.WorldManager;
 
@@ -94,43 +90,6 @@ public class BuildingsPopUp extends PopUpWindow {
         office.setCost(0);
         registerBuilding(office);
 
-        // Abattoir Building
-        BuildingPopUpPane abattoirBuilding = new BuildingPopUpPane(
-                "Abattoir Building", AbattoirBuilding.class);
-        abattoirBuilding.setSprite(AbattoirBuilding.SPRITE_LOCATION);
-        abattoirBuilding.setDescription("The Abattoir can be used to process various animals into their respective meats.");
-        abattoirBuilding.setMaxCount(1);
-        abattoirBuilding.setCost(100);
-        registerBuilding(abattoirBuilding);
-
-        // Shearing Shed
-        BuildingPopUpPane shearingShed = new BuildingPopUpPane(
-                "Shearing Shed", ShearingShed.class);
-        shearingShed.setSprite(ShearingShed.SPRITE_LOCATION);
-        shearingShed.setDescription("The Shearing Shed can be used to obtain wool as well as feather from chickens and ducks.");
-        shearingShed.setMaxCount(1);
-        shearingShed.setCost(150);
-        registerBuilding(shearingShed);
-
-        // Barn
-        BuildingPopUpPane barnBuilding = new BuildingPopUpPane(
-                "Barn", BarnBuilding.class);
-        barnBuilding.setSprite(BarnBuilding.SPRITE_LOCATION);
-        barnBuilding.setDescription("The Barn can be used to obtain milk from a cow.");
-        barnBuilding.setMaxCount(1);
-        barnBuilding.setCost(200);
-        registerBuilding(barnBuilding);
-
-        // Animal Coop
-        BuildingPopUpPane animalProcessor = new BuildingPopUpPane(
-                "Animal Coop", AnimalCoop.class);
-        animalProcessor.setSprite(AnimalCoop.SPRITE_LOCATION);
-        animalProcessor.setDescription("The Animal Coop can be used to obtain eggs from chickens and ducks.");
-        animalProcessor.setMaxCount(1);
-        animalProcessor.setCost(50);
-        registerBuilding(animalProcessor);
-
-        
         // Farm House
         BuildingPopUpPane farmHouse = new BuildingPopUpPane(
                 "Farm House", FarmHouse.class);

@@ -1,20 +1,16 @@
 package farmsim.entities.predators;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
-import farmsim.GameRenderer;
 import farmsim.Viewport;
-import farmsim.ViewportNotSetException;
 import farmsim.entities.WorldEntity;
-import farmsim.entities.agents.Agent;
 import farmsim.tiles.TileRegister;
 import farmsim.util.Point;
 import farmsim.world.World;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import farmsim.world.WorldManager;
+
+import javafx.scene.canvas.GraphicsContext;
+
+import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * A base class for all predators
