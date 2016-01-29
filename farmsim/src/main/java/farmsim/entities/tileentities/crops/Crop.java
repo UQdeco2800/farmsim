@@ -232,7 +232,8 @@ public abstract class Crop extends TileEntity {
      * @param newPest to infect the crop with
      */
     public void infect(Pestilence newPest) {
-
+        pest = newPest;
+        totalInfections++;
     }
 
     /**

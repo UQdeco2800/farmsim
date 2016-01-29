@@ -147,7 +147,7 @@ public class AppleTest {
         Pestilence pest = mock(Pestilence.class);
         when(pest.canInfect(apple)).thenReturn(true);
         apple.infect(pest);
-        assertEquals("Infections incorrect", Crop.getTotalInfections(), 1);
+        assertEquals("Infections incorrect", 1, Crop.getTotalInfections());
         Crop.setTreatmentRound(5);
         Crop.setremainingTreatments(4);
         for(int i = 0; i < 50; i++) {

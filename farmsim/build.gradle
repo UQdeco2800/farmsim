@@ -58,3 +58,6 @@ task(run2, dependsOn: "classes", type: JavaExec) {
 flyway {
     url = 'jdbc:derby:' + project.projectDir + '/decoFarmDB;user=decofarm;password=decofarm;create=true'
 }
+
+test.dependsOn flywayMigrate
+run.dependsOn flywayMigrate

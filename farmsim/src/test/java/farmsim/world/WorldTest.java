@@ -5,7 +5,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Assert;
-import farmsim.buildings.process.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,7 +13,6 @@ import farmsim.buildings.AbstractBuilding;
 import farmsim.tiles.TileProperty;
 import farmsim.util.Point;
 import farmsim.world.weather.Season;
-import farmsim.world.weather.SeasonManager;
 import farmsim.world.weather.WeatherType;
 
 public class WorldTest {
@@ -79,18 +77,6 @@ public class WorldTest {
         world.setWeather(WeatherType.RAINING);
         assertEquals(WeatherType.RAINING, world.getWeatherType());
         assertEquals("Raining", world.getWeatherName());
-    }
-    
-    @Test
-    public void testBuildings() {
-        assertEquals(0, world.getBuildings().size());
-        AbstractBuilding mockBuilding = mock(AbattoirBuilding.class);
-        world.addBuilding(mockBuilding);
-        assertEquals(1, world.getBuildings().size());
-        assertTrue(world.containsBuilding(mockBuilding));
-        world.removeBuilding(mockBuilding);
-        assertEquals(0, world.getBuildings().size());
-        assertFalse(world.containsBuilding(mockBuilding));
     }
     
     @Test(expected = Exception.class) 

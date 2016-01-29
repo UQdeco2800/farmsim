@@ -37,7 +37,6 @@ public class MainScreen extends JavaFXUI {
         testMainMenu();
         startDebugGame();
         disableFarmNoise(); // moo
-        testLevelerWindow();
         testConsole();  
         testTaskAndWorkerManager();
         testWorldSettings();
@@ -66,19 +65,6 @@ public class MainScreen extends JavaFXUI {
         sleep(10, TimeUnit.MILLISECONDS);
         clickOn(".exit-symbol");
         clickOn("#creditsBtn");
-        sleep(10, TimeUnit.MILLISECONDS);
-    }
-
-    /**
-     * Starts the game and clicks the leveler to test that it minimises and
-     * the re-enables it.
-     */
-    private void testLevelerWindow() {
-        clickOn("#startBtn");
-        sleep(10, TimeUnit.MILLISECONDS);
-        clickOn("#levelPane > #backgroundImage");
-        sleep(10, TimeUnit.MILLISECONDS);
-        clickOn("#levelPane");
         sleep(10, TimeUnit.MILLISECONDS);
     }
 
