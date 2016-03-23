@@ -8,6 +8,9 @@ There are no set guidelines in order to play our simulation, our main goal was t
 
 In terms of design, we have opted for a 2.5D styled game, this further emphasises the realistic atmosphere we were trying achieve. We ensured that a group consensus was made when developing the game to guarantee no visual elements (whether they are an animal, crop or even building) looked out of place. On a final note, we hope that you enjoy the game and have lots of fun!
 
+## NB: Where's the history?
+
+At the request of some contributors, this repo was rehosted and the commit graph flattened. As a consequence, we've lost contributor history. See CONTRIBUTORS for a list of contributors order by number of commits, and CONTRIBUTORS.png for a screenshot of the old repo's contributors graph.
 
 ## Useful Commands
 
