@@ -1,8 +1,6 @@
 package farmsim.buildings;
 
-import common.client.FarmClient;
-import common.resource.SimpleOrder;
-import common.resource.SimpleResource;
+import farmsim.resource.SimpleResource;
 import farmsim.entities.agents.Agent;
 import farmsim.entities.agents.AgentManager;
 import farmsim.ui.PopUpWindow;
@@ -39,7 +37,6 @@ public class StaffHousePopUp extends PopUpWindow implements Initializable {
     public static final int WIDTH = 850;
     public static final int HEIGHT = 500;
 
-    private FarmClient farmClient;
     private WagePopUp wagePopUp;
     private SelectionModel selection = new SelectionModel();
 
@@ -86,7 +83,6 @@ public class StaffHousePopUp extends PopUpWindow implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        farmClient = WorldManager.getInstance().getWorld().getFarmClient();
         getChildren().add(mainPane);
         addDragging(headerPane);
         setupContent();
@@ -253,8 +249,6 @@ public class StaffHousePopUp extends PopUpWindow implements Initializable {
         Text headerText = new Text(0, 0, "Name\t\t\t\t\tGender\t:)\tCost\t\tBLD\tBCR\tEGH\tFRM\tHNT\tMLK\tSHR");
         headerRow.getChildren().add(headerText);
         addRowToHire(headerRow);
-
-        getMarketPeon();
     }
 
     private void fillHelpTab() {
@@ -361,83 +355,5 @@ public class StaffHousePopUp extends PopUpWindow implements Initializable {
         fxmlLoader.setLocation(location);
         fxmlLoader.load(location.openStream());
         wagePopUp = fxmlLoader.getController();
-    }
-
-    public void getMarketPeon(){
-        String row;
-        if(!farmClient.isAuthenticated()) {
-            return;
-        }
-        //normally it should be getSellOrders("peon")
-        //getting test values from the database
-        List<SimpleOrder> orderList = farmClient.getSellOrders("test");
-        Iterator<SimpleOrder> iterateOrder = orderList.iterator();
-        while (iterateOrder.hasNext()) {
-            SimpleOrder order = iterateOrder.next();
-            SimpleResource resource = order.getResource();
-            Map<String, String> attributes = resource.getAttributes();
-
-            long price = order.getPrice();
-            int quantity = resource.getQuantity();
-
-            if (quantity < 1 || attributes.isEmpty()) {
-                continue;
-            }
-
-            String skillDetail = "";
-            Agent agent = new Agent(0, 0, 1, attributes);
-
-            List<String> roleNames = agent.getRoleTypeNames();
-
-            Iterator<String> iterateRole = roleNames.iterator();
-            while (iterateRole.hasNext()) {
-                Agent.RoleType roleType = agent.getRoleTypeFromString(
-                        iterateRole.next());
-                skillDetail = skillDetail + "\t " + agent.getLevelForRole(roleType);
-            }
-
-            String agentName = agent.getName();
-            agentName = agentName.replaceAll(" ", "_");
-
-            while (agentName.length() < 5) {
-                agentName = agentName + " ";
-            }
-            agentName = agentName + " ";
-
-
-            String agentGender = agent.getGender();
-            while (agentGender.length() < 7) {
-                agentGender = agentGender + " ";
-            }
-
-            long wage = price;
-
-            if (agentName.length() >= 20) {
-                row = agentName + "\t" + agentGender + "\t " + agent.getHappiness() + "\t " + wage + "\t" + skillDetail;
-            } else if (agentName.length() >= 16) {
-                row = agentName + "\t\t" + agentGender + "\t " + agent.getHappiness() + "\t " + wage + "\t" + skillDetail;
-            } else if (agentName.length() >= 12) {
-                row = agentName + "\t\t\t" + agentGender + "\t " + agent.getHappiness() + "\t " + wage + "\t" + skillDetail;
-            } else if (agentName.length() >= 8) {
-                row = agentName + "\t\t\t\t" + agentGender + "\t " + agent.getHappiness() + "\t " + wage + "\t" + skillDetail;
-            } else {
-                row = agentName + "\t\t\t\t\t" + agentGender + "\t " + agent.getHappiness() + "\t "+wage+ "\t" + skillDetail;
-            }
-
-            Text text = new Text(0, 0, row);
-            VBox temp = new VBox();
-            temp.getChildren().add(text);
-
-            temp.setOnMouseClicked(event -> {
-                if (selection.contains(temp)) {
-                    selection.remove(temp);
-                } else {
-                    selection.remove(selection.getCurrentSelection());
-                    selection.add(temp);
-                }
-            });
-
-            addRowToHire(temp);
-        }
     }
 }

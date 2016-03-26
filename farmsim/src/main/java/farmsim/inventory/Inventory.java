@@ -3,7 +3,7 @@ package farmsim.inventory;
 import java.util.*;
 
 import farmsim.entities.tools.ToolType;
-import common.resource.SimpleResource;
+import farmsim.resource.SimpleResource;
 
 /**
  * An Inventory/Rucksack class for an agent's personal storage of items

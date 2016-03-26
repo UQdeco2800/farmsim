@@ -8,7 +8,7 @@ import java.util.Hashtable;
 
 import org.junit.Test;
 
-import common.resource.SimpleResource;
+import farmsim.resource.SimpleResource;
 
 public class InventoryTest {
     ArrayList<SimpleResource> compareRucksack = new ArrayList<SimpleResource>();

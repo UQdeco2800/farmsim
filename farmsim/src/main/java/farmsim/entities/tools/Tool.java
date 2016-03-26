@@ -3,7 +3,7 @@ package farmsim.entities.tools;
 import java.util.Hashtable;
 
 import farmsim.entities.WorldEntity;
-import common.resource.SimpleResource;
+import farmsim.resource.SimpleResource;
 /**
  * Describes a tool that can be used by a peon to perform a task.
  * 

@@ -3,7 +3,6 @@ package farmsim.tasks;
 import farmsim.buildings.AbstractBuilding;
 import farmsim.buildings.LeggyShrine;
 import farmsim.entities.agents.Agent;
-import farmsim.entities.disease.Medicine;
 import farmsim.entities.tools.ToolType;
 import farmsim.util.Sound;
 
@@ -35,7 +34,6 @@ public class BuildTask extends AgentRoleTask {
 
     @Override
     public void postTask() {
-    	Medicine.alterTreatmentPoints(building.getBuildTime());
         building.completeBuilding();
         if (building instanceof LeggyShrine) {
             leggy.play();

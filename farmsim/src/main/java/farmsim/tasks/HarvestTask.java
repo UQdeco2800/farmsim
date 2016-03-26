@@ -1,8 +1,7 @@
 package farmsim.tasks;
 
-import common.resource.SimpleResource;
+import farmsim.resource.SimpleResource;
 import farmsim.entities.agents.Agent;
-import farmsim.entities.disease.Pesticide;
 import farmsim.entities.tileentities.crops.Crop;
 import farmsim.entities.tools.ToolType;
 import farmsim.tiles.Tile;
@@ -51,9 +50,6 @@ public class HarvestTask extends AgentRoleTask {
 
     @Override
     public void postTask() {
-    	Pesticide.alterTreatmentPoints(getRoleLevel() *
-    			((Crop) WorldManager.getInstance().getWorld().getTile(
-    					location).getTileEntity()).getQuantity());
         Tile tile = world.getTile((int) location.getX(), (int) location.getY());
         String c;
         ArrayList<String> deadStages = new ArrayList<>();

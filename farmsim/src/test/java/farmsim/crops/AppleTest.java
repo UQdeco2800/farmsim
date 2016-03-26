@@ -19,7 +19,6 @@ import java.util.Map;
 
 import farmsim.contracts.ContractHandler;
 import farmsim.entities.agents.Agent;
-import farmsim.entities.disease.Pestilence;
 import farmsim.entities.tileentities.crops.*;
 import farmsim.tiles.Tile;
 
@@ -129,42 +128,11 @@ public class AppleTest {
             switch(i) {
                 case 0:
                     assertEquals("Incorrect stage", apple.getTileType(), "Apple1");
-                    
                     break;
                 case 1:
                     assertEquals("Incorrect stage", apple.getTileType(), "Apple2");
                     break;
             }
-        }
-    }
-    
-    /**
-     * Tests the process of a crop (specifically an apple) being diseased.
-     */
-    @Test
-    public void diseaseTest() {
-        apple = new Apple(tile);
-        Pestilence pest = mock(Pestilence.class);
-        when(pest.canInfect(apple)).thenReturn(true);
-        apple.infect(pest);
-        assertEquals("Infections incorrect", 1, Crop.getTotalInfections());
-        Crop.setTreatmentRound(5);
-        Crop.setremainingTreatments(4);
-        for(int i = 0; i < 50; i++) {
-            apple.tick();
-        }
-    }
-    
-    /**
-     * Tests the behaviour of the apple when it reaches DISEASE_TICKS but does
-     * not have a disease.
-     */
-    @Test
-    public void nullDiseaseTest() {
-        apple = new Apple(tile);
-        Crop.setremainingTreatments(-1);
-        for(int i = 0; i < 50; i++) {
-            apple.tick();
         }
     }
   

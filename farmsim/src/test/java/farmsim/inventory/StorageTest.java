@@ -8,7 +8,7 @@ import java.util.Hashtable;
 
 import org.junit.Test;
 
-import common.resource.SimpleResource;
+import farmsim.resource.SimpleResource;
 
 public class StorageTest {
     Hashtable<String, String> hashtable = new Hashtable<String, String>();

@@ -1,6 +1,6 @@
 package farmsim.buildings;
 
-import common.Constants;
+import farmsim.Constants;
 import farmsim.money.Money;
 import farmsim.ui.Dialog;
 import farmsim.ui.PopUpWindowManager;

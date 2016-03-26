@@ -7,9 +7,7 @@ import java.util.ResourceBundle;
 
 import org.apache.derby.impl.tools.sysinfo.Main;
 
-import common.client.FarmClient;
-import common.marketGUI.*;
-import common.resource.SimpleResource;
+import farmsim.resource.SimpleResource;
 import farmsim.inventory.Resources;
 import farmsim.inventory.Storage;
 import farmsim.inventory.StorageManager;
@@ -310,14 +308,10 @@ public class StorageController implements Initializable{
         }  
         return true;  
     }
-    
-    
-    
+
     public void sell() {
-    	FarmClient client; 
     }
-    
-    
+
     private void dialogBox(String message) {
     	dialogMessage.setText(message);
     	FadeTransition ft = new FadeTransition(Duration.millis(2000), dialogImage);
@@ -332,11 +326,7 @@ public class StorageController implements Initializable{
     	ft1.setFromValue(1.0);
     	ft1.setToValue(0.0);
     	ft1.play();
-    	
     }
-    
-    
-   
 }
 
 

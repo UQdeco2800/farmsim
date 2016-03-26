@@ -1,7 +1,5 @@
 package farmsim.money;
 
-import common.client.FarmClient;
-
 import org.junit.Test;
 import org.junit.Before;
 
@@ -17,9 +15,7 @@ public class MoneyTest {
 
 	@Before
     public void setupMoney() {
-        FarmClient client = mock(FarmClient.class);
-        when(client.isAuthenticated()).thenReturn(false);
-        money = new Money(client, 1000);
+        money = new Money(1000);
     }
 	
     @Test

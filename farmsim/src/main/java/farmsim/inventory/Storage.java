@@ -3,7 +3,7 @@ package farmsim.inventory;
 import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import common.resource.SimpleResource;
+import farmsim.resource.SimpleResource;
 
 /**
  * Singleton Storage instance used for storing managing items

@@ -1,12 +1,5 @@
-configurations.all {
-    // check for updates every build
-    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
-}
-
-
 dependencies {
     compile (
-        [group: 'deco2800-2015-marketplace', name: 'common', version: '0.7', changing: true],
         [group: 'org.slf4j', name:'slf4j-api', version: '1.7.12'],
         [group: 'org.slf4j', name:'slf4j-log4j12', version: '1.7.12'],
         [group: 'org.apache.derby', name: 'derby', version: '10.11.1.1'],

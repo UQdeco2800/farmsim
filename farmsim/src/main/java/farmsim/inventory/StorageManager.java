@@ -1,7 +1,7 @@
 package farmsim.inventory;
 
 import java.util.*;
-import common.resource.SimpleResource;
+import farmsim.resource.SimpleResource;
 /**
  * Storage manager for handling storage class functions.
  *

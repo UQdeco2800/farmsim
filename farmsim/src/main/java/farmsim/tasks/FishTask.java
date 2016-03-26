@@ -1,6 +1,6 @@
 package farmsim.tasks;
 
-import common.resource.SimpleResource;
+import farmsim.resource.SimpleResource;
 import farmsim.buildings.AbstractBuilding;
 import farmsim.buildings.Jetty;
 import farmsim.entities.agents.Agent;

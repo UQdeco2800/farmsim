@@ -69,7 +69,6 @@ public class TicksPerSecond {
             @Override
             public void run() {
                 farmSimController.showTps();
-                farmSimController.updateInfectionCounts();
             }
         });
     }

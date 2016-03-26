@@ -3,9 +3,7 @@ package farmsim.ui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import common.Constants;
-import common.client.GenericClient;
-import common.exception.UnauthenticatedUserException;
+import farmsim.Constants;
 import farmsim.entities.tileentities.TileEntity;
 import farmsim.money.Money;
 import farmsim.tiles.Tile;
@@ -83,13 +81,6 @@ public class DimensionsPopUpController implements Initializable {
                                                 world.getWidth()),
                                 (int) Math.max(maxSelected.getY(),
                                                 world.getHeight()));
-                GenericClient client = WorldManager.getInstance().getWorld()
-                                .getFarmClient();
-                try {
-                    client.setWallet((long) (client.getWallet() - price));
-                } catch (UnauthenticatedUserException e) {
-                    /* Just ignore it, wallet will update on next login */
-                }
             } else {
                 // Tell the player they need more money
                 PopUpWindow popUp = new Dialog("Insufficient funds",
@@ -171,11 +162,7 @@ public class DimensionsPopUpController implements Initializable {
 
     /**
      * Display the users current selection on the map
-     * 
-     * @param pressedLocation
-     *            the users initial press
-     * @param currentLocation
-     *            the current location of the mouse
+     *
      */
     private void drawSelection() {
         graphicsContext.setStroke(Color.YELLOW);

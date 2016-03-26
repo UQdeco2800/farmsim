@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import common.resource.SimpleResource;
+import farmsim.resource.SimpleResource;
 import farmsim.util.Point;
 
 /**

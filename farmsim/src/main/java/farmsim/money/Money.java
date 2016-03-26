@@ -1,8 +1,5 @@
 package farmsim.money;
 
-import common.client.FarmClient;
-import common.exception.UnauthenticatedUserException;
-
 import java.util.Observable;
 
 /**
@@ -13,26 +10,20 @@ import java.util.Observable;
  */
 public class Money extends Observable {
     private long decoCoins;
-    private  FarmClient client;
 
-    public Money(FarmClient client, long defaultBalance) {
-        this.client = client;
+    public Money(long defaultBalance) {
         this.decoCoins = defaultBalance;
     }
 
-    public Money(FarmClient client) {
-        this(client, 1000);
+    public Money() {
+        this(1000);
     }
 
     /**
      * Update balance from farm client.
      */
     public void update() {
-        try {
-            decoCoins = client.getWallet();
-            handleObservers();
-        } catch (UnauthenticatedUserException e) {
-        }
+        handleObservers();
     }
 
     /**
@@ -40,10 +31,6 @@ public class Money extends Observable {
      */
     public void setAmount(long amount) {
         decoCoins = amount;
-        try {
-            client.setWallet(amount);
-        } catch (UnauthenticatedUserException e) {
-        }
         handleObservers();
     }
 

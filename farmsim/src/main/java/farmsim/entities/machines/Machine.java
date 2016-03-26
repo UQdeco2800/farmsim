@@ -2,7 +2,7 @@ package farmsim.entities.machines;
 
 import java.util.Hashtable;
 
-import common.resource.SimpleResource;
+import farmsim.resource.SimpleResource;
 
 import farmsim.entities.WorldEntity;
 

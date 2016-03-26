@@ -9,8 +9,6 @@ import farmsim.entities.agents.Agent;
 import farmsim.entities.agents.AgentManager;
 import farmsim.entities.agents.AgentRole;
 
-import farmsim.entities.disease.Medicine;
-import farmsim.entities.disease.Pesticide;
 import farmsim.entities.fire.FireManager;
 import farmsim.entities.machines.MachineType;
 import farmsim.entities.tileentities.TileEntity;
@@ -18,7 +16,7 @@ import farmsim.entities.tileentities.crops.Crop;
 import farmsim.entities.tileentities.objects.BaseObject;
 import farmsim.entities.tileentities.objects.Fence;
 import farmsim.entities.tools.ToolType;
-import common.resource.SimpleResource;
+import farmsim.resource.SimpleResource;
 import farmsim.inventory.Storage;
 import farmsim.particle.ParticleController;
 import farmsim.tasks.*;
@@ -432,7 +430,7 @@ public class FarmSimController extends Observable implements Initializable {
             dayIndicator.setVisible(true);
             nightIndicator.setVisible(false);
             dayNum.setText("  1/1/2800    ");
-            wallet.setText(" " + common.Constants.D +
+            wallet.setText(" " + farmsim.Constants.D +
                     worldManager.getWorld().getMoneyHandler().getAmount());
             season.setText(worldManager.getWorld().getSeason() + "    ");
             slider.setValue(soundEffectsVolume);
@@ -1493,56 +1491,6 @@ public class FarmSimController extends Observable implements Initializable {
         agentRoleMangement.setContent((Pane) root);
         PopUpWindowManager.getInstance().addPopUpWindow(agentRoleMangement);
     }
-    
-    /**
-     * Updates the display of infection numbers in disease tab
-     */
-    public void updateInfectionCounts() {
-    	peonInfectionLabel.setText(String.valueOf(Agent.getTotalInfections()));
-    	cropInfectionLabel.setText(String.valueOf(Crop.getTotalInfections()));
-    	totalInfectionLabel.setText(String.valueOf(
-    			Agent.getTotalInfections() + Crop.getTotalInfections()));
-    	numTreatmentsLabel.setText(String.valueOf(
-    			Medicine.getTreatmentPoints() + Pesticide.getTreatmentPoints()));
-    }
-    
-    /**
-     * Treat all infected crops and agents with up to 5 points 
-     */
-    @FXML
-    public void treatmentSmallPressed() {
-    	treatInfections(5);
-    }
-    
-    /**
-     * Treat all infected crops and agents with up to 10 points 
-     */
-    @FXML
-    public void treatmentMediumPressed() {
-    	treatInfections(10);
-    }
-    
-    /**
-     * Treat all infected crops and agents with up to 20 points 
-     */
-    @FXML
-    public void treatmentLargePressed() {
-    	treatInfections(20);
-    }
-    
-    private void treatInfections(int treatmentPoints) {
-    	int usablePoints = Medicine.getTreatmentPoints() + Pesticide.getTreatmentPoints();
-    	int pointsUsed = (usablePoints - treatmentPoints > 0) ? treatmentPoints : usablePoints;
-    	usablePoints -= pointsUsed;
-    	int medUse = pointsUsed / 2;
-    	int pestUse = pointsUsed - medUse;
-    	Medicine.alterTreatmentPoints(-medUse);
-    	Pesticide.alterTreatmentPoints(-pestUse);
-    	Agent.setTreatmentRound(pointsUsed);
-    	Crop.setTreatmentRound(pointsUsed);
-    	Agent.setremainingTreatments(Agent.getTotalInfections());
-    	Crop.setremainingTreatments(Crop.getTotalInfections());
-    }
 
     /**
      * Opens a window which shows a range of FontAwesomeFx Examples
@@ -1656,7 +1604,7 @@ public class FarmSimController extends Observable implements Initializable {
         @Override
         public void update(Observable amount, Object arg1) {
             Platform.runLater(() ->
-                wallet.setText(" " + common.Constants.D +
+                wallet.setText(" " + farmsim.Constants.D +
                 		worldManager.getWorld().getMoneyHandler().getAmount())
             );
         }

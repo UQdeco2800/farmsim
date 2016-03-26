@@ -5,8 +5,7 @@ allprojects {
 
 repositories {
   mavenLocal()
-  maven { url 'http://deco2800-artifactory.uqcloud.net/artifactory/libs-release/' }
-  //mavenCentral()
+  mavenCentral()
 }
 
 subprojects {
@@ -20,8 +19,7 @@ subprojects {
 
   repositories {
     mavenLocal()
-    maven { url 'http://deco2800-artifactory.uqcloud.net/artifactory/libs-release/' }
-    //mavenCentral()
+    mavenCentral()
   }
 
   tasks.withType(Javadoc) {

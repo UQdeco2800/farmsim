@@ -2,11 +2,9 @@ package farmsim.entities.agents;
 
 import com.sun.javafx.tk.Toolkit;
 import farmsim.GameRenderer;
-import common.resource.SimpleResource;
-import common.resource.Tradeable;
+import farmsim.resource.SimpleResource;
 import farmsim.Viewport;
 import farmsim.entities.WorldEntity;
-import farmsim.entities.disease.*;
 import farmsim.entities.machines.*;
 import farmsim.entities.tools.*;
 import farmsim.inventory.Inventory;
@@ -38,7 +36,7 @@ import java.util.*;
  *
  * @author Leggy
  */
-public class Agent extends WorldEntity implements Drawable, Tradeable {
+public class Agent extends WorldEntity implements Drawable {
 
     //Create slf4j logger
     private static final Logger LOGGER =
@@ -55,8 +53,6 @@ public class Agent extends WorldEntity implements Drawable, Tradeable {
     private int tickIndex = 0;
     // Current animation for agent
     private Animation animation;
-    // Diseased status
-    private Illness disease = null;
     // The agent's rucksack/inventory
     private Inventory rucksack;
     // The tool the agent has equipped
@@ -264,44 +260,6 @@ public class Agent extends WorldEntity implements Drawable, Tradeable {
     }
 
     /**
-     * Simple getter for checking if agent is diseased.
-     *
-     * @return boolean value indicating if agent has a disease
-     */
-    public boolean isDiseased() {
-        return disease != null;
-    }
-
-    /**
-     * Infects the agent with a disease if the disease can infect the agent and
-     * the agent is not already infected
-     *
-     * @param newDisease to infect the agent with
-     */
-    public void infect(Illness newDisease) {
-        if (!isDiseased() && newDisease.canInfect(this)) {
-            disease = newDisease;
-            animation =
-                    getRole(currentRoleType).getTravellingAnimation(orientation,
-                            this.disease);
-            ++totalInfections;
-            LOGGER.info(
-                    "Peon Infected, " + totalInfections + " total infections");
-        }
-    }
-
-    /**
-     * Treats the agent if it has a disease
-     *
-     * @param med
-     */
-    public void applyTreatment(Medicine med) {
-        if (isDiseased()) {
-            disease.alterHealth(-med.getPotency());
-        }
-    }
-
-    /**
      * Method for initialising all of the roles for the agent.
      */
     private void initRoles() {
@@ -341,10 +299,6 @@ public class Agent extends WorldEntity implements Drawable, Tradeable {
     @Override
     public void tick() {
         ++tickIndex;
-        if (tickIndex % DISEASE_TICKS == 0) {
-            diseaseTick();
-        }
-
         /**
          * If agent is completing an IdleTask try and get a real task.
          */
@@ -357,118 +311,6 @@ public class Agent extends WorldEntity implements Drawable, Tradeable {
             tickIndex = 0;
         }
     }
-
-    private void diseaseTick() {
-        spreadDisease(false);
-        // probability of getting sick depends on season
-        switch (WorldManager.getInstance().getWorld().getSeason()) {
-            case "SUMMER":
-                createDisease(0.01);
-                break;
-            case "AUTUMN":
-                createDisease(0.05);
-                break;
-            case "WINTER":
-                createDisease(0.1);
-                break;
-            case "SPRING":
-                createDisease(0.05);
-                break;
-        }
-        // also has a chance of getting sick relative to pollution level
-        createDisease(WorldManager.getInstance().getWorld().getTile(
-                getLocation()).getPollution());
-        if (isDiseased()) {
-            if (remainingTreatments > 0) {
-                disease.alterHealth(-treatmentRound);
-                --remainingTreatments;
-            }
-            disease.makeOlder();
-            if ((disease.getAge() > disease.getLifetime()) ||
-                    disease.getHealth() <= 0) {
-                disease = null;
-                animation = getRole(currentRoleType)
-                        .getTravellingAnimation(orientation,
-                                this.disease);
-                --totalInfections;
-                if (happiness < 10) {
-                    ++happiness;
-                }
-                LOGGER.info("Disease cured, " + totalInfections +
-                        " total infections");
-            }
-        }
-    }
-
-    /**
-     * Spreads diseases to nearby agents based on distance
-     * and the contagiousness of the disease
-     * if guarantee is true then it will infect all agents in range
-     * guarantee is mainly used for testing
-     *
-     * @param guarantee
-     */
-    public void spreadDisease(boolean guarantee) {
-        if (!isDiseased()) {
-            return;
-        }
-        Agent temp;
-        for (int i = 0; i < AgentManager.getInstance().getAgents().size();
-             ++i) {
-            try {
-                temp = AgentManager.getInstance().getAgents().get(i);
-            } catch (IndexOutOfBoundsException | NullPointerException e) {
-                break;
-            }
-            if ((temp.getLocation().distance(this.getLocation()) <
-                    disease.getSeverity() / 20) &&
-                    ((rand.nextDouble() * 100 < disease.getContagiousness()) ||
-                            guarantee)) {
-                try {
-                    temp.infect(this.disease.getClass().newInstance());
-                    if (temp.getHappiness() > 1) {
-                        temp.setHappiness(temp.getHappiness() - 1);
-                    }
-                } catch (InstantiationException | IllegalAccessException e) {
-                    if (e instanceof InstantiationException) {
-                        LOGGER.error(
-                                "InstantiationException in spread disease");
-                    } else {
-                        LOGGER.error(
-                                "IllegalAccessException in spread disease");
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * Infects this Agent with a random disease with
-     * probability likelihood
-     *
-     * @param likelihood
-     */
-    public void createDisease(double likelihood) {
-        ArrayList<Class<? extends Illness>> illnesses = new ArrayList<>(
-                Arrays.asList(BlackPlague.class, Influenza.class, Measles.class,
-                        Sars.class));
-        if (rand.nextDouble() < likelihood) {
-            try {
-                this.infect(illnesses.get(rand.nextInt(illnesses.size()))
-                        .newInstance());
-                if (happiness > 1) {
-                    --happiness;
-                }
-            } catch (InstantiationException | IllegalAccessException e) {
-                if (e instanceof InstantiationException) {
-                    LOGGER.error("InstantiationException in create disease");
-                } else {
-                    LOGGER.error("IllegalAccessException in create disease");
-                }
-            }
-        }
-    }
-
 
     public void moveTowardTaskLocation() {
         if (task instanceof IdleTask) {
@@ -509,9 +351,6 @@ public class Agent extends WorldEntity implements Drawable, Tradeable {
      * @return
      */
     public double getSpeed() {
-        if (isDiseased()) {
-            return speed * ((float) (disease.getSeverity()) / 100.0);
-        }
         return speed;
     }
 
@@ -584,10 +423,7 @@ public class Agent extends WorldEntity implements Drawable, Tradeable {
             // Calculate the orientation to task
             calculateOrientationToTask();
             // Get the relevant animation and start it
-            animation = getRole(currentRoleType).getTravellingAnimation
-                    (orientation,
-                            disease);
-
+            animation = getRole(currentRoleType).getTravellingAnimation(orientation);
             animation.reset();
             animation.start();
         }
@@ -1165,8 +1001,7 @@ public class Agent extends WorldEntity implements Drawable, Tradeable {
     public void unlockRole() {
         roleTypeLocked = false;
     }
-
-    @Override
+    
     public Map<String, String> getAttributes() {
         //Save roleType experience to marketplaceProperties
         for (AgentRole role : roles) {
@@ -1177,12 +1012,10 @@ public class Agent extends WorldEntity implements Drawable, Tradeable {
         return marketplaceProperties;
     }
 
-    @Override
     public int getQuantity() {
         return 1;
     }
 
-    @Override
     public int getMaxQuantity() {
         return 1;
     }
@@ -1201,12 +1034,10 @@ public class Agent extends WorldEntity implements Drawable, Tradeable {
         return name + ", " + currentRoleType.displayName();
     }
 
-    @Override
     public Integer getId() {
         return this.id;
     }
 
-    @Override
     public void setId(Integer id) {
         this.id = id;
     }

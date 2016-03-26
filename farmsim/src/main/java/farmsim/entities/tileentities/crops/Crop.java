@@ -8,9 +8,6 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import farmsim.entities.disease.Blight;
-import farmsim.entities.disease.Pesticide;
-import farmsim.entities.disease.Pestilence;
 import farmsim.entities.tileentities.TileEntity;
 import farmsim.tiles.Tile;
 
@@ -39,7 +36,6 @@ public abstract class Crop extends TileEntity {
     protected int[] stageTimes;
     protected boolean isDead;
     protected int tickIndex = 0;
-    protected Pestilence pest = null;
     protected static final int DISEASE_TICKS = 50;
     protected static int totalInfections = 0;
     // Amount to treat each infected crop next tick
@@ -87,7 +83,6 @@ public abstract class Crop extends TileEntity {
      */
     @Override
     public void tick() {
-        tickDiseaseProperties();
         tickWaterProperties();
         /*
          * If there is a stage afterward we can change to, keep going, otherwise
@@ -135,30 +130,6 @@ public abstract class Crop extends TileEntity {
     }
 
     /**
-     * Performs all the disease management actions required on a tick.
-     */
-    private void tickDiseaseProperties() {
-        ++tickIndex;
-        if (tickIndex % DISEASE_TICKS == 0) {
-            spreadDisease();
-            createDisease(0.1);
-            if (isDiseased()) {
-                if (remainingTreatments > 0) {
-                    pest.alterHealth(-treatmentRound);
-                    --remainingTreatments;
-                }
-                pest.makeOlder();
-                if ((pest.getAge() > pest.getLifetime()) ||
-                        pest.getHealth() <= 0) {
-                    pest = null;
-                    --totalInfections;
-                    LOGGER.info("Crop treated: " + totalInfections + " total infections");
-                }
-            }
-        }
-    }
-
-    /**
      * Advances the growth of the crop artificially.
      * @param time to advance the crop.
      */
@@ -200,9 +171,6 @@ public abstract class Crop extends TileEntity {
      *      An int of the quantity of crops harvested.
      */
     public int getQuantity() {
-        if (isDiseased()) {
-            return (int) (harvestQuantity * ((float) (pest.getSeverity()) / 100.0));
-        }
         return harvestQuantity;
     }
 
@@ -214,26 +182,6 @@ public abstract class Crop extends TileEntity {
      */
     public boolean isDead() {
         return isDead;
-    }
-
-    /**
-     * Simple getter for checking if crop is diseased.
-     *
-     * @return boolean value indicating if crop has a disease
-     */
-    public boolean isDiseased() {
-        return pest != null;
-    }
-
-    /**
-     * Infects the crop with a disease if the disease can infect the crop and
-     * the crop is not already infected
-     *
-     * @param newPest to infect the crop with
-     */
-    public void infect(Pestilence newPest) {
-        pest = newPest;
-        totalInfections++;
     }
 
     /**
@@ -263,97 +211,6 @@ public abstract class Crop extends TileEntity {
                 harvestQuantity = (int) Math.round(harvestQuantity * 0.7);
             }
         }
-    }
-
-    /**
-     * Treats the agent if it has a disease
-     * @param cure
-     */
-    public void applyTreatment(Pesticide cure) {
-        if (isDiseased()) {
-            pest.alterHealth(-cure.getPotency());
-        }
-    }
-
-    /**
-     * Infects this crop with a disease.
-     * @param likelihood
-     *      the chance that the crop will become diseased.
-     */
-    public void createDisease(double likelihood) {
-        ArrayList<Class<? extends Pestilence>> pests = new ArrayList<>(
-                Arrays.asList(Blight.class));
-        if (rand.nextDouble() < likelihood) {
-            try {
-                this.infect(pests.get(rand.nextInt(pests.size())).newInstance());
-            } catch (InstantiationException e) {
-                LOGGER.error(e.getMessage());
-            } catch (IllegalAccessException e) {
-                LOGGER.error(e.getMessage());
-            }
-        }
-    }
-
-    /**
-     * Spreads the disease of an infected crop to adjacent crops.
-     */
-    public void spreadDisease() {
-        if (!isDiseased()) {
-            return;
-        }
-        TileEntity temp;
-        double x, y, xPos, yPos;
-        xPos = this.getWorldX();
-        yPos = this.getWorldY();
-        for (x = xPos - (this.pest.getContagiousness() / 10);
-             x <= xPos + (this.pest.getContagiousness() / 10); ++x) {
-            for (y = yPos - (this.pest.getContagiousness() / 10);
-                 y <= yPos + (this.pest.getContagiousness() / 10); ++y) {
-                if ((x > 0) && (y > 0) &&
-                        (x < WorldManager.getInstance().getWorld().getWidth()) &&
-                        (y < WorldManager.getInstance().getWorld().getHeight())) {
-                    temp = WorldManager.getInstance().getWorld().getTile(
-                            (int) x, (int) y).getTileEntity();
-                    if ((temp != null) && (temp instanceof Crop)) {
-                        try {
-                            ((Crop) temp).infect(this.pest.getClass().newInstance());
-                        } catch (InstantiationException e) {
-                            LOGGER.error(e.getMessage());
-                        } catch (IllegalAccessException e) {
-                            LOGGER.error(e.getMessage());
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * Gives the total number of crops that are infected.
-     * @return
-     *      the number of infected crops.
-     */
-    public static int getTotalInfections() {
-        return totalInfections;
-    }
-
-    /**
-     * Specifies the amount of treatment that should be given to a crop each 
-     * tick.
-     * @param amount
-     *      the treatment that should be given per tick.
-     */
-    public static void setTreatmentRound(int amount) {
-        treatmentRound = amount;
-    }
-
-    /**
-     * The number of treatments that are left.
-     * @param amount
-     *      the number of remaining treatments.
-     */
-    public static void setremainingTreatments(int amount) {
-        remainingTreatments = amount;
     }
 
     /**

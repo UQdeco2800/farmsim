@@ -5,7 +5,7 @@ import farmsim.money.*;
 import farmsim.inventory.*;
 import farmsim.contracts.Contract;
 import farmsim.world.*;
-import common.resource.SimpleResource;
+import farmsim.resource.SimpleResource;
 
 
 /**

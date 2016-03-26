@@ -97,7 +97,6 @@ public class GameLoop implements Runnable {
             moveViewport();
             // Reset treatment rounds after ticks
             Agent.setTreatmentRound(0);
-            Crop.setTreatmentRound(0);
             try {
                 Thread.sleep(tick);
             } catch (InterruptedException e) {

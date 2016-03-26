@@ -1,6 +1,5 @@
 package farmsim.entities.agents;
 
-import farmsim.entities.disease.Illness;
 import farmsim.util.Animation.SpriteSheetAnimation;
 
 public class AgentRole {
@@ -94,8 +93,7 @@ public class AgentRole {
      * @return a SpriteSheet animation for the agent to travel in the given
      * orientation
      */
-    public SpriteSheetAnimation getTravellingAnimation(
-            Agent.Orientation orientation, Illness disease) {
+    public SpriteSheetAnimation getTravellingAnimation(Agent.Orientation orientation) {
         SpriteSheetAnimation animation = null;
         switch (orientation) {
             case NORTH:
@@ -123,12 +121,7 @@ public class AgentRole {
                 animation = walkNorthWest;
                 break;
         }
-        // Get relevant sprite sheet
-        if (disease != null) {
-        	animation.setSpriteSheet(spriteSheets.getSpriteSheet(disease.getName()));
-        } else {
-        	animation.setSpriteSheet(spriteSheets.getSpriteSheet(null));
-        }
+        animation.setSpriteSheet(spriteSheets.getSpriteSheet(null));
         return animation;
     }
 

@@ -1,6 +1,6 @@
 package farmsim.contracts;
 
-import common.resource.SimpleResource;
+import farmsim.resource.SimpleResource;
 
 /**
 * Implementation of a contract. Contracts are an optional

@@ -4,7 +4,7 @@
 package farmsim.inventory;
 
 import java.util.Hashtable;
-import common.resource.SimpleResource;
+import farmsim.resource.SimpleResource;
 
 /**
  * @author wondertroy

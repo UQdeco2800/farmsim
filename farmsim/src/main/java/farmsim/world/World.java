@@ -1,6 +1,5 @@
 package farmsim.world;
 
-import common.client.FarmClient;
 import farmsim.buildings.AbstractBuilding;
 import farmsim.buildings.StaffHouse;
 import farmsim.buildings.BuildingPlacer;
@@ -14,7 +13,6 @@ import farmsim.inventory.StorageManager;
 import farmsim.tiles.Tile;
 import farmsim.tiles.TileProperty;
 import farmsim.tiles.TileRegister;
-import farmsim.ui.MarketplaceController;
 import farmsim.util.Array2D;
 import farmsim.util.Point;
 import farmsim.util.Tickable;
@@ -57,7 +55,6 @@ public class World implements Tickable {
     private ContractHandler activeContracts;
     private ContractHandler availableContracts;
     private Money moneyHandler;
-    private FarmClient farmClient;
     private BuildingPlacer buildingPlacer;
     
     private static TileRegister tileRegister = TileRegister.getInstance();
@@ -123,10 +120,7 @@ public class World implements Tickable {
         this.storageManager = new StorageManager();
         this.predatorManager = new PredatorManager();
         this.buildingPlacer = new BuildingPlacer();
-        this.farmClient = new FarmClient(
-                MarketplaceController.HOST,
-                MarketplaceController.PORT);
-        this.moneyHandler = new Money(this.farmClient);
+        this.moneyHandler = new Money();
     }
 
     /**
@@ -725,14 +719,6 @@ public class World implements Tickable {
             this.availableContracts.addContract(
                     contractGenerator.generatePreMadeContract());
         }
-    }
-
-    /**
-     * Returns the current market place client.
-     * @return the marketplace client.
-     */
-    public FarmClient getFarmClient() {
-        return farmClient;
     }
 
     /** 
