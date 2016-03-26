@@ -131,6 +131,14 @@ public class Point implements Comparable<Point> {
         return (int) point.x == (int) this.x && (int) point.y == (int) this.y;
     }
 
+    public boolean lazyEquals(Object object) {
+        if (!(object instanceof Point)) {
+            return false;
+        }
+        Point point = (Point) object;
+        return (Math.abs(this.getX() - point.getX()) < 1 && Math.abs(this.getX() - point.getX()) < 1);
+    }
+
     @Override
     public int hashCode() {
         return (int) (((13 * this.x) + this.y) * 17);

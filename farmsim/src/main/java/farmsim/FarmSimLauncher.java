@@ -55,12 +55,6 @@ public class FarmSimLauncher extends Application {
         Console.getInstance().attachGui(console);
 
         TicksPerSecond.getInstance().setFarmSimController(farmSimController);
-
-        //FarmSimController.initSoundEffectsThread();
-        //FarmSimController.startSoundEffectsThread();
-
-        FarmSimController.initMusicThread();
-        FarmSimController.startMusicThread();
     }
 
     /**
@@ -86,7 +80,5 @@ public class FarmSimLauncher extends Application {
 
     @Override
     public void stop() {
-        FarmSimController.stopMusicThread();
-        FarmSimController.stopSoundEffectsThread();
     }
 }

@@ -7,7 +7,6 @@ import farmsim.entities.tools.ToolType;
 import farmsim.tiles.Tile;
 import farmsim.tiles.TileRegister;
 import farmsim.util.Point;
-import farmsim.util.Sound;
 import farmsim.world.World;
 import farmsim.world.WorldManager;
 import javafx.application.Platform;
@@ -28,7 +27,6 @@ public class HarvestTask extends AgentRoleTask {
     private static final String NAME = "Harvest";
     private static final String ID = "harvest";
     private TextArea output;
-    private Sound harvest = new Sound("harvest.mp3");
     private static final ToolType BONUS_TOOL = ToolType.SICKLE;
 
     public HarvestTask(Point point, World world, TextArea output) {
@@ -45,7 +43,6 @@ public class HarvestTask extends AgentRoleTask {
 
     @Override
     public void preTask() {
-        harvest.play();
     }
 
     @Override
@@ -101,8 +98,6 @@ public class HarvestTask extends AgentRoleTask {
         }
         tile.setTileEntity(null);
         tile.setTileType(TileRegister.getInstance().getTileType("dirt"));
-        harvest.stop();
-
     }
 
     @Override

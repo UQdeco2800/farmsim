@@ -76,9 +76,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class FarmSimController extends Observable implements Initializable {
     private static final Logger LOGGER = LoggerFactory
             .getLogger(FarmSimController.class);
-    private static Thread musicThread;
-
-    private static Thread soundEffectsThread;// = new Thread(new SoundEffects());
 
     @FXML
     public ProgressIndicator waterIndicator = new ProgressIndicator();
@@ -127,7 +124,7 @@ public class FarmSimController extends Observable implements Initializable {
     private Label weather = new Label();
     @FXML
     private Label sliderOutput = new Label();
-    @FXML 
+    @FXML
     private Pane weatherIcon = new Pane();
     @FXML
     private ListView<String> inventoryAgentSelect = new ListView<String>();
@@ -146,22 +143,8 @@ public class FarmSimController extends Observable implements Initializable {
     @FXML
     private Button mangoBtn, cottonBtn, bananaBtn, sugarcaneBtn, lemonBtn;
     @FXML
-    private Label totalInfectionLabel;
-    @FXML
-    private Label peonInfectionLabel;
-    @FXML
-    private Label cropInfectionLabel;
-    @FXML
-    private Label numTreatmentsLabel;
-    @FXML
-    private Button useTreatSmall;
-    @FXML
-    private Button useTreatMedium;
-    @FXML
-    private Button useTreatLarge;
-    @FXML
     private Button createFence, clearFence, createGate, toggleGate;
-    @FXML 
+    @FXML
     TabPane gameMenu = new TabPane();
 
     @FXML
@@ -179,7 +162,7 @@ public class FarmSimController extends Observable implements Initializable {
             e.printStackTrace();
         }
     }
-    
+
     // Preferred number of pixels to the left of the divider
     private ExecutorService executor;
     private long worldSeed = 3;
@@ -200,66 +183,8 @@ public class FarmSimController extends Observable implements Initializable {
     private CreditsPopUp creditsPopUp;
 
     private BuildingsPopUp buildingsPopUp;
-    private static boolean muteSoundEffects = true;
-    private static double soundEffectsVolume = 20;
-    private static Music music = new Music();
 
 
-    public static void initMusicThread() {
-        musicThread = new Thread(music);
-    }
-
-    public static void startMusicThread() {
-        musicThread.start();
-    }
-
-    public static void stopMusicThread() {
-        if (musicThread != null && musicThread.isAlive()) {
-            musicThread.interrupt();
-        }
-    }
-
-    public static void initSoundEffectsThread() {
-        soundEffectsThread = new Thread(new SoundEffects());
-    }
-
-    /**
-     * Method for starting the persistent animal sound effects.
-     */
-    public static void startSoundEffectsThread() {
-        soundEffectsThread.start();
-    }
-
-
-    public static void stopSoundEffectsThread() {
-        if (soundEffectsThread != null && soundEffectsThread.isAlive()) {
-            soundEffectsThread.interrupt();
-        }
-    }
-
-
-    /**
-     * Method for getting the current status of the animal sound effects.
-     *
-     * @return Returns true iff the gae sounds is muted, false otherwise.
-     */
-    public static boolean soundEffectsStatus() {
-        return muteSoundEffects;
-    }
-
-    /**
-     * Method for getting the current status of the volume slider in the
-     * audio tab.
-     *
-     * @return Double which describes the value of the volume slider on the game
-     * form 0.0 to 100.00
-     */
-    public static double getSoundEffectsVolume() {
-        return soundEffectsVolume;
-    }
-
-
-    
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -280,44 +205,6 @@ public class FarmSimController extends Observable implements Initializable {
          */
 
         org.apache.log4j.Logger.getRootLogger().setLevel(Level.OFF);
-
-        // Listen for Slider value changes
-        slider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            sliderOutput.setText("    Sound Effects Volume: " + newValue
-                    .intValue() + " ");
-
-            soundEffectsVolume = newValue.doubleValue();
-            if (!slider.isValueChanging()) { // respond on slider click
-                try {
-                    musicThread.interrupt();
-                    musicThread = new Thread(music);
-                    musicThread.start();
-                    soundEffectsThread.interrupt();
-                } catch(Exception e){
-                    LOGGER.error("Error in music volume");
-                }
-            }
-        });
-
-        slider.valueChangingProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(
-                    ObservableValue<? extends Boolean> observableValue,
-                    Boolean wasChanging,
-                    Boolean changing) {
-                if (!changing) { // respond on slider mouse drag
-                    try {
-                        musicThread.interrupt();
-                        musicThread = new Thread(music);
-                        musicThread.start();
-                        soundEffectsThread.interrupt();
-                    } catch(Exception e){
-                        LOGGER.error("Error in music volume");
-                    }
-                }
-            }
-        });
-
 
         inventoryAgentSelect.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             populateRucksack(newValue);
@@ -433,17 +320,15 @@ public class FarmSimController extends Observable implements Initializable {
             wallet.setText(" " + farmsim.Constants.D +
                     worldManager.getWorld().getMoneyHandler().getAmount());
             season.setText(worldManager.getWorld().getSeason() + "    ");
-            slider.setValue(soundEffectsVolume);
             setSeedsQuantity();
-            muteSoundEffects = false;
-            
+
             // initialise task manager and task viewer popup
             TaskViewerController taskViewerController = new TaskViewerController();
             taskViewer = new TaskViewer();
             taskViewerController.setViewer(taskViewer);
             taskViewer.setController(taskViewerController);
             TaskManager.getInstance().setController(taskViewerController);
-            
+
             // Update the forecast on tab click
             gameMenu.getSelectionModel().selectedItemProperty().addListener(
                     new ChangeListener<Tab>() {
@@ -476,22 +361,6 @@ public class FarmSimController extends Observable implements Initializable {
         if (executor != null || quit != null) {
             quit.set(true);
             executor.shutdown();
-        }
-    }
-    
-    @FXML
-    public void openMarketplace(ActionEvent event) {
-        PopUpWindow login = new PopUpWindow(300, 300, 300, 150, "Login");
-        URL location = getClass().getResource("/Login.fxml");
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(location);
-        try {
-            Parent root = fxmlLoader.load();
-            login.setContent(root);
-            PopUpWindowManager.getInstance().addPopUpWindow(login);
-        } catch (IOException e) {
-            e.printStackTrace();
-            LOGGER.error("Error opening marketplace GUI", e);
         }
     }
 
@@ -671,17 +540,6 @@ public class FarmSimController extends Observable implements Initializable {
     }
 
     /**
-     * Method for toggling the perisitant animal sounds.
-     *
-     * @param event The button click.
-     */
-    @FXML
-    public void toggleGameSounds(ActionEvent event) {
-        soundEffectsThread.interrupt();
-        muteSoundEffects = !muteSoundEffects;
-    }
-
-    /**
      * Prompts a worker to water a selected tile.
      *
      * @param event the event associated with the button press
@@ -700,7 +558,7 @@ public class FarmSimController extends Observable implements Initializable {
      * Sets initial value of seeds for player
      */
     public void setSeedsQuantity() {
-    	Hashtable<String, String> hashtable = new Hashtable<String,String>(); 
+    	Hashtable<String, String> hashtable = new Hashtable<String,String>();
     	Storage seeds = WorldManager.getInstance().getWorld()
     				.getStorageManager().getSeeds();
     	seeds.addObserver(new SeedObserver());
@@ -714,7 +572,7 @@ public class FarmSimController extends Observable implements Initializable {
     	seeds.addItem(new SimpleResource("Banana Seeds", hashtable, 50));
     	seeds.addItem(new SimpleResource("Sugarcane Seeds", hashtable, 50));
     	seeds.addItem(new SimpleResource("Lemon Seeds", hashtable, 50));
-    	
+
     	appleBtn.setAlignment(Pos.BOTTOM_RIGHT);
     	cornBtn.setAlignment(Pos.BOTTOM_RIGHT);
     	lettuceBtn.setAlignment(Pos.BOTTOM_RIGHT);
@@ -725,19 +583,19 @@ public class FarmSimController extends Observable implements Initializable {
     	bananaBtn.setAlignment(Pos.BOTTOM_RIGHT);
     	sugarcaneBtn.setAlignment(Pos.BOTTOM_RIGHT);
     	lemonBtn.setAlignment(Pos.BOTTOM_RIGHT);
-    	
-    	
+
+
     }
-    
+
     private void plantCrop(String seedType, String cropType) {
-        Hashtable<String, String> hashtable = new Hashtable<String,String>(); 
+        Hashtable<String, String> hashtable = new Hashtable<String,String>();
         Storage seeds = WorldManager.getInstance().getWorld()
                 .getStorageManager().getSeeds();
         List<Point> selection = GameManager.getInstance().getSelection();
         int enough = seeds.getQuantity(new SimpleResource(
                 seedType, hashtable, 1));
         if (enough < selection.size()) {
-            PopUpWindowManager.getInstance().addPopUpWindow(new Dialog("Not enough seeds", 
+            PopUpWindowManager.getInstance().addPopUpWindow(new Dialog("Not enough seeds",
                             "You don't have enough " + seedType, DialogMode.ERROR));
         } else {
             World world = worldManager.getWorld();
@@ -749,7 +607,7 @@ public class FarmSimController extends Observable implements Initializable {
             }
         }
     }
-    
+
     /**
      * plants the apple from the button.
      * Planting from button.
@@ -908,7 +766,7 @@ public class FarmSimController extends Observable implements Initializable {
             }
         }
     }
-    
+
     /**
      * Adds ClearSnowTask to the trainRole manager.
      */
@@ -923,7 +781,7 @@ public class FarmSimController extends Observable implements Initializable {
             }
         }
     }
-    
+
     /**
      * Adds ClearRocksTask to the trainRole manager.
      */
@@ -1141,7 +999,7 @@ public class FarmSimController extends Observable implements Initializable {
             PopUpWindowManager.getInstance().addPopUpWindow(popUp);
         }
     }
-    
+
     /**
      * Method to handle the rucksack agent buttons
      * @author hankijord
@@ -1184,8 +1042,8 @@ public class FarmSimController extends Observable implements Initializable {
     	    }
     	}
     }
-    
-    
+
+
     /**
      * Used for UI changes, to switch between rucksack views
      * @author hankijord
@@ -1195,7 +1053,7 @@ public class FarmSimController extends Observable implements Initializable {
     	// 0 sets initial screen, 1 sets View2
     	Boolean dir;
     	if (direction == 0){ dir = true;} else {dir = false;}
-       	
+
     	Button[] buttons = {rucksackFarmer, rucksackHunter, rucksackBuilder, rucksackButcher, rucksackShearer,
     						rucksackEggHandler, rucksackMilker, rucksackBack, rucksackEquip, rucksackAddStorage};
     	for (int i = 0; i < buttons.length; i++){
@@ -1209,11 +1067,11 @@ public class FarmSimController extends Observable implements Initializable {
     	}
     	inventoryAgentSelect.setVisible(!dir);
 	    rucksackList.setVisible(!dir);
-	    
+
 	    inventoryAgentSelect.setManaged(!dir);
 	    rucksackList.setManaged(!dir);
     }
-    
+
     /**
      * Removes the item from rucksack and places in storage
      * @author hankijord
@@ -1223,34 +1081,34 @@ public class FarmSimController extends Observable implements Initializable {
     	String selectedItem = new String(rucksackList.getSelectionModel().getSelectedItem());
     	// Don't allow adding to storage of equipped tools
     	if (selectedItem.toLowerCase().contains("(equipped)")){return;}
-    			
+
     	String tempString = selectedItem.replace(" (Equipped)", "");
     	String parts[] = tempString.split(":");
     	selectedItem = parts[0];
-    	
+
     	Agent selectedAgent = getAgentFromListViewString(inventoryAgentSelect.getSelectionModel().getSelectedItem());
     	SimpleResource tempResource = selectedAgent.getRucksack().getResource(selectedItem);
 		selectedAgent.getRucksack().removeFromRucksack(tempResource, tempResource.getQuantity());
 		WorldManager.getInstance().getWorld().getStorageManager().addItem(tempResource);
-		
+
     	populateRucksack(inventoryAgentSelect.getSelectionModel().getSelectedItem());
     }
-    
+
     /**
      * Equips the selected item in rucksack
      * @author hankijord
      */
     @FXML
-    public void rucksackEquipTool(ActionEvent event){   
+    public void rucksackEquipTool(ActionEvent event){
     	// If item is already equipped return
     	String selectedItem = new String(rucksackList.getSelectionModel().getSelectedItem());
     	if (selectedItem.toLowerCase().contains("(equipped)")){
     		return;
     	}
-    	
+
     	// Find the Agent object for the selected listview string
     	Agent selectedAgent = getAgentFromListViewString(inventoryAgentSelect.getSelectionModel().getSelectedItem());
-    	    	
+
     	// Check if selectedItem in list view is a tool and get the tool type if it is
     	for (ToolType tool: ToolType.values()){
     		if (selectedItem.equals(tool.displayName())){
@@ -1259,21 +1117,21 @@ public class FarmSimController extends Observable implements Initializable {
     		    }
     		}
     	}
-    	 
+
     	populateRucksack(inventoryAgentSelect.getSelectionModel().getSelectedItem());
     }
-    
+
     /**
      * Used to display workers of a specified type in the rucksack list
      * Accepts a String input with the type of worker
      * @author hankijord
      * @param type
      */
-    
+
     public void populateRucksackAgentList(String type){
     	List<Agent> agentList = AgentManager.getInstance().getAgents();
     	ObservableList<String> inventoryAgentList = FXCollections.observableArrayList();
-    	
+
     	// Adds the agents who have the selected role to the listview
     	for (Agent agent: agentList){
     		if (type == agent.getCurrentRoleType().displayName()){
@@ -1283,14 +1141,14 @@ public class FarmSimController extends Observable implements Initializable {
     	// Display rucksack items
     	inventoryAgentSelect.setItems(inventoryAgentList);
     }
-    
+
     /**
      * Used to display the rucksack of a selected worker in the 'inventoryAgentSelect' ListView
      * Accepts a String input as selectedWorker, which is the text of the selected row in the ListView
      * @author hankijord
      * @param selectedWorker
      */
-    
+
     public void populateRucksack(String selectedWorker){
     	ObservableList<String> rucksackObservableList = FXCollections.observableArrayList();
 
@@ -1303,7 +1161,7 @@ public class FarmSimController extends Observable implements Initializable {
 
 	    	// Find the rucksack items for the selected agent
 	    	for (SimpleResource resource: selectedAgent.getRucksack().getList()){
-	    		if (selectedAgent.getToolType() != null && 
+	    		if (selectedAgent.getToolType() != null &&
 	    		        selectedAgent.getToolType().displayName().equals(resource.getType())){
 	    				rucksackObservableList.add(resource.getType() + " (Equipped)");
 	    		} else {
@@ -1313,12 +1171,12 @@ public class FarmSimController extends Observable implements Initializable {
 	    				rucksackObservableList.add(resource.getType());
 	    			}
 	    		}
-	    	}	
+	    	}
     	}
     	// Display rucksack items
     	rucksackList.setItems(rucksackObservableList);
     }
-    
+
     /**
      * Helper method to return the Agent object from the selected item string in a ListView
      * @author hankijord
@@ -1336,7 +1194,7 @@ public class FarmSimController extends Observable implements Initializable {
     	}
     	return tempAgent;
     }
-    
+
     /**
      * Sets all peons to be in a tractor
      */
@@ -1347,7 +1205,7 @@ public class FarmSimController extends Observable implements Initializable {
             agent.equipMachine(MachineType.TRACTOR);
         }
     }
-    
+
     /**
      * Un equip all tractors from peons
      */
@@ -1505,17 +1363,17 @@ public class FarmSimController extends Observable implements Initializable {
         }
         PopUpWindowManager.getInstance().addPopUpWindow(fontAwesomePopUp);
     }
-    
+
     /**
      * Updates the weather forecast view with current information.
      */
     private void updateForecast() {
         ObservableList<Node> members = forecast.getChildren();
         ObservableList<Node> member;
-        List<WeatherQueue.Element> forecastList; 
+        List<WeatherQueue.Element> forecastList;
         int day;
         String name;
-        
+
         forecastList = worldManager.getWorld().getForecast();
         for (int i = 0; i < members.size() - 1; i++) {
             // Update day number
@@ -1525,7 +1383,7 @@ public class FarmSimController extends Observable implements Initializable {
                 day++;
             }
             ((Label)(member.get(0))).setText("Day " + day);
-            
+
             // Update image
             if (member.get(1).getStyleClass().size() == 2) {
                 member.get(1).getStyleClass().remove(1);
@@ -1533,7 +1391,7 @@ public class FarmSimController extends Observable implements Initializable {
             ((Pane) (member.get(1))).getStyleClass().add(
                     worldManager.getWorld().getForecastIconStyle(
                             forecastList.get(i).getWeather()));
-            
+
             // Update weather name
             if (forecastList.get(i).getWeather() == WeatherType.DEFAULT) {
                 ((Label)(member.get(2))).setText("Mostly fine");
@@ -1633,7 +1491,7 @@ public class FarmSimController extends Observable implements Initializable {
                 Platform.runLater(() -> {
                     nightIndicator.setVisible(true);
                     dayIndicator.setVisible(false);
-            
+
                 });
             }
         }
@@ -1656,7 +1514,7 @@ public class FarmSimController extends Observable implements Initializable {
             String lower = name.charAt(0) + name.substring(1).toLowerCase();
             seasonInfo = (VBox) (forecast.getChildren().get(
                     forecast.getChildren().size() - 1));
-            
+
             Platform.runLater(() -> {
                 season.setText(lower);
                 if (seasonIcon.getStyleClass().size() == 2) {
@@ -1681,7 +1539,7 @@ public class FarmSimController extends Observable implements Initializable {
             });
         }
     }
-    
+
     /**
      * An observer called to update on change of weather. On weather change,
      * updates the weather label and icon in the UI.
@@ -1713,33 +1571,33 @@ public class FarmSimController extends Observable implements Initializable {
             });
         }
     }
-    
-    /** 
+
+    /**
      * An observer called on change of day to update the forecast.
      */
     public class ForecastObserver implements Observer {
-        
+
         @Override
         public void update(Observable day, Object arg1) {
-            if ((worldManager.getWorld().getTimeManager().getHours() % 24 == 0) 
-                    && (worldManager.getWorld().getTimeManager().getHours() 
+            if ((worldManager.getWorld().getTimeManager().getHours() % 24 == 0)
+                    && (worldManager.getWorld().getTimeManager().getHours()
                             > 23)) {
                 worldManager.getWorld().updateForecast();
                 Platform.runLater(() -> updateForecast());
-                
-                int remaining = worldManager.getWorld().getSeasonEndDay() 
-                        - worldManager.getWorld().getTimeManager().getDays() 
+
+                int remaining = worldManager.getWorld().getSeasonEndDay()
+                        - worldManager.getWorld().getTimeManager().getDays()
                         - 1;
                 VBox seasonInfo = (VBox) (forecast.getChildren().get(
                         forecast.getChildren().size() - 1));
-                Platform.runLater(() -> 
+                Platform.runLater(() ->
                     ((Label) seasonInfo.getChildren().get(2)).setText(
                             "" + remaining + " days remaining"));
             }
         }
-        
+
     }
-    
+
     /**
      * An observer called to update on change of the rucksack. If contents of
      * the rucksack change, the list in the rucksack tab is updated.
@@ -1757,11 +1615,11 @@ public class FarmSimController extends Observable implements Initializable {
             });
         }
     }
-    
+
     public class SeedObserver implements Observer {
         /**
          * On notification from something, updates UI
-         * 
+         *
          */
         @Override
     public void update(Observable seedStorage, Object storage) {
@@ -1770,14 +1628,14 @@ public class FarmSimController extends Observable implements Initializable {
 						.getStorageManager().getSeeds();
 		        for (int i = 0; i < seeds.getSize(); i++) {
 		        	SimpleResource x = seeds.getList().get(i);
-		        
+
 		        	switch(x.getType()) {
 		        	case "Apple Seeds":
 		        		appleBtn.setText(Integer.toString(x.getQuantity()));
 		        		break;
 		        	case "Corn Seeds":
 		        		cornBtn.setText(Integer.toString(x.getQuantity()));
-		        		break;	
+		        		break;
 		        	case "Lettuce Seeds":
 		        		lettuceBtn.setText(Integer.toString(x.getQuantity()));
 		        		break;
@@ -1804,7 +1662,7 @@ public class FarmSimController extends Observable implements Initializable {
 		        		break;
 		        	}
 		        }
-            }); 
+            });
         }
     }
 }

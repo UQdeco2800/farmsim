@@ -15,7 +15,9 @@ import farmsim.tasks.AbstractTask;
 import farmsim.tasks.AgentRoleTask;
 
 import farmsim.tasks.TaskManager;
+import farmsim.tasks.idle.IdleMoveTask;
 import farmsim.tasks.idle.IdleTask;
+import farmsim.tasks.idle.IdleWaveTask;
 import farmsim.tiles.TileRegister;
 import farmsim.util.NoPathException;
 import farmsim.util.Animation.Animation;
@@ -313,16 +315,13 @@ public class Agent extends WorldEntity implements Drawable {
     }
 
     public void moveTowardTaskLocation() {
-        if (task instanceof IdleTask) {
-            AgentManager agentManager = AgentManager.getInstance();
+        AgentManager agentManager = AgentManager.getInstance();
+        if (task instanceof IdleWaveTask) {
             agentManager.setIdleTask(this);
-        } else {
-            try {
-                getLocation().moveToward(task.getLocation(), speed);
-            } catch (IllegalArgumentException e) {
-                LOGGER.error(e.toString());
-            }
+        } else if (task instanceof IdleMoveTask && this.getLocation().lazyEquals(task.getLocation())) {
+            agentManager.setIdleTask(this);
         }
+        getLocation().moveToward(task.getLocation(), speed);
     }
 
     /**

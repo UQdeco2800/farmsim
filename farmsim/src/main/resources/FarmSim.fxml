@@ -79,9 +79,6 @@
                             <content>
                                 <HBox styleClass="menuTab">
                                     <children>
-                                        <Button onAction="#openMarketplace"
-                                                styleClass="menuButton, menuButtonLittle"
-                                                text="Marketplace"/>
                                         <Button onAction="#makeDirt"
                                                 styleClass="menuButton, menuButtonLittle"
                                                 text="Make Dirt!"/>
@@ -140,28 +137,6 @@
                                                   text="Show Water"
                                                   translateX="20.0"
                                                   translateY="25.0"/>
-                                    </children>
-                                </HBox>
-                            </content>
-                        </Tab>
-                        <Tab fx:id="tabAudio" closable="false" text="Audio">
-                            <content>
-                                <HBox styleClass="menuTab">
-                                    <children>
-                                        <Slider fx:id="slider"
-                                                min="0.0" max="100.0"
-                                                layoutX="30.0"
-                                                layoutY="50.0"
-                                                prefWidth="100"
-                                                prefHeight="30"
-                                                />
-                                        <Label fx:id="sliderOutput"
-                                               prefWidth="160"
-                                               styleClass="volume"/>
-                                        <Button fx:id="toggleGameSounds"
-                                                onAction="#toggleGameSounds"
-                                                styleClass="menuButton, menuButtonLittle"
-                                                text="Toggle Animal Sounds"/>
                                     </children>
                                 </HBox>
                             </content>

@@ -6,7 +6,6 @@ import farmsim.entities.tileentities.objects.BaseObject;
 import farmsim.tiles.Tile;
 import farmsim.tiles.TileRegister;
 import farmsim.util.Point;
-import farmsim.util.Sound;
 import farmsim.world.World;
 
 /**
@@ -21,7 +20,6 @@ public class ClearLandTask extends AgentRoleTask {
     private static final int BASE_DURATION = 5000;
     private static final String NAME = "Clear land";
     private static final String ID = "clear";
-    private Sound sound = new Sound("shovel.mp3");
 
     public ClearLandTask(Point point, World world) {
         super(point, BASE_DURATION, world, NAME, ID);
@@ -50,7 +48,7 @@ public class ClearLandTask extends AgentRoleTask {
 
     @Override
     public void preTask() {
-        sound.play();
+
     }
 
     @Override
@@ -59,7 +57,6 @@ public class ClearLandTask extends AgentRoleTask {
         tile.setTileEntity(null);
         /* Should make dependent on current tile */
         tile.setTileType(TileRegister.getInstance().getTileType("dirt"));
-        sound.stop();
     }
 
     @Override

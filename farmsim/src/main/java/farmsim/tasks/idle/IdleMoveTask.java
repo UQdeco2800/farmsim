@@ -1,6 +1,5 @@
 package farmsim.tasks.idle;
 
-import farmsim.tasks.MoveToAndWaitTask;
 import farmsim.world.World;
 
 /**

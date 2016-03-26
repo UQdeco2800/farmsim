@@ -5,7 +5,6 @@ import farmsim.entities.tileentities.objects.Water;
 import farmsim.tiles.Tile;
 import farmsim.tiles.TileProperty;
 import farmsim.util.Point;
-import farmsim.util.Sound;
 import farmsim.world.World;
 import javafx.scene.control.TextArea;
 
@@ -18,7 +17,6 @@ public class LowerLandTask extends AgentRoleTask {
     private static final String NAME = "Lower land";
     private static final String ID = "land";
     private TextArea output;
-    private Sound sound = new Sound("shovel.mp3");
 
     public LowerLandTask(Point point, World world, TextArea output) {
         super(point, BASE_DURATION, world, NAME, ID);
@@ -30,7 +28,7 @@ public class LowerLandTask extends AgentRoleTask {
 
     @Override
     public void preTask() {
-        sound.play();
+
     }
 
     @Override
@@ -49,7 +47,6 @@ public class LowerLandTask extends AgentRoleTask {
 
         output.appendText("Lowered elevation of land" + System.
                 getProperty("line.separator"));
-        sound.stop();
     }
 
     @Override

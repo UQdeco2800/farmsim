@@ -4,7 +4,6 @@ import farmsim.buildings.AbstractBuilding;
 import farmsim.buildings.LeggyShrine;
 import farmsim.entities.agents.Agent;
 import farmsim.entities.tools.ToolType;
-import farmsim.util.Sound;
 
 /**
  * A task for agents to build buildings.
@@ -13,8 +12,6 @@ public class BuildTask extends AgentRoleTask {
     private static final String ID = "build";
 
     AbstractBuilding building;
-    private Sound construction = new Sound("construction.mp3");
-    private Sound leggy = new Sound("heavenly.mp3");
     
     private static final ToolType BONUS_TOOL = ToolType.HAMMER;
 
@@ -29,16 +26,11 @@ public class BuildTask extends AgentRoleTask {
 
     @Override
     public void preTask() {
-        construction.play();
     }
 
     @Override
     public void postTask() {
         building.completeBuilding();
-        if (building instanceof LeggyShrine) {
-            leggy.play();
-        }
-        construction.stop();
     }
 
     @Override

@@ -78,6 +78,8 @@ public class GameLoop implements Runnable {
 
     @Override
     public void run() {
+        predatorManager.setViewport(viewport);
+
         while (!quit.get()) {
             tps.tickStart(); //start tick timer
 
@@ -87,7 +89,6 @@ public class GameLoop implements Runnable {
                 predatorManager.tick();
             } catch (ViewportNotSetException e) {
                 LOGGER.error("main ticker", e);
-                predatorManager.setViewport(viewport);
             }
             dayNight.tick();
             rEC.tick();

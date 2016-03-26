@@ -6,7 +6,6 @@ import farmsim.entities.tileentities.TileEntity;
 import farmsim.entities.tileentities.objects.BaseObject;
 import farmsim.entities.tools.ToolType;
 import farmsim.util.Point;
-import farmsim.util.Sound;
 import farmsim.world.World;
 
 /**
@@ -21,7 +20,6 @@ public class ClearTreeTask extends ClearLandTask {
     private static final String NAME = "Clear tree";
     private static final ToolType REQUIRED_TOOL = ToolType.AXE;
     private static final MachineType REQUIRED_MACHINE = MachineType.CHAINSAW;
-    private Sound sound = new Sound("shovel.mp3");
 
     public ClearTreeTask(Point point, World world) {
         super(point, BASE_DURATION, world, NAME);
@@ -51,11 +49,9 @@ public class ClearTreeTask extends ClearLandTask {
 
     @Override
     public void preTask() {
-        sound.play();
     }
 
     @Override
     public void postTask() {
-        sound.stop();
     }
 }

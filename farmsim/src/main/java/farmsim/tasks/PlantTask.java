@@ -8,7 +8,6 @@ import farmsim.entities.tileentities.crops.*;
 import farmsim.inventory.Storage;
 import farmsim.tiles.TileRegister;
 import farmsim.util.Point;
-import farmsim.util.Sound;
 import farmsim.world.World;
 import farmsim.world.WorldManager;
 import javafx.application.Platform;
@@ -28,7 +27,6 @@ public class PlantTask extends AgentRoleTask {
             TileRegister.getInstance().getTileType("ploughed_dirt");
     private TextArea output;
     private static final String ID = "plant";
-    private Sound planting = new Sound("plant.mp3");
 
     private Storage seeds = WorldManager.getInstance().getWorld().getStorageManager().getSeeds();
     public PlantTask(Point point, World world, String plant, TextArea output) {
@@ -45,7 +43,6 @@ public class PlantTask extends AgentRoleTask {
 
 	@Override
     public void preTask() {
-        planting.play();
         SimpleResource seed = new SimpleResource(plant + " Seeds", new Hashtable<String, String>(), 1);
         seeds.removeItem(seed, 1);
     }
@@ -127,7 +124,6 @@ public class PlantTask extends AgentRoleTask {
 	            });
 	        }
         }
-        planting.stop();
     }
 
     @Override

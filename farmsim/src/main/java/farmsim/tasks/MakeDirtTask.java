@@ -5,7 +5,6 @@ import farmsim.entities.tools.ToolType;
 import farmsim.tiles.TileRegister;
 import farmsim.ui.Notification;
 import farmsim.util.Point;
-import farmsim.util.Sound;
 import farmsim.world.World;
 import javafx.application.Platform;
 import javafx.scene.control.TextArea;
@@ -21,7 +20,6 @@ public class MakeDirtTask extends AgentRoleTask {
     private static final String NAME = "Make dirt";
     private static final String ID = "make-dirt";
     private TextArea output;
-    private Sound sound = new Sound("shovel.mp3");
 
     private static final ToolType BONUS_TOOL = ToolType.SHOVEL;
 
@@ -47,7 +45,7 @@ public class MakeDirtTask extends AgentRoleTask {
 
     @Override
     public void preTask() {
-        sound.play();
+
     }
 
     @Override
@@ -60,7 +58,6 @@ public class MakeDirtTask extends AgentRoleTask {
                         getProperty("line.separator"));
             });
         }
-        sound.stop();
     }
 
     @Override

@@ -5,7 +5,6 @@ import farmsim.entities.tileentities.TileEntity;
 import farmsim.entities.tileentities.objects.BaseObject;
 import farmsim.entities.tools.ToolType;
 import farmsim.util.Point;
-import farmsim.util.Sound;
 import farmsim.world.World;
 
 /**
@@ -20,7 +19,6 @@ public class ClearRocksTask extends ClearLandTask {
     /* Could potentially include variable duration for land types */
     private static final int BASE_DURATION = 2000;
     private static final String NAME = "Clear rocks";
-    private Sound sound = new Sound("shovel.mp3");
     private static final ToolType REQUIRED_TOOL = ToolType.PICKAXE;
 
     public ClearRocksTask(Point point, World world) {
@@ -50,11 +48,9 @@ public class ClearRocksTask extends ClearLandTask {
 
     @Override
     public void preTask() {
-        sound.play();
     }
 
     @Override
     public void postTask() {
-        sound.stop();
     }
 }

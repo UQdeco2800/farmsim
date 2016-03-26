@@ -59,12 +59,6 @@ public class WeatherManager extends Observable {
     private void removeWeather() {
         // close the weather (call the ending transition)
         this.currentWeather.onDeath();
-        World currentWorld = WorldManager.getInstance().getWorld();
-        try {
-            currentWorld.updateLakes(-6);
-        } catch (Exception e) {
-            LOGGER.info("Update Lakes error: " + e);
-        }
         this.currentWeather = new Weather();
     }
 

@@ -6,7 +6,6 @@ import farmsim.tiles.TileProperty;
 import farmsim.tiles.TileRegister;
 import farmsim.ui.Notification;
 import farmsim.util.Point;
-import farmsim.util.Sound;
 import farmsim.world.World;
 import javafx.application.Platform;
 import javafx.scene.control.TextArea;
@@ -22,7 +21,6 @@ public class PloughTask extends AgentRoleTask {
     private static final int BASE_DURATION = 1000;
     private static final String NAME = "Plough";
     private static final String ID = "plough";
-    private Sound plowing = new Sound("plow.mp3");
     private static final ToolType BONUS_TOOL = ToolType.HOE;
 
     private TextArea output = null;
@@ -48,7 +46,6 @@ public class PloughTask extends AgentRoleTask {
 
     @Override
     public void preTask() {
-        plowing.play();
     }
 
     @Override
@@ -68,7 +65,6 @@ public class PloughTask extends AgentRoleTask {
                         System.getProperty("line.separator"));
             });
         }
-        plowing.stop();
     }
 
     @Override
